@@ -1,0 +1,507 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ career.role }} — Careers | Errors2Experts
+{% endblock %}
+
+{% block meta_description %}
+Apply for {{ career.role }} at Errors2Experts. View role details, work mode, location and application information.
+{% endblock %}
+{% block meta_title %}
+{{ career.role }} Job Opening | Errors2Experts
+{% endblock %}
+
+{% block meta_keywords %}
+{{ career.role }} Jobs in Dindigul, {{ career.role }} Job in Dindigul, {{ career.role }} Careers in Dindigul, IT Jobs in Dindigul, Errors2Experts Careers Dindigul
+{% endblock %}
+
+{% block canonical_url %}
+https://errors2experts.com/careers/{{ career.id }}/
+{% endblock %}
+
+{% block og_title %}
+{{ career.role }} Job Opening | Errors2Experts
+{% endblock %}
+
+{% block og_description %}
+Apply for the {{ career.role }} position at Errors2Experts and view the complete job details, work mode, location and application information.
+{% endblock %}
+
+{% block og_url %}
+https://errors2experts.com/careers/{{ career.id }}/
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/career.css' %}">
+
+
+<section class="career-detail-page">
+
+
+  <div class="container">
+
+
+    <a href="{% url 'careers' %}" class="career-detail-back">
+
+      <span>
+        <i class="bi bi-arrow-left"></i>
+      </span>
+
+      <div>
+        <small>BACK</small>
+        <strong>All Career Openings</strong>
+      </div>
+
+    </a>
+
+
+
+    <div class="career-detail-layout">
+
+
+      <!-- =================================================
+                 MAIN CONTENT
+            ================================================== -->
+
+      <article class="career-detail-main">
+
+
+        <div class="career-detail-badges">
+
+          <span class="career-badge career-badge-green">
+            {{ career.employment_type }}
+          </span>
+
+
+          {% if career.department %}
+
+          <span class="career-badge career-badge-gold">
+            {{ career.department }}
+          </span>
+
+          {% endif %}
+
+        </div>
+
+
+
+        <h1>
+          {{ career.role }}
+        </h1>
+
+
+
+        <p class="career-detail-intro">
+          Join Errors2Experts and contribute to practical,
+          technology-focused learning and real-world initiatives.
+        </p>
+
+
+
+        <div class="career-detail-meta">
+
+
+          <div>
+
+            <span>
+              <i class="bi bi-geo-alt"></i>
+            </span>
+
+            <small>
+              Location
+            </small>
+
+            <strong>
+              {{ career.location }}
+            </strong>
+
+          </div>
+
+
+
+          <div>
+
+            <span>
+              <i class="bi bi-laptop"></i>
+            </span>
+
+            <small>
+              Work Mode
+            </small>
+
+            <strong>
+              {{ career.get_work_mode_display }}
+            </strong>
+
+          </div>
+
+
+
+          <div>
+
+            <span>
+              <i class="bi bi-people"></i>
+            </span>
+
+            <small>
+              Openings
+            </small>
+
+            <strong>
+              {{ career.openings }}
+            </strong>
+
+          </div>
+
+
+
+          <div>
+
+            <span>
+              <i class="bi bi-calendar3"></i>
+            </span>
+
+            <small>
+              Posted
+            </small>
+
+            <strong>
+              {{ career.posted_on|date:"d M Y" }}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+
+        <section class="career-description-section">
+
+
+          <span class="career-detail-section-kicker">
+            ROLE OVERVIEW
+          </span>
+
+
+          <h2>
+            About This Opportunity
+          </h2>
+
+
+          <div class="career-detail-description">
+            {{ career.job_description|linebreaks }}
+          </div>
+
+
+        </section>
+
+
+      </article>
+
+
+
+      <!-- =================================================
+                 APPLICATION PANEL
+            ================================================== -->
+
+      <aside class="career-apply-panel">
+
+
+        <div class="career-apply-icon">
+          <i class="bi bi-briefcase"></i>
+        </div>
+
+
+        <span class="career-apply-kicker">
+          POSITION DETAILS
+        </span>
+
+
+        <h2>
+          Interested in this role?
+        </h2>
+
+
+        <p>
+          Review the position details and submit your
+          application directly through our secure form.
+        </p>
+
+
+
+        <div class="career-apply-rows">
+
+
+          <div>
+
+            <span>
+              Employment
+            </span>
+
+            <strong>
+              {{ career.employment_type }}
+            </strong>
+
+          </div>
+
+
+
+          <div>
+
+            <span>
+              Department
+            </span>
+
+            <strong>
+              {{ career.department|default:"General" }}
+            </strong>
+
+          </div>
+
+
+
+          <div>
+
+            <span>
+              Work Mode
+            </span>
+
+            <strong>
+              {{ career.get_work_mode_display }}
+            </strong>
+
+          </div>
+
+
+
+          {% if career.salary %}
+
+          <div>
+
+            <span>
+              Compensation
+            </span>
+
+            <strong class="career-pay-value">
+              ₹{{ career.salary }}
+            </strong>
+
+          </div>
+
+          {% endif %}
+
+
+        </div>
+
+
+
+        <button type="button" class="career-apply-btn career-open-application" data-bs-toggle="modal"
+          data-bs-target="#careerApplicationModal">
+
+          Apply For This Role
+
+          <i class="bi bi-arrow-right"></i>
+
+        </button>
+
+
+
+        <div class="career-apply-note">
+
+          <i class="bi bi-shield-check"></i>
+
+          <span>
+            Your application details are used only
+            for recruitment purposes.
+          </span>
+
+        </div>
+
+
+      </aside>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     CAREER APPLICATION MODAL
+========================================================== -->
+<div class="modal fade career-application-modal" id="careerApplicationModal" tabindex="-1"
+  aria-labelledby="careerApplicationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content career-application-modal-content">
+
+      <div class="career-modal-brand-line" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+
+      <!-- FORM STATE -->
+      <div id="careerApplicationFormState">
+        <div class="career-modal-header">
+          <div class="career-modal-heading-wrap">
+            <span class="career-modal-icon"><i class="bi bi-send"></i></span>
+            <div>
+              <span class="career-modal-kicker">CAREER APPLICATION</span>
+              <h2 id="careerApplicationModalLabel">Apply for {{ career.role }}</h2>
+              <p>Share your details and resume. Your application goes directly to our recruitment team.</p>
+            </div>
+          </div>
+          <button type="button" class="career-modal-close" data-bs-dismiss="modal" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+
+        <form id="careerApplicationForm" class="career-application-form" method="POST"
+          action="{% url 'apply_job' career.id %}" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+
+          <div class="career-form-alert" id="careerApplicationError" role="alert" hidden>
+            <i class="bi bi-exclamation-circle"></i>
+            <span>Please check the highlighted fields and try again.</span>
+          </div>
+
+          <div class="career-form-grid">
+            <div class="career-form-group">
+              <label for="career_full_name">Full Name <span>*</span></label>
+              <div class="career-input-wrap">
+                <i class="bi bi-person"></i>
+                <input type="text" id="career_full_name" name="full_name" maxlength="200" autocomplete="name"
+                  placeholder="Enter your full name" required>
+              </div>
+              <small class="career-field-error" data-error-for="full_name"></small>
+            </div>
+
+            <div class="career-form-group">
+              <label for="career_email">Email Address <span>*</span></label>
+              <div class="career-input-wrap">
+                <i class="bi bi-envelope"></i>
+                <input type="email" id="career_email" name="email" autocomplete="email" placeholder="you@example.com"
+                  required>
+              </div>
+              <small class="career-field-error" data-error-for="email"></small>
+            </div>
+
+            <div class="career-form-group">
+              <label for="career_mobile">Mobile Number <span>*</span></label>
+              <div class="career-input-wrap">
+                <i class="bi bi-phone"></i>
+                <input type="tel" id="career_mobile" name="mobile" maxlength="15" autocomplete="tel"
+                  placeholder="Enter your mobile number" required>
+              </div>
+              <small class="career-field-error" data-error-for="mobile"></small>
+            </div>
+
+            <div class="career-form-group">
+              <label for="career_education">Education <span>*</span></label>
+              <div class="career-input-wrap">
+                <i class="bi bi-mortarboard"></i>
+                <input type="text" id="career_education" name="education" maxlength="200" placeholder="Example: B.E CSE"
+                  required>
+              </div>
+              <small class="career-field-error" data-error-for="education"></small>
+            </div>
+
+            <div class="career-form-group">
+              <label for="career_year_passed_out">Passed Out Year <span>*</span></label>
+              <div class="career-input-wrap">
+                <i class="bi bi-calendar-check"></i>
+                <input type="text" id="career_year_passed_out" name="year_passed_out" maxlength="10" inputmode="numeric"
+                  placeholder="Example: 2026" required>
+              </div>
+              <small class="career-field-error" data-error-for="year_passed_out"></small>
+            </div>
+
+            <div class="career-form-group">
+              <label for="career_resume">Resume / CV <span>*</span></label>
+              <label class="career-file-control" for="career_resume">
+                <span class="career-file-icon"><i class="bi bi-cloud-arrow-up"></i></span>
+                <span class="career-file-copy">
+                  <strong id="careerResumeLabel">Choose your resume</strong>
+                  <small>PDF, DOC or DOCX</small>
+                </span>
+                <span class="career-file-action">Browse</span>
+                <input type="file" id="career_resume" name="resume"
+                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  required>
+              </label>
+              <small class="career-field-error" data-error-for="resume"></small>
+            </div>
+          </div>
+
+          <div class="career-form-group career-form-group-full">
+            <div class="career-label-row">
+              <label for="career_cover_letter">Cover Letter <span>*</span></label>
+              <small>Briefly tell us why you're a good fit</small>
+            </div>
+            <textarea id="career_cover_letter" name="cover_letter" rows="5"
+              placeholder="Introduce yourself, relevant skills, and why you're interested in this opportunity..."
+              required></textarea>
+            <small class="career-field-error" data-error-for="cover_letter"></small>
+          </div>
+
+          <div class="career-application-summary">
+            <span class="career-summary-check"><i class="bi bi-check2-circle"></i></span>
+            <div>
+              <strong>Applying for {{ career.role }}</strong>
+              <span>{{ career.employment_type }}{% if career.department %} · {{ career.department }}{% endif %}</span>
+            </div>
+          </div>
+
+          <div class="career-form-actions">
+            <button type="button" class="career-form-cancel" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="career-form-submit" id="careerApplicationSubmit">
+              <span class="career-submit-normal">Submit Application <i class="bi bi-arrow-right"></i></span>
+              <span class="career-submit-loading" hidden><span class="career-submit-spinner"></span>Submitting...</span>
+            </button>
+          </div>
+
+          <p class="career-form-privacy"><i class="bi bi-shield-lock"></i>
+            Your information is used only for recruitment purposes.</p>
+        </form>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="career-application-success" id="careerApplicationSuccess" hidden>
+        <button type="button" class="career-success-close-x" data-bs-dismiss="modal" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="career-success-animation">
+          <span class="career-success-ring"></span>
+          <span class="career-success-check"><i class="bi bi-check-lg"></i></span>
+          <span class="career-success-particle particle-one"></span>
+          <span class="career-success-particle particle-two"></span>
+          <span class="career-success-particle particle-three"></span>
+        </div>
+        <span class="career-success-kicker">APPLICATION RECEIVED</span>
+        <h2>Application Submitted Successfully</h2>
+        <p id="careerApplicationSuccessMessage">Thank you for applying. Our recruitment team will review your profile.
+        </p>
+        <div class="career-success-role">
+          <span><i class="bi bi-briefcase"></i></span>
+          <div><small>Position Applied</small><strong>{{ career.role }}</strong></div>
+        </div>
+        <div class="career-success-email-note">
+          <i class="bi bi-envelope-check"></i>
+          <span>A confirmation email will be sent to the email address provided in your application.</span>
+        </div>
+        <button type="button" class="career-success-close-btn" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'js/career.js' %}" defer></script>
+
+{% endblock %}

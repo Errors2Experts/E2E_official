@@ -1,0 +1,683 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO Title & Description -->
+  <title>{% block title %}Errors2Experts | Professional IT Training Institute in Dindigul{% endblock %}</title>
+
+  <meta name="title" content="{% block meta_title %}Errors2Experts | Professional IT Training Institute{% endblock %}">
+
+  <meta name="description"
+    content="{% block meta_description %}Errors2Experts is an MSME-registered IT company in Dindigul offering IT training for students and professionals and IT services for businesses. Learn, build, grow.{% endblock %}">
+
+  <meta name="keywords"
+    content="{% block meta_keywords %}Errors2Experts, IT Training Institute, Python Training, Java Training, Full Stack Development, Web Development, Digital Marketing, Internship, Live Projects, Placement Training, Software Courses, Coding Institute, Professional Training, Dindigul, Tamil Nadu, MSME Registered{% endblock %}">
+
+  <meta name="author" content="Errors2Experts">
+  <meta name="publisher" content="Errors2Experts">
+  <meta name="copyright" content="Errors2Experts">
+  <meta name="language" content="English">
+
+  <meta name="robots"
+    content="{% block meta_robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}">
+
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+  <meta name="theme-color" content="#d32f2f">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{% block canonical_url %}https://errors2experts.com/{% endblock %}">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+
+  <meta property="og:title"
+    content="{% block og_title %}Errors2Experts | Professional IT Training Institute{% endblock %}">
+
+  <meta property="og:description"
+    content="{% block og_description %}MSME Registered IT Training Institute offering Industry-Focused Courses, Live Projects, Internship Programs, Certifications & Placement Assistance.{% endblock %}">
+
+ <meta property="og:url"
+      content="{% block og_url %}https://errors2experts.com/{% endblock %}">
+
+  <meta property="og:site_name" content="Errors2Experts">
+
+  <meta property="og:image"
+      content="{% block og_image %}https://errors2experts.com/static/images/logo.jpeg{% endblock %}">
+
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:title"
+    content="{% block twitter_title %}Errors2Experts | Professional IT Training Institute{% endblock %}">
+
+  <meta name="twitter:description"
+    content="{% block twitter_description %}MSME Registered IT Training Institute offering Industry-Focused Courses, Live Projects, Internship Programs & 100% Placement Support.{% endblock %}">
+
+  <meta name="twitter:image"
+    content="{% block twitter_image %}https://errors2experts.com/static/images/logo.jpeg{% endblock %}">
+
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="1Z_XqnrKFpAdMjTqqCj9c9120eyrkBLa5EeMd-BPsHI">
+
+  <meta name="google" content="notranslate">
+
+  <!-- Mobile App Settings -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Errors2Experts">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/jpeg" href="{% static 'images/logo-br.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/logo.jpeg' %}">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Framework & Plugin CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Existing Project CSS: preserved to keep the current design -->
+  <link rel="stylesheet" href="{% static 'css/swipe.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/brand_new.css' %}">
+  <link rel="stylesheet" href="{% static 'css/e2e_redesign.css' %}">
+  <link rel="stylesheet" href="{% static 'css/modal-fix.css' %}">
+  <link rel="stylesheet" href="{% static 'css/placement.css' %}">
+  <link rel="stylesheet" href="{% static 'css/motivation.css' %}">
+
+  <!-- Base-only extracted styles -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+  <!-- Global animated registration / request feedback -->
+  <link rel="stylesheet" href="{% static 'css/e2e-feedback.css' %}">
+
+  <!-- Page-specific CSS -->
+  {% block extra_css %}{% endblock %}
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://errors2experts.com/#organization",
+          "name": "Errors2Experts",
+          "url": "https://errors2experts.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://errors2experts.com/static/images/logo.jpeg"
+          },
+          "image": "https://errors2experts.com/static/images/logo.jpeg",
+          "description": "MSME Registered Professional IT Training Institute offering Python, Java, Full Stack Development, Digital Marketing, Internship Programs, Live Projects, and 100% Placement Assistance in Tamil Nadu.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "NGO Colony",
+            "addressLocality": "Dindigul",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-9363342646",
+            "contactType": "customer service",
+            "email": "errors2experts.official@gmail.com",
+            "availableLanguage": ["English", "Tamil"]
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/errors2experts/",
+            "https://www.youtube.com/@errors2experts",
+            "https://www.facebook.com/profile.php?id=61591756388630",
+            "https://www.instagram.com/errors2experts_2026/"
+          ],
+          "hasCredential": "MSME Udyam Registered"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://errors2experts.com/#website",
+          "url": "https://errors2experts.com/",
+          "name": "Errors2Experts",
+          "description": "Professional IT Training Institute in Tamil Nadu",
+          "publisher": {
+            "@id": "https://errors2experts.com/#organization"
+          },
+          "inLanguage": "en-IN"
+        }
+      ]
+    }
+  </script>
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body class="e2e-base-page" data-demo-booking-url="{% url 'demo_booking' %}" data-csrf-token="{{ csrf_token }}">
+  <!-- Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" aria-label="Main navigation">
+
+    <div class="container">
+      <!-- Brand -->
+      <div class="d-flex align-items-center gap-2">
+        <img src="{% static 'images/logo.jpeg' %}" class="navbar-logo-img"
+          alt="Errors2Experts - Professional IT Training Institute Logo" width="40" height="40">
+
+        <a class="navbar-brand logo-animate" href="{% url 'home' %}" aria-label="Errors2Experts home">
+          <span class="error-part">Errors</span><span class="two-part">2</span><span class="expert-part">Experts</span>
+        </a>
+      </div>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-1 align-items-lg-center">
+          <li class="nav-item">
+            <a id="navOfferLink" class="nav-link blink-text e2e-base-nav-offer-link" href="#e2eOfferModal"
+              data-offer-trigger>
+              🔥 View Offer
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'allcourse' %}">Courses</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'placement' %}">Placement</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'services' %}">Services</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'careers' %}">Careers</a>
+          </li>
+
+          <!-- Our Team -->
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'team' %}active{% endif %}" href="{% url 'team' %}">
+              Our Team
+            </a>
+          </li>
+
+          <!-- Explore Dropdown -->
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" id="exploreDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Explore
+              <span class="dropdown-arrow"></span>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="exploreDropdown">
+              <li class="nav-item-drop">
+                <a class="nav-link" href="{% url 'workshops' %}">Workshops</a>
+              </li>
+
+              <li class="nav-item-drop">
+                <a class="nav-link" href="{% url 'internship_list' %}">Internships</a>
+              </li>
+
+              <li class="nav-item-drop">
+                <a class="nav-link" href="{% url 'certificates' %}">Certificates</a>
+              </li>
+
+              <li class="nav-item-drop">
+                <a class="nav-link" href="{% url 'reviews' %}">Reviews</a>
+              </li>
+
+              <li class="nav-item-drop">
+                <a class="nav-link" href="{% url 'home' %}#projects">Our Clients</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Offer / Careers Modal -->
+  {% if active_offer or careers %}
+  <div class="modal fade e2e-offer-modal" id="e2eOfferModal" tabindex="-1" aria-labelledby="e2eOfferModalLabel"
+    aria-hidden="true" data-offer-id="{% if active_offer %}offer-{{ active_offer.id }}{% else %}openings{% endif %}">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content e2e-offer-content">
+
+        <button type="button" class="btn-close e2e-offer-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        {% if active_offer %}
+        <!-- Active Offer -->
+        <div class="e2e-offer-banner {% if not active_offer.image %}e2e-offer-banner--noimg{% endif %}">
+          {% if active_offer.image %}
+          <img src="{{ active_offer.image.url }}" alt="{{ active_offer.title }}" class="e2e-offer-img">
+          <div class="e2e-offer-img-fade"></div>
+          {% endif %}
+
+          <span class="e2e-offer-ribbon">
+            🔥 Limited-Time Offer
+          </span>
+        </div>
+
+        <div class="e2e-offer-body">
+          <h2 id="e2eOfferModalLabel" class="e2e-offer-title">
+            {{ active_offer.title }}
+          </h2>
+
+          <div class="e2e-offer-desc">
+            {{ active_offer.description|linebreaks }}
+          </div>
+
+          <div class="e2e-offer-actions">
+            <a href="{{ active_offer.link_url }}" class="e2e-offer-btn e2e-offer-btn-primary">
+              Claim This Offer →
+            </a>
+
+            <button type="button" class="e2e-offer-btn e2e-offer-btn-ghost" data-bs-dismiss="modal">
+              Maybe Later
+            </button>
+          </div>
+        </div>
+
+        {% else %}
+        <!-- Current Openings -->
+        <div class="e2e-offer-body e2e-openings-body">
+          <span class="e2e-offer-eyebrow">
+            We're Hiring
+          </span>
+
+          <h2 id="e2eOfferModalLabel" class="e2e-offer-title">
+            Current Career Openings
+          </h2>
+
+          <p class="e2e-offer-sub">
+            No active offers right now — but we're actively growing the team.
+            Take a look at what's open at Errors2Experts.
+          </p>
+
+          <div class="e2e-openings-list">
+            {% for job in careers|slice:":4" %}
+            <a href="{% url 'career_detail' job.pk %}" class="e2e-opening-card">
+              <div class="e2e-opening-info">
+                <span class="e2e-opening-badge">
+                  {{ job.employment_type }}
+                </span>
+
+                <h4>{{ job.role }}</h4>
+
+                {% if job.salary %}
+                <span class="e2e-opening-salary">
+                  ₹{{ job.salary }}
+                </span>
+                {% endif %}
+              </div>
+
+              <span class="e2e-opening-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+            {% endfor %}
+          </div>
+
+          <div class="e2e-offer-actions">
+            <a href="{% url 'careers' %}" class="e2e-offer-btn e2e-offer-btn-primary">
+              View All Openings →
+            </a>
+
+            <button type="button" class="e2e-offer-btn e2e-offer-btn-ghost" data-bs-dismiss="modal">
+              Maybe Later
+            </button>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Global animated Django / AJAX feedback -->
+  {% include "components/e2e_feedback.html" %}
+
+  <!-- Page Content -->
+  <main id="main-content" class="page-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ======================================================
+         FOOTER
+         ====================================================== -->
+  <footer class="site-footer" role="contentinfo">
+
+    <div class="site-footer__decoration" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="container">
+      <div class="row g-4 g-xl-5">
+
+        <!-- Brand -->
+        <div class="col-xl-4 col-md-6">
+          <div class="footer-brand">
+
+            <a href="{% url 'home' %}" class="footer-brand__link" aria-label="Errors2Experts home">
+              <img src="{% static 'images/logo.jpeg' %}" class="footer-brand__image" alt="Errors2Experts logo"
+                width="46" height="46" loading="lazy" decoding="async">
+
+              <span class="footer-brand__name">
+                <span class="brand-errors">Errors</span><span class="brand-two">2</span><span
+                  class="brand-experts">Experts</span>
+              </span>
+            </a>
+
+            <p class="footer-brand__description">
+              Professional IT training and digital solutions focused
+              on practical learning, real projects and career growth.
+            </p>
+
+            <div class="footer-badges">
+
+              <span class="footer-badge footer-badge--msme">
+                <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+                MSME Registered
+              </span>
+
+              <span class="footer-badge footer-badge--placement">
+                <i class="bi bi-briefcase-fill" aria-hidden="true"></i>
+                Placement Support
+              </span>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div class="col-xl-2 col-md-6">
+          <div class="footer-section">
+
+            <h2 class="footer-heading">
+              Quick Links
+            </h2>
+
+            <ul class="footer-links">
+
+              <li>
+                <a href="{% url 'home' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'about' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>About</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'allcourse' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>Courses</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'services' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>Services</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'workshops' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>Workshops</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'internship_list' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>Internships</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'placement' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>Placement</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'careers' %}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  <span>Careers</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-xl-3 col-md-6">
+          <div class="footer-section">
+
+            <h2 class="footer-heading">
+              Contact Us
+            </h2>
+
+            <address class="footer-contact">
+              <ul class="footer-contact__list">
+
+                <li>
+                  <span class="footer-contact__icon">
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                  </span>
+
+                  <span>
+                    NGO Colony,<br>
+                    Dindigul, Tamil Nadu, India
+                  </span>
+                </li>
+
+                <li>
+                  <a href="mailto:errors2experts.official@gmail.com" aria-label="Email Errors2Experts">
+                    <span class="footer-contact__icon">
+                      <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                      errors2experts.official@gmail.com
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="tel:+919363342646" aria-label="Call Errors2Experts">
+                    <span class="footer-contact__icon">
+                      <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                      +91 93633 42646
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="https://wa.me/919363342646" target="_blank" rel="noopener noreferrer"
+                    aria-label="Chat with Errors2Experts on WhatsApp">
+                    <span class="footer-contact__icon">
+                      <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                      Chat on WhatsApp
+                    </span>
+                  </a>
+                </li>
+
+              </ul>
+            </address>
+          </div>
+        </div>
+
+        <!-- Social media -->
+        <div class="col-xl-3 col-md-6">
+          <div class="footer-section">
+
+            <h2 class="footer-heading">
+              Follow Us
+            </h2>
+
+            <p class="footer-social-description">
+              Follow Errors2Experts for courses, workshops,
+              career updates and technology content.
+            </p>
+
+            <ul class="footer-social-links">
+
+              <li>
+                <a href="https://www.linkedin.com/company/errors2experts/" target="_blank" rel="noopener noreferrer"
+                  class="footer-social-link footer-social-link--linkedin"
+                  aria-label="Follow Errors2Experts on LinkedIn">
+                  <span class="footer-social-icon">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </span>
+
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.youtube.com/@errors2experts" target="_blank" rel="noopener noreferrer"
+                  class="footer-social-link footer-social-link--youtube"
+                  aria-label="Subscribe to Errors2Experts on YouTube">
+                  <span class="footer-social-icon">
+                    <i class="bi bi-youtube" aria-hidden="true"></i>
+                  </span>
+
+                  <span>YouTube</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.facebook.com/profile.php?id=61591756388630" target="_blank"
+                  rel="noopener noreferrer" class="footer-social-link footer-social-link--facebook"
+                  aria-label="Follow Errors2Experts on Facebook">
+                  <span class="footer-social-icon">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </span>
+
+                  <span>Facebook</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.instagram.com/errors2experts_2026/" target="_blank" rel="noopener noreferrer"
+                  class="footer-social-link footer-social-link--instagram"
+                  aria-label="Follow Errors2Experts on Instagram">
+                  <span class="footer-social-icon">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </span>
+
+                  <span>Instagram</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://wa.me/919363342646" target="_blank" rel="noopener noreferrer"
+                  class="footer-social-link footer-social-link--whatsapp"
+                  aria-label="Contact Errors2Experts on WhatsApp">
+                  <span class="footer-social-icon">
+                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                  </span>
+
+                  <span>WhatsApp</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+
+        <p class="footer-copyright">
+          &copy; {% now "Y" %}
+          <a href="{% url 'home' %}">Errors2Experts</a>.
+          All rights reserved.
+        </p>
+
+        <p class="footer-registration">
+          <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+          <span>MSME Udyam Registered</span>
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Framework Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Animated registration / request feedback -->
+  <script src="{% static 'js/e2e-feedback.js' %}"></script>
+
+  <!-- Extracted Base JavaScript -->
+  <script src="{% static 'js/base.js' %}"></script>
+
+  <!-- Existing global interaction script -->
+  <script src="{% static 'js/modern-interaction.js' %}"></script>
+
+  <!-- Page-specific JavaScript -->
+  {% block extra_js %}{% endblock %}
+</body>
+
+</html>

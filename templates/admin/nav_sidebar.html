@@ -1,0 +1,465 @@
+{% load i18n static %}
+
+<nav class="e2e-sidebar" id="nav-sidebar" aria-label="Errors2Experts administration navigation">
+
+    <!-- =====================================================
+         BRAND
+    ====================================================== -->
+
+    <div class="e2e-sidebar-brand">
+
+        <a href="{% url 'admin:index' %}" aria-label="Errors2Experts dashboard">
+
+            <img src="{% static 'admin_custom/images/e2e-logo.jpeg' %}" alt="Errors2Experts">
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <div class="e2e-sidebar-navigation">
+
+
+        <!-- MAIN -->
+
+        <div class="e2e-nav-section">
+
+            <span class="e2e-nav-label">
+                Main
+            </span>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if request.resolver_match.url_name == 'index' %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:index' %}">
+
+                <span class="e2e-nav-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3.5 11 12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1V11Z" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Dashboard
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- MANAGE -->
+
+        <div class="e2e-nav-section">
+
+            <span class="e2e-nav-label">
+                Manage
+            </span>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/course/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_course_changelist' %}">
+
+                <span class="e2e-nav-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 6.5 12 4l8 2.5L12 9 4 6.5Zm2 3v6c0 1.8 2.7 3.5 6 3.5s6-1.7 6-3.5v-6" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Courses
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/internship/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_internship_changelist' %}">
+
+                <span class="e2e-nav-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M9 6V4h6v2M6 6h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm-2 5h16" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Internships
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/upcomingworkshop/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_upcomingworkshop_changelist' %}">
+
+                <span class="e2e-nav-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 4v3m14-3v3M4 9h16M5 6h14a1 1 0 0 1 1 1v13H4V7a1 1 0 0 1 1-1Z" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Workshops
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/service/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_service_changelist' %}">
+
+                <span class="e2e-nav-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 7h16v12H4V7Zm4 0V5h8v2M4 11h16" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Services
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             OUR TEAM
+        ====================================================== -->
+
+        <div class="e2e-nav-section">
+
+            <span class="e2e-nav-label">
+                Our Team
+            </span>
+
+
+            <!-- Team Members -->
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/employee/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_employee_changelist' %}">
+
+                <span class="e2e-nav-icon e2e-nav-icon-green">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="8" r="3" />
+                        <circle cx="17" cy="9" r="2.4" />
+                        <path d="M3.5 19c.6-4 2.7-6 5.5-6s4.9 2 5.5 6" />
+                        <path d="M14.5 14c3.3-.4 5.4 1.3 6 5" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Team Members
+                </span>
+
+            </a>
+
+
+            <!-- Team Categories -->
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/teamcategory/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_teamcategory_changelist' %}">
+
+                <span class="e2e-nav-icon e2e-nav-icon-gold">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 5h6v6H4V5Z" />
+                        <path d="M14 5h6v6h-6V5Z" />
+                        <path d="M4 15h6v4H4v-4Z" />
+                        <path d="M14 15h6v4h-6v-4Z" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Team Categories
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- REQUESTS -->
+
+        <div class="e2e-nav-section">
+
+            <span class="e2e-nav-label">
+                Requests
+            </span>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/coursebooking/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_coursebooking_changelist' %}">
+
+                <span class="e2e-nav-icon e2e-nav-icon-red">
+                    CB
+                </span>
+
+                <span class="e2e-nav-text">
+                    Course Bookings
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/internshipbooking/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_internshipbooking_changelist' %}">
+
+                <span class="e2e-nav-icon e2e-nav-icon-gold">
+                    IB
+                </span>
+
+                <span class="e2e-nav-text">
+                    Internship Bookings
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/workshopregistration/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_workshopregistration_changelist' %}">
+
+                <span class="e2e-nav-icon e2e-nav-icon-green">
+                    WB
+                </span>
+
+                <span class="e2e-nav-text">
+                    Workshop Bookings
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/demorequest/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_demorequest_changelist' %}">
+
+                <span class="e2e-nav-icon e2e-nav-icon-blue">
+                    DR
+                </span>
+
+                <span class="e2e-nav-text">
+                    Demo Requests
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- CAREERS -->
+
+        <div class="e2e-nav-section">
+
+            <span class="e2e-nav-label">
+                Careers
+            </span>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/career/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_career_changelist' %}">
+
+                <span class="e2e-nav-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 6V4h8v2M5 6h14a2 2 0 0 1 2 2v11H3V8a2 2 0 0 1 2-2Zm-2 5h18" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Careers
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/jobapplication/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_jobapplication_changelist' %}">
+
+                <span class="e2e-nav-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="3" />
+                        <path d="M5 20c.7-4 3-6 7-6s6.3 2 7 6" />
+                    </svg>
+
+                </span>
+
+                <span class="e2e-nav-text">
+                    Job Applications
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="e2e-nav-section">
+
+            <span class="e2e-nav-label">
+                Content
+            </span>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/certificate/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_certificate_changelist' %}">
+
+                <span class="e2e-nav-icon">
+                    CE
+                </span>
+
+                <span class="e2e-nav-text">
+                    Certificates
+                </span>
+
+            </a>
+
+
+            <a class="
+                    e2e-nav-link
+                    {% if '/admin/main/studentreview/' in request.path %}
+                        is-active
+                    {% endif %}
+                " href="{% url 'admin:main_studentreview_changelist' %}">
+
+                <span class="e2e-nav-icon">
+                    R
+                </span>
+
+                <span class="e2e-nav-text">
+                    Reviews
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- ALL ADMIN -->
+
+        <div class="e2e-sidebar-more">
+
+            <a href="{% url 'admin:app_list' app_label='main' %}">
+
+                <span>
+                    All administration
+                </span>
+
+                <b>
+                    →
+                </b>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SIDEBAR FOOTER
+    ====================================================== -->
+
+    <div class="e2e-sidebar-footer">
+
+        <span class="e2e-sidebar-footer-mark">
+            E2E
+        </span>
+
+        <div class="e2e-sidebar-footer-copy">
+
+            <strong>
+                Excellence Through
+            </strong>
+
+            <small>
+                Education & Innovation
+            </small>
+
+        </div>
+
+    </div>
+
+</nav>

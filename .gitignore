@@ -1,0 +1,74 @@
+
+# Environment variables and secrets
+
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+
+.venv/
+venv/
+env/
+ENV/
+
+# Python generated files
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Django local database
+
+db.sqlite3
+db.sqlite3-journal
+
+# Django generated files
+
+staticfiles/
+media/
+
+# Logs
+
+*.log
+logs/
+
+# Testing and coverage
+
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# IDE and editor files
+
+.vscode/
+.idea/
+*.code-workspace
+
+# Operating system files
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Windows shortcut files
+
+*.lnk
+
+# Temporary and backup files
+
+*.tmp
+*.temp
+*.bak
+*.old
+*~
+
+# Generated Excel exports
+
+course_bookings.xlsx
+demo_booking.xlsx
+demo_booking1.xlsx
+demo_bookings.xlsx
+service_bookings.xlsx
+workshop_registrations.xlsx

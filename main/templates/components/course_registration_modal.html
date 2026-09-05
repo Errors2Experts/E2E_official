@@ -1,0 +1,2081 @@
+<!-- =========================================================
+     COMMON COURSE REGISTRATION MODAL
+
+     Payment:
+     - Full
+     - Half
+     - Installment 1 of 3
+
+     Backend remains responsible for final calculations.
+========================================================== -->
+
+
+<div class="modal fade" id="courseRegistrationModal" tabindex="-1" aria-labelledby="courseRegistrationModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog
+               modal-dialog-centered
+               modal-lg
+               modal-dialog-scrollable">
+
+        <div class="modal-content e2e-course-register-modal">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div class="modal-header border-0">
+
+                <div>
+
+                    <span class="course-modal-eyebrow">
+                        Course Registration
+                    </span>
+
+
+                    <h3 class="modal-title" id="courseRegistrationModalLabel">
+
+                        <span id="courseModalTitle">
+                            Course Program
+                        </span>
+
+                    </h3>
+
+                </div>
+
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BODY
+            ================================================== -->
+
+            <div class="modal-body">
+
+
+                <!-- =============================================
+                     SELECTED COURSE
+                ============================================== -->
+
+                <div class="course-modal-summary">
+
+
+                    <div class="course-modal-summary-content">
+
+                        <span class="course-summary-label">
+                            Selected Course
+                        </span>
+
+
+                        <h4 id="courseSummaryTitle">
+                            Course Program
+                        </h4>
+
+                    </div>
+
+
+                    <div class="course-summary-price">
+
+                        <span>
+                            Course Fee
+                        </span>
+
+
+                        <strong id="courseTotalFee">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FORM
+                ================================================== -->
+
+                <form id="courseRegistrationForm" method="POST" action="" novalidate>
+
+                    {% csrf_token %}
+
+
+                    <!-- =================================================
+                         SECTION 1
+                         STUDENT INFORMATION
+                    ================================================== -->
+
+                    <div class="course-form-section">
+
+
+                        <div class="course-section-heading">
+
+
+                            <span class="course-section-number">
+                                01
+                            </span>
+
+
+                            <div>
+
+                                <h5>
+                                    Student Information
+                                </h5>
+
+
+                                <p>
+                                    Enter your details to reserve
+                                    your course batch.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row g-3">
+
+
+                            <!-- Full Name -->
+
+                            <div class="col-md-6">
+
+                                <label for="courseStudentName" class="form-label">
+
+                                    Full Name
+
+                                    <span class="text-danger">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input type="text" id="courseStudentName" name="name" class="form-control"
+                                    placeholder="Enter your full name" maxlength="100" autocomplete="name" required>
+
+                            </div>
+
+
+
+                            <!-- Email -->
+
+                            <div class="col-md-6">
+
+                                <label for="courseStudentEmail" class="form-label">
+
+                                    Email Address
+
+                                    <span class="text-danger">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input type="email" id="courseStudentEmail" name="email" class="form-control"
+                                    placeholder="Enter your email address" autocomplete="email" required>
+
+                            </div>
+
+
+
+                            <!-- Mobile -->
+
+                            <div class="col-md-6">
+
+                                <label for="courseStudentMobile" class="form-label">
+
+                                    Mobile Number
+
+                                    <span class="text-danger">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input type="tel" id="courseStudentMobile" name="mobile" class="form-control"
+                                    placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}"
+                                    inputmode="numeric" autocomplete="tel" required>
+
+                            </div>
+
+
+
+                            <!-- Education -->
+
+                            <div class="col-md-6">
+
+                                <label for="courseStudentEducation" class="form-label">
+
+                                    Education
+
+                                </label>
+
+
+                                <input type="text" id="courseStudentEducation" name="education" class="form-control"
+                                    placeholder="Example: B.E Computer Science" maxlength="200">
+
+                            </div>
+
+
+
+                            <!-- Passed out year -->
+
+                            <div class="col-md-6">
+
+                                <label for="courseStudentYear" class="form-label">
+
+                                    Passed Out Year
+
+                                </label>
+
+
+                                <input type="text" id="courseStudentYear" name="year_passed" class="form-control"
+                                    placeholder="Example: 2026" maxlength="10" inputmode="numeric">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SECTION 2
+                         PAYMENT OPTION
+                    ================================================== -->
+
+                    <div class="course-form-section">
+
+
+                        <div class="course-section-heading">
+
+
+                            <span class="course-section-number">
+                                02
+                            </span>
+
+
+                            <div>
+
+                                <h5>
+                                    Payment Option
+                                </h5>
+
+
+                                <p>
+                                    Select how you would like
+                                    to pay the course fee.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="course-payment-grid">
+
+
+                            <!-- =========================================
+                                 FULL PAYMENT
+                            ========================================== -->
+
+                            <label class="course-payment-option">
+
+
+                                <input type="radio" name="payment_type" value="full" checked required>
+
+
+                                <span class="course-payment-card">
+
+
+                                    <span class="course-payment-check">
+
+                                        <i class="bi bi-check-lg"></i>
+
+                                    </span>
+
+
+                                    <span class="course-payment-icon">
+
+                                        <i class="bi bi-wallet2"></i>
+
+                                    </span>
+
+
+                                    <strong>
+                                        Full Payment
+                                    </strong>
+
+
+                                    <small>
+                                        Pay the complete course fee now
+                                    </small>
+
+
+                                    <b id="courseFullAmount">
+                                        ₹0
+                                    </b>
+
+                                </span>
+
+                            </label>
+
+
+
+                            <!-- =========================================
+                                 HALF PAYMENT
+                            ========================================== -->
+
+                            <label class="course-payment-option">
+
+
+                                <input type="radio" name="payment_type" value="half" required>
+
+
+                                <span class="course-payment-card">
+
+
+                                    <span class="course-payment-check">
+
+                                        <i class="bi bi-check-lg"></i>
+
+                                    </span>
+
+
+                                    <span class="course-payment-icon">
+
+                                        <i class="bi bi-circle-half"></i>
+
+                                    </span>
+
+
+                                    <strong>
+                                        Half Payment
+                                    </strong>
+
+
+                                    <small>
+                                        Pay 50% now and balance later
+                                    </small>
+
+
+                                    <b id="courseHalfAmount">
+                                        ₹0
+                                    </b>
+
+                                </span>
+
+                            </label>
+
+
+
+                            <!-- =========================================
+                                 INSTALLMENT
+                            ========================================== -->
+
+                            <label class="course-payment-option">
+
+
+                                <input type="radio" name="payment_type" value="installment" required>
+
+
+                                <span class="course-payment-card">
+
+
+                                    <span class="course-payment-check">
+
+                                        <i class="bi bi-check-lg"></i>
+
+                                    </span>
+
+
+                                    <span class="course-payment-icon">
+
+                                        <i class="bi bi-calendar-check"></i>
+
+                                    </span>
+
+
+                                    <strong>
+                                        Installment
+                                    </strong>
+
+
+                                    <small>
+                                        Pay the first of 3 installments
+                                    </small>
+
+
+                                    <b id="courseInstallmentAmount">
+                                        ₹0
+                                    </b>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <!-- =============================================
+                             PAYMENT CALCULATION PREVIEW
+                        ============================================== -->
+
+                        <div class="course-payment-preview">
+
+
+                            <div class="course-payment-preview-item">
+
+                                <span>
+                                    Amount to Pay Now
+                                </span>
+
+
+                                <strong id="coursePayNow">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="course-payment-preview-item">
+
+                                <span>
+                                    Remaining Balance
+                                </span>
+
+
+                                <strong id="courseBalance" class="course-preview-balance">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Installment information -->
+
+                        <div id="courseInstallmentNotice" class="course-installment-notice d-none">
+
+                            <i class="bi bi-info-circle"></i>
+
+
+                            <div>
+
+                                <strong>
+                                    Installment Plan
+                                </strong>
+
+
+                                <p>
+                                    The amount shown above is your
+                                    first installment. The remaining
+                                    course fee will be paid later.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SECTION 3
+                         PAYMENT INFORMATION
+                    ================================================== -->
+
+                    <div class="course-form-section course-last-section">
+
+
+                        <div class="course-section-heading">
+
+
+                            <span class="course-section-number">
+                                03
+                            </span>
+
+
+                            <div>
+
+                                <h5>
+                                    Payment Information
+                                </h5>
+
+
+                                <p>
+                                    Your payment QR will be generated
+                                    after registration.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="course-payment-information">
+
+
+                            <span class="course-payment-info-icon">
+
+                                <i class="bi bi-qr-code"></i>
+
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Dynamic UPI Payment
+                                </strong>
+
+
+                                <p>
+                                    After registration, we will generate
+                                    a UPI QR containing the exact amount
+                                    selected above.
+                                </p>
+
+
+                                <p>
+                                    You do not need to manually enter
+                                    the payment amount after scanning
+                                    the QR.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         CONFIRMATION
+                    ================================================== -->
+
+                    <div class="course-confirmation-row">
+
+
+                        <label class="course-confirmation-check">
+
+                            <input type="checkbox" id="courseTermsConfirmation" required>
+
+
+                            <span>
+
+                                I confirm that the information
+                                provided above is correct and I
+                                understand that payment verification
+                                will be completed manually by the
+                                Errors2Experts team.
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         FOOTER BUTTONS
+                    ================================================== -->
+
+                    <div class="course-modal-actions">
+
+
+                        <button type="button" class="course-modal-close-btn" data-bs-dismiss="modal">
+
+                            Cancel
+
+                        </button>
+
+
+                        <button type="submit" class="course-modal-submit-btn">
+
+                            <span>
+                                Register & Continue to Payment
+                            </span>
+
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     COURSE REGISTRATION MODAL STYLES
+========================================================== -->
+
+<style>
+    /* =========================================================
+   MODAL CONTAINER
+========================================================= */
+
+    .e2e-course-register-modal {
+        overflow: hidden;
+
+        border: 0;
+
+        border-radius: 21px;
+
+        box-shadow:
+            0 26px 70px rgba(20, 43, 53, 0.17);
+    }
+
+
+
+    /* =========================================================
+   HEADER
+========================================================= */
+
+    .e2e-course-register-modal .modal-header {
+        padding:
+            23px 27px 18px;
+
+        background:
+            linear-gradient(135deg,
+                #f4f9fc,
+                #ffffff);
+
+        border-bottom:
+            1px solid #e4eaee !important;
+    }
+
+
+    .course-modal-eyebrow {
+        display: block;
+
+        margin-bottom: 5px;
+
+        color: #1d668e;
+
+        font-size: 10px;
+
+        font-weight: 800;
+
+        letter-spacing: 1.5px;
+
+        text-transform: uppercase;
+    }
+
+
+    .e2e-course-register-modal .modal-title {
+        margin: 0;
+
+        color: #172033;
+
+        font-size: 21px;
+
+        font-weight: 800;
+    }
+
+
+    .e2e-course-register-modal .modal-body {
+        padding:
+            25px 27px 29px;
+    }
+
+
+
+    /* =========================================================
+   COURSE SUMMARY
+========================================================= */
+
+    .course-modal-summary {
+        margin-bottom: 27px;
+
+        padding:
+            17px 19px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 20px;
+
+        background:
+            linear-gradient(135deg,
+                #f7fafb,
+                #fbfcfc);
+
+        border:
+            1px solid #e1e8eb;
+
+        border-radius: 13px;
+    }
+
+
+    .course-summary-label {
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: #818a90;
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.8px;
+
+        text-transform: uppercase;
+    }
+
+
+    .course-modal-summary h4 {
+        margin: 0;
+
+        color: #202c34;
+
+        font-size: 15px;
+
+        font-weight: 750;
+    }
+
+
+    .course-summary-price {
+        flex-shrink: 0;
+
+        text-align: right;
+    }
+
+
+    .course-summary-price span {
+        display: block;
+
+        color: #879096;
+
+        font-size: 10px;
+    }
+
+
+    .course-summary-price strong {
+        display: block;
+
+        margin-top: 3px;
+
+        color: #2e7d32;
+
+        font-size: 21px;
+
+        font-weight: 800;
+    }
+
+
+
+    /* =========================================================
+   SECTIONS
+========================================================= */
+
+    .course-form-section {
+        margin-bottom: 28px;
+
+        padding-bottom: 27px;
+
+        border-bottom:
+            1px solid #e9edef;
+    }
+
+
+    .course-last-section {
+        margin-bottom: 20px;
+    }
+
+
+    .course-section-heading {
+        margin-bottom: 18px;
+
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+
+    .course-section-number {
+        width: 32px;
+        height: 32px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #ffffff;
+
+        background:
+            linear-gradient(135deg,
+                #1d668e,
+                #3182aa);
+
+        border-radius: 50%;
+
+        font-size: 10px;
+
+        font-weight: 800;
+
+        box-shadow:
+            0 5px 13px rgba(29, 102, 142, 0.17);
+    }
+
+
+    .course-section-heading h5 {
+        margin:
+            0 0 3px;
+
+        color: #202b33;
+
+        font-size: 14px;
+
+        font-weight: 750;
+    }
+
+
+    .course-section-heading p {
+        margin: 0;
+
+        color: #858e94;
+
+        font-size: 11.5px;
+    }
+
+
+
+    /* =========================================================
+   INPUTS
+========================================================= */
+
+    .e2e-course-register-modal .form-label {
+        margin-bottom: 6px;
+
+        color: #414b51;
+
+        font-size: 12.5px;
+
+        font-weight: 650;
+    }
+
+
+    .e2e-course-register-modal .form-control {
+        min-height: 45px;
+
+        padding:
+            10px 12px;
+
+        color: #273139;
+
+        background: #ffffff;
+
+        border:
+            1px solid #dce3e7;
+
+        border-radius: 9px;
+
+        font-size: 13px;
+
+        box-shadow: none;
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    .e2e-course-register-modal .form-control::placeholder {
+        color: #a3aaae;
+    }
+
+
+    .e2e-course-register-modal .form-control:focus {
+        border-color: #1d668e;
+
+        box-shadow:
+            0 0 0 3px rgba(29, 102, 142, 0.09);
+    }
+
+
+
+    /* =========================================================
+   PAYMENT GRID
+========================================================= */
+
+    .course-payment-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    .course-payment-option {
+        position: relative;
+
+        min-width: 0;
+
+        cursor: pointer;
+    }
+
+
+    .course-payment-option>input {
+        position: absolute;
+
+        opacity: 0;
+
+        pointer-events: none;
+    }
+
+
+    .course-payment-card {
+        position: relative;
+
+        min-height: 162px;
+
+        height: 100%;
+
+        padding:
+            18px 14px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        background: #fafbfb;
+
+        border:
+            1.5px solid #dde4e7;
+
+        border-radius: 12px;
+
+        transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    .course-payment-card:hover {
+        transform: translateY(-2px);
+
+        border-color:
+            rgba(29, 102, 142, 0.3);
+    }
+
+
+    .course-payment-check {
+        position: absolute;
+
+        top: 11px;
+
+        right: 11px;
+
+        width: 22px;
+        height: 22px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: transparent;
+
+        background: #ffffff;
+
+        border:
+            1.5px solid #d6dddf;
+
+        border-radius: 50%;
+
+        font-size: 10px;
+
+        transition:
+            0.2s ease;
+    }
+
+
+    .course-payment-icon {
+        width: 35px;
+        height: 35px;
+
+        margin-bottom: 13px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #1d668e;
+
+        background: #edf5f9;
+
+        border-radius: 9px;
+
+        font-size: 16px;
+    }
+
+
+    .course-payment-card strong {
+        color: #29343b;
+
+        font-size: 13px;
+
+        font-weight: 750;
+    }
+
+
+    .course-payment-card small {
+        min-height: 34px;
+
+        margin-top: 5px;
+
+        color: #828b90;
+
+        font-size: 10.5px;
+
+        line-height: 1.45;
+    }
+
+
+    .course-payment-card b {
+        margin-top: auto;
+
+        padding-top: 10px;
+
+        color: #2e7d32;
+
+        font-size: 17px;
+
+        font-weight: 800;
+    }
+
+
+
+    /* Checked */
+
+    .course-payment-option input:checked+.course-payment-card {
+        background: #f1f8fb;
+
+        border-color: #1d668e;
+
+        box-shadow:
+            0 0 0 3px rgba(29, 102, 142, 0.07);
+    }
+
+
+    .course-payment-option input:checked+.course-payment-card .course-payment-check {
+        color: #ffffff;
+
+        background: #1d668e;
+
+        border-color: #1d668e;
+    }
+
+
+
+    /* =========================================================
+   PAYMENT PREVIEW
+========================================================= */
+
+    .course-payment-preview {
+        margin-top: 13px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+
+    .course-payment-preview-item {
+        padding:
+            13px 14px;
+
+        background: #f8faf9;
+
+        border:
+            1px solid #e0e6e3;
+
+        border-radius: 9px;
+    }
+
+
+    .course-payment-preview-item span {
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: #868e8a;
+
+        font-size: 9.5px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.5px;
+
+        text-transform: uppercase;
+    }
+
+
+    .course-payment-preview-item strong {
+        color: #27683b;
+
+        font-size: 17px;
+
+        font-weight: 800;
+    }
+
+
+    .course-payment-preview-item .course-preview-balance {
+        color: #986813;
+    }
+
+
+
+    /* =========================================================
+   INSTALLMENT NOTICE
+========================================================= */
+
+    .course-installment-notice {
+        margin-top: 12px;
+
+        padding:
+            12px 13px;
+
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+        color: #4c5674;
+
+        background: #f3f5ff;
+
+        border:
+            1px solid #dfe3f4;
+
+        border-radius: 9px;
+    }
+
+
+    .course-installment-notice>i {
+        margin-top: 1px;
+
+        color: #4b5ca8;
+    }
+
+
+    .course-installment-notice strong {
+        display: block;
+
+        margin-bottom: 2px;
+
+        font-size: 11.5px;
+    }
+
+
+    .course-installment-notice p {
+        margin: 0;
+
+        font-size: 10.5px;
+
+        line-height: 1.5;
+    }
+
+
+
+    /* =========================================================
+   PAYMENT INFORMATION
+========================================================= */
+
+    .course-payment-information {
+        padding:
+            15px;
+
+        display: flex;
+
+        gap: 12px;
+
+        background:
+            linear-gradient(135deg,
+                #eef7fa,
+                #f7fbfc);
+
+        border:
+            1px solid #d7e8ee;
+
+        border-radius: 10px;
+    }
+
+
+    .course-payment-info-icon {
+        width: 39px;
+        height: 39px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #ffffff;
+
+        background: #1d668e;
+
+        border-radius: 10px;
+
+        font-size: 17px;
+    }
+
+
+    .course-payment-information strong {
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: #254452;
+
+        font-size: 12px;
+    }
+
+
+    .course-payment-information p {
+        margin:
+            0 0 3px;
+
+        color: #687b84;
+
+        font-size: 10.5px;
+
+        line-height: 1.55;
+    }
+
+
+
+    /* =========================================================
+   CONFIRMATION
+========================================================= */
+
+    .course-confirmation-row {
+        margin-bottom: 20px;
+    }
+
+
+    .course-confirmation-check {
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 9px;
+
+        color: #70797e;
+
+        font-size: 10.5px;
+
+        line-height: 1.55;
+
+        cursor: pointer;
+    }
+
+
+    .course-confirmation-check input {
+        width: 16px;
+        height: 16px;
+
+        margin-top: 1px;
+
+        flex-shrink: 0;
+
+        accent-color: #2e7d32;
+    }
+
+
+
+    /* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+    .course-modal-actions {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        gap: 9px;
+    }
+
+
+    .course-modal-close-btn,
+    .course-modal-submit-btn {
+        min-height: 43px;
+
+        padding:
+            9px 17px;
+
+        border-radius: 8px;
+
+        font-size: 11.5px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.2s ease;
+    }
+
+
+    .course-modal-close-btn {
+        color: #626d73;
+
+        background: #ffffff;
+
+        border:
+            1px solid #dce2e5;
+    }
+
+
+    .course-modal-close-btn:hover {
+        background: #f7f8f8;
+    }
+
+
+    .course-modal-submit-btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 8px;
+
+        color: #ffffff;
+
+        background:
+            linear-gradient(135deg,
+                #28793b,
+                #31934a);
+
+        border: 0;
+
+        box-shadow:
+            0 7px 18px rgba(46, 125, 50, 0.16);
+    }
+
+
+    .course-modal-submit-btn:hover {
+        transform: translateY(-1px);
+
+        box-shadow:
+            0 10px 23px rgba(46, 125, 50, 0.22);
+    }
+
+
+    .course-modal-submit-btn i {
+        transition:
+            transform 0.2s ease;
+    }
+
+
+    .course-modal-submit-btn:hover i {
+        transform: translateX(3px);
+    }
+
+
+
+    /* =========================================================
+   TABLET
+========================================================= */
+
+    @media (max-width: 767px) {
+
+        .e2e-course-register-modal .modal-header {
+            padding:
+                19px 17px 15px;
+        }
+
+
+        .e2e-course-register-modal .modal-body {
+            padding:
+                19px 16px 23px;
+        }
+
+
+        .e2e-course-register-modal .modal-title {
+            font-size: 18px;
+        }
+
+
+        .course-modal-summary {
+            align-items: flex-start;
+
+            flex-direction: column;
+        }
+
+
+        .course-summary-price {
+            text-align: left;
+        }
+
+
+        .course-payment-grid {
+            grid-template-columns: 1fr;
+        }
+
+
+        .course-payment-card {
+            min-height: auto;
+
+            padding:
+                15px 15px;
+        }
+
+
+        .course-payment-card small {
+            min-height: auto;
+        }
+
+
+        .course-payment-preview {
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+        }
+
+    }
+
+
+
+    /* =========================================================
+   MOBILE
+========================================================= */
+
+    @media (max-width: 480px) {
+
+        .course-payment-preview {
+            grid-template-columns: 1fr;
+        }
+
+
+        .course-modal-actions {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 8px;
+        }
+
+
+        .course-modal-submit-btn {
+            order: 1;
+
+            width: 100%;
+        }
+
+
+        .course-modal-close-btn {
+            order: 2;
+
+            width: 100%;
+        }
+
+    }
+</style>
+
+
+
+<!-- =========================================================
+     COURSE REGISTRATION JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const modal =
+                document.getElementById(
+                    "courseRegistrationModal"
+                );
+
+
+            const form =
+                document.getElementById(
+                    "courseRegistrationForm"
+                );
+
+
+            if (!modal || !form) {
+                return;
+            }
+
+
+            const modalTitle =
+                document.getElementById(
+                    "courseModalTitle"
+                );
+
+
+            const summaryTitle =
+                document.getElementById(
+                    "courseSummaryTitle"
+                );
+
+
+            const totalFee =
+                document.getElementById(
+                    "courseTotalFee"
+                );
+
+
+            const fullAmount =
+                document.getElementById(
+                    "courseFullAmount"
+                );
+
+
+            const halfAmount =
+                document.getElementById(
+                    "courseHalfAmount"
+                );
+
+
+            const installmentAmount =
+                document.getElementById(
+                    "courseInstallmentAmount"
+                );
+
+
+            const payNow =
+                document.getElementById(
+                    "coursePayNow"
+                );
+
+
+            const balance =
+                document.getElementById(
+                    "courseBalance"
+                );
+
+
+            const installmentNotice =
+                document.getElementById(
+                    "courseInstallmentNotice"
+                );
+
+
+            const mobileInput =
+                document.getElementById(
+                    "courseStudentMobile"
+                );
+
+
+            const yearInput =
+                document.getElementById(
+                    "courseStudentYear"
+                );
+
+
+            let courseFee = 0;
+
+
+
+            /* =================================================
+               FORMAT CURRENCY
+            ================================================== */
+
+            function formatAmount(amount) {
+
+                return (
+                    "₹" +
+                    Number(amount).toLocaleString(
+                        "en-IN",
+                        {
+                            maximumFractionDigits: 0
+                        }
+                    )
+                );
+
+            }
+
+
+
+            /* =================================================
+               SERVER CALCULATION PREVIEW
+    
+               Matches Django:
+               Full        = total
+               Half        = rounded total / 2
+               Installment = rounded total / 3
+            ================================================== */
+
+            function calculatePayment(type) {
+
+                let amountToPay = courseFee;
+
+
+                if (type === "half") {
+
+                    amountToPay =
+                        Math.round(
+                            courseFee / 2
+                        );
+
+                }
+
+
+                if (type === "installment") {
+
+                    amountToPay =
+                        Math.round(
+                            courseFee / 3
+                        );
+
+                }
+
+
+                return {
+                    amount:
+                        amountToPay,
+
+                    balance:
+                        courseFee - amountToPay
+                };
+
+            }
+
+
+
+            /* =================================================
+               UPDATE PAYMENT DISPLAY
+            ================================================== */
+
+            function updatePaymentPreview() {
+
+                const selected =
+                    form.querySelector(
+                        'input[name="payment_type"]:checked'
+                    );
+
+
+                const paymentType =
+                    selected
+                        ? selected.value
+                        : "full";
+
+
+                const result =
+                    calculatePayment(
+                        paymentType
+                    );
+
+
+                payNow.textContent =
+                    formatAmount(
+                        result.amount
+                    );
+
+
+                balance.textContent =
+                    formatAmount(
+                        result.balance
+                    );
+
+
+                if (installmentNotice) {
+
+                    installmentNotice
+                        .classList
+                        .toggle(
+                            "d-none",
+                            paymentType !==
+                            "installment"
+                        );
+
+                }
+
+            }
+
+
+
+            /* =================================================
+               MODAL OPEN
+    
+               This allows the same component to be used
+               from any course button later.
+            ================================================== */
+
+            modal.addEventListener(
+                "show.bs.modal",
+                function (event) {
+
+                    const button =
+                        event.relatedTarget;
+
+
+                    if (!button) {
+                        return;
+                    }
+
+
+                    const courseTitle =
+                        button.getAttribute(
+                            "data-course-title"
+                        ) || "Course Program";
+
+
+                    const rawPrice =
+                        button.getAttribute(
+                            "data-course-price"
+                        );
+
+
+                    const bookingUrl =
+                        button.getAttribute(
+                            "data-course-book-url"
+                        ) || "";
+
+
+                    courseFee =
+                        Math.round(
+                            Number.parseFloat(
+                                rawPrice
+                            ) || 0
+                        );
+
+
+                    /* Form URL */
+
+                    form.action =
+                        bookingUrl;
+
+
+                    /* Titles */
+
+                    modalTitle.textContent =
+                        courseTitle;
+
+
+                    summaryTitle.textContent =
+                        courseTitle;
+
+
+                    /* Calculations */
+
+                    const half =
+                        Math.round(
+                            courseFee / 2
+                        );
+
+
+                    const installment =
+                        Math.round(
+                            courseFee / 3
+                        );
+
+
+                    /* Display */
+
+                    totalFee.textContent =
+                        formatAmount(
+                            courseFee
+                        );
+
+
+                    fullAmount.textContent =
+                        formatAmount(
+                            courseFee
+                        );
+
+
+                    halfAmount.textContent =
+                        formatAmount(
+                            half
+                        );
+
+
+                    installmentAmount.textContent =
+                        formatAmount(
+                            installment
+                        );
+
+
+                    /* Reset payment to Full */
+
+                    const fullPayment =
+                        form.querySelector(
+                            'input[name="payment_type"]' +
+                            '[value="full"]'
+                        );
+
+
+                    if (fullPayment) {
+
+                        fullPayment.checked =
+                            true;
+
+                    }
+
+
+                    updatePaymentPreview();
+
+                }
+            );
+
+
+
+            /* =================================================
+               PAYMENT RADIO CHANGE
+            ================================================== */
+
+            form
+                .querySelectorAll(
+                    'input[name="payment_type"]'
+                )
+                .forEach(
+                    function (radio) {
+
+                        radio.addEventListener(
+                            "change",
+                            updatePaymentPreview
+                        );
+
+                    }
+                );
+
+
+
+            /* =================================================
+               MOBILE NUMBER
+            ================================================== */
+
+            if (mobileInput) {
+
+                mobileInput.addEventListener(
+                    "input",
+                    function () {
+
+                        this.value =
+                            this.value
+                                .replace(
+                                    /\D/g,
+                                    ""
+                                )
+                                .slice(
+                                    0,
+                                    10
+                                );
+
+                    }
+                );
+
+            }
+
+
+
+            /* =================================================
+               PASSED OUT YEAR
+            ================================================== */
+
+            if (yearInput) {
+
+                yearInput.addEventListener(
+                    "input",
+                    function () {
+
+                        this.value =
+                            this.value
+                                .replace(
+                                    /\D/g,
+                                    ""
+                                )
+                                .slice(
+                                    0,
+                                    4
+                                );
+
+                    }
+                );
+
+            }
+
+
+
+            /* =================================================
+               FORM VALIDATION
+            ================================================== */
+
+            form.addEventListener(
+                "submit",
+                function (event) {
+
+                    if (!form.checkValidity()) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+                        form.classList.add(
+                            "was-validated"
+                        );
+
+                        return;
+
+                    }
+
+
+                    const submitButton =
+                        form.querySelector(
+                            ".course-modal-submit-btn"
+                        );
+
+
+                    if (submitButton) {
+
+                        submitButton.disabled =
+                            true;
+
+
+                        submitButton.innerHTML = `
+                        <span>
+                            Processing...
+                        </span>
+
+                        <span
+                            class="spinner-border
+                                   spinner-border-sm"
+                            role="status"
+                            aria-hidden="true"
+                        ></span>
+                    `;
+
+                    }
+
+                }
+            );
+
+
+
+            /* =================================================
+               RESET AFTER CLOSE
+            ================================================== */
+
+            modal.addEventListener(
+                "hidden.bs.modal",
+                function () {
+
+                    form.reset();
+
+
+                    form.classList.remove(
+                        "was-validated"
+                    );
+
+
+                    const submitButton =
+                        form.querySelector(
+                            ".course-modal-submit-btn"
+                        );
+
+
+                    if (submitButton) {
+
+                        submitButton.disabled =
+                            false;
+
+
+                        submitButton.innerHTML = `
+                        <span>
+                            Register & Continue to Payment
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+                    `;
+
+                    }
+
+
+                    const fullPayment =
+                        form.querySelector(
+                            'input[name="payment_type"]' +
+                            '[value="full"]'
+                        );
+
+
+                    if (fullPayment) {
+
+                        fullPayment.checked =
+                            true;
+
+                    }
+
+
+                    if (installmentNotice) {
+
+                        installmentNotice
+                            .classList
+                            .add(
+                                "d-none"
+                            );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+</script>

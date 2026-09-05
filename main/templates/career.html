@@ -1,0 +1,632 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Careers — Errors2Experts
+{% endblock %}
+
+{% block meta_title %}
+Careers & Job Openings | Errors2Experts
+{% endblock %}
+
+{% block meta_description %}
+Explore current career opportunities at Errors2Experts in Dindigul. Find job openings across development, training, design and business teams with practical real-world experience.
+{% endblock %}
+
+{% block meta_keywords %}
+IT Jobs in Dindigul, IT Job Openings in Dindigul, Careers in Dindigul, Software Jobs in Dindigul, IT Careers in Dindigul, Errors2Experts Careers Dindigul
+{% endblock %}
+
+{% block canonical_url %}
+https://errors2experts.com/careers/
+{% endblock %}
+
+{% block og_title %}
+Careers & Job Openings | Errors2Experts
+{% endblock %}
+
+{% block og_description %}
+Explore career opportunities at Errors2Experts in Dindigul and join our development, training, design and business teams.
+{% endblock %}
+
+{% block og_url %}
+https://errors2experts.com/careers/
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/career.css' %}">
+
+
+<section class="career-page">
+
+
+  <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+  <section class="career-hero">
+
+
+    <div class="career-hero-shape career-shape-one"></div>
+    <div class="career-hero-shape career-shape-two"></div>
+
+
+    <div class="container">
+
+
+      <div class="career-hero-grid">
+
+
+        <div class="career-hero-copy">
+
+
+          <span class="career-kicker">
+            JOIN OUR CORE TEAM
+          </span>
+
+
+          <h1>
+            Current Career Openings
+          </h1>
+
+
+          <div class="career-brand-line" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+
+          <p>
+            Build your career with Errors2Experts and help us
+            empower learners through practical technology,
+            training and real-world project experience.
+          </p>
+
+
+          <a href="#career-openings" class="career-hero-btn">
+            Explore Opportunities
+            <i class="bi bi-arrow-down"></i>
+          </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                     DYNAMIC HERO VISUAL
+                ================================================== -->
+
+        <div class="career-hero-visual">
+
+
+          <span class="career-orbit career-orbit-one"></span>
+          <span class="career-orbit career-orbit-two"></span>
+
+
+          <div class="career-visual-main">
+
+            <div class="career-visual-icon">
+              <i class="bi bi-briefcase"></i>
+            </div>
+
+            <strong>
+              {{ total_openings }}
+            </strong>
+
+            <span>
+              Open Position{{ total_openings|pluralize }}
+            </span>
+
+          </div>
+
+
+          {% for job in careers|slice:":3" %}
+
+          <div class="career-mini-role career-mini-role-{{ forloop.counter }}">
+
+            {% if job.image %}
+
+           <img src="{{ job.image.url }}" alt="{{ job.role }} job opening at Errors2Experts">
+            {% else %}
+
+            <span class="career-mini-icon">
+              <i class="bi bi-person-workspace"></i>
+            </span>
+
+            {% endif %}
+
+
+            <div>
+
+              <strong>
+                {{ job.role|truncatechars:24 }}
+              </strong>
+
+              <span>
+                {{ job.employment_type }}
+              </span>
+
+            </div>
+
+          </div>
+
+          {% endfor %}
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================================================
+         OPPORTUNITY SUMMARY / FILTERS
+    ========================================================== -->
+
+  <section class="career-summary-section">
+
+
+    <div class="container">
+
+
+      <div class="career-summary-bar">
+
+
+        <div class="career-open-count">
+
+          <span>
+            <i class="bi bi-people"></i>
+          </span>
+
+          <div>
+
+            <strong>
+              {{ total_openings|stringformat:"02d" }}
+            </strong>
+
+            <small>
+              Open Positions
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="career-filter-list" role="group" aria-label="Filter career opportunities">
+
+
+          <button type="button" class="career-filter-btn is-active" data-career-filter="all" aria-pressed="true">
+            <span>All</span>
+            <small>{{ career_count }}</small>
+          </button>
+
+
+          {% for item in employment_counts %}
+
+          <button type="button" class="career-filter-btn" data-career-filter="{{ item.key }}" aria-pressed="false">
+            <span>{{ item.label }}</span>
+            <small>{{ item.count }}</small>
+          </button>
+
+          {% endfor %}
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================================================
+         OPENINGS
+    ========================================================== -->
+
+  <section class="career-openings" id="career-openings" aria-labelledby="career-openings-heading">
+
+
+    <div class="container">
+
+
+      <div class="career-section-heading">
+
+
+        <div>
+
+          <span class="career-section-kicker">
+            AVAILABLE OPPORTUNITIES
+          </span>
+
+          <h2 id="career-openings-heading">
+            Find Your Next Role
+          </h2>
+
+        </div>
+
+
+        <div class="career-search-box">
+
+          <i class="bi bi-search"></i>
+
+          <input type="search" id="careerSearch" placeholder="Search by role or department"
+            aria-label="Search career opportunities">
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="career-content-grid">
+
+
+        <!-- =================================================
+                     JOB CARDS
+                ================================================== -->
+
+        <div class="career-job-list">
+
+
+          {% for job in careers %}
+
+
+          <article class="career-job-card" data-career-card data-employment="{{ job.employment_type|slugify }}"
+            data-search="{{ job.role|lower }} {{ job.department|lower }} {{ job.location|lower }} {{ job.work_mode|lower }}">
+
+
+            <div class="career-job-main">
+
+
+              <div class="career-job-badges">
+
+
+                <span class="career-badge career-badge-green">
+                  {{ job.employment_type }}
+                </span>
+
+
+                {% if job.department %}
+
+                <span class="career-badge career-badge-gold">
+                  {{ job.department }}
+                </span>
+
+                {% endif %}
+
+
+              </div>
+
+
+
+              <h3>
+                {{ job.role }}
+              </h3>
+
+
+
+              <p class="career-job-description">
+                {{ job.job_description|truncatewords:32 }}
+              </p>
+
+
+
+              <div class="career-job-meta">
+
+
+                <span>
+
+                  <i class="bi bi-geo-alt"></i>
+
+                  {{ job.location }}
+
+                </span>
+
+
+                <span>
+
+                  <i class="bi bi-laptop"></i>
+
+                  {{ job.get_work_mode_display }}
+
+                </span>
+
+
+                <span>
+
+                  <i class="bi bi-cash-coin"></i>
+
+                  {% if job.salary %}
+                  ₹{{ job.salary }}
+                  {% else %}
+                  Compensation discussed during selection
+                  {% endif %}
+
+                </span>
+
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="career-job-side">
+
+
+              <div class="career-opening-box">
+
+                <i class="bi bi-people"></i>
+
+                <div>
+
+                  <span>
+                    Open Positions
+                  </span>
+
+                  <strong>
+                    {{ job.openings|stringformat:"02d" }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <a href="{% url 'career_detail' job.pk %}" class="career-view-btn">
+
+                View Details
+
+                <i class="bi bi-arrow-right"></i>
+
+              </a>
+
+
+            </div>
+
+
+          </article>
+
+
+          {% empty %}
+
+
+          <div class="career-empty-state">
+
+            <span>
+              <i class="bi bi-briefcase"></i>
+            </span>
+
+            <h3>
+              No active openings right now
+            </h3>
+
+            <p>
+              Please check again soon for new opportunities.
+            </p>
+
+          </div>
+
+
+          {% endfor %}
+
+
+
+          <div class="career-filter-empty" id="careerFilterEmpty" hidden>
+
+            <i class="bi bi-search"></i>
+
+            <h3>
+              No matching opportunities found
+            </h3>
+
+            <p>
+              Try another search term or job type.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                     WHY JOIN
+                ================================================== -->
+
+        <aside class="career-benefits-card">
+
+
+          <span class="career-benefits-kicker">
+            WHY ERRORS2EXPERTS?
+          </span>
+
+
+          <h2>
+            Learn. Contribute. Grow.
+          </h2>
+
+
+          <div class="career-mini-line" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+
+
+          <div class="career-benefit-item">
+
+
+            <span>
+              <i class="bi bi-graph-up-arrow"></i>
+            </span>
+
+
+            <div>
+
+              <strong>
+                Growth & Learning
+              </strong>
+
+              <p>
+                Work on practical projects and continuously
+                strengthen your industry skills.
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="career-benefit-item">
+
+
+            <span>
+              <i class="bi bi-person-check"></i>
+            </span>
+
+
+            <div>
+
+              <strong>
+                Mentorship
+              </strong>
+
+              <p>
+                Learn through collaboration, guidance and
+                knowledge sharing with experienced team members.
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="career-benefit-item">
+
+
+            <span>
+              <i class="bi bi-lightbulb"></i>
+            </span>
+
+
+            <div>
+
+              <strong>
+                Impactful Work
+              </strong>
+
+              <p>
+                Contribute to technology and learning
+                initiatives that create meaningful outcomes.
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+
+          <a href="{% url 'about' %}" class="career-about-btn">
+
+            Learn More About Us
+
+            <i class="bi bi-arrow-right"></i>
+
+          </a>
+
+
+        </aside>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================================================
+         BOTTOM CTA
+    ========================================================== -->
+
+  <section class="career-bottom-section">
+
+
+    <div class="container">
+
+
+      <div class="career-bottom-card">
+
+
+        <div class="career-bottom-icon">
+          <i class="bi bi-send"></i>
+        </div>
+
+
+        <div>
+
+          <span>
+            FUTURE OPPORTUNITIES
+          </span>
+
+          <h2>
+            Don't see the right role yet?
+          </h2>
+
+          <p>
+            Keep an eye on this page for upcoming opportunities
+            across development, training, design and management.
+          </p>
+
+        </div>
+
+
+        <a href="{% url 'contact' %}">
+          Contact Our Team
+          <i class="bi bi-arrow-right"></i>
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+</section>
+
+
+<script src="{% static 'js/career.js' %}" defer></script>
+
+{% endblock %}

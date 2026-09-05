@@ -1,0 +1,568 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ internship.title }} Internship Program | Errors2Experts
+{% endblock %}
+
+{% block meta_title %}
+{{ internship.title }} Internship Program in Dindigul | Errors2Experts
+{% endblock %}
+
+{% block meta_description %}
+Join the {{ internship.title }} internship program at Errors2Experts in Dindigul with practical training, mentor guidance and a structured week-by-week roadmap.
+{% endblock %}
+
+{% block meta_keywords %}
+{{ internship.title }} Internship in Dindigul, {{ internship.title }} Internship Program in Dindigul, IT Internship in Dindigul, Practical Internship in Dindigul, Internship Training in Dindigul, Errors2Experts Dindigul
+{% endblock %}
+
+{% block canonical_url %}
+https://errors2experts.com/internships/{{ internship.id }}/
+{% endblock %}
+
+{% block og_title %}
+{{ internship.title }} Internship Program | Errors2Experts
+{% endblock %}
+
+{% block og_description %}
+Explore the {{ internship.title }} internship program at Errors2Experts in Dindigul with practical training and a structured weekly roadmap.
+{% endblock %}
+
+{% block og_url %}
+https://errors2experts.com/internships/{{ internship.id }}/
+{% endblock %}
+
+{% block content %}
+
+
+<!-- =========================================================
+     HERO
+========================================================== -->
+
+<div class="ih-hero mt-5">
+
+
+  <!-- Improved Back Button -->
+
+  <a href="{% url 'internship_list' %}" class="ih-back ih-back-modern" aria-label="Back to all internships">
+
+    <span class="ih-back-icon" aria-hidden="true">
+
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"></path>
+        <path d="M12 19l-7-7 7-7"></path>
+      </svg>
+
+    </span>
+
+
+    <span class="ih-back-copy">
+
+      <small>
+        BACK
+      </small>
+
+      <strong>
+        All Internships
+      </strong>
+
+    </span>
+
+  </a>
+
+
+
+  <div class="ih-hero-inner">
+
+
+    <p class="ih-eyebrow">
+      INTERNSHIP PROGRAM
+    </p>
+
+
+    <h1>
+      {{ internship.title }}
+    </h1>
+
+
+    <p class="ih-desc">
+      {{ internship.description }}
+    </p>
+
+
+
+    <!-- =================================================
+             STATS
+        ================================================== -->
+
+    <div class="ih-stats">
+
+
+      <div class="ih-stat">
+
+        <span class="ih-stat-icon">
+          💰
+        </span>
+
+        <div>
+
+          <span class="ih-stat-label">
+            Program Fee
+          </span>
+
+          <span class="ih-stat-value">
+            ₹{{ internship.price }}
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="ih-stat">
+
+        <span class="ih-stat-icon">
+          ⏱
+        </span>
+
+        <div>
+
+          <span class="ih-stat-label">
+            Duration
+          </span>
+
+          <span class="ih-stat-value">
+            {{ internship.duration }}
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="ih-stat">
+
+        <span class="ih-stat-icon">
+          📅
+        </span>
+
+        <div>
+
+          <span class="ih-stat-label">
+            Roadmap
+          </span>
+
+          <span class="ih-stat-value">
+            {{ timeline_data|length }} Weeks
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+             TOP ENROLL BUTTON
+        ================================================== -->
+
+    <button type="button" class="ih-cta" data-bs-toggle="modal" data-bs-target="#internshipRegistrationModal"
+      data-internship-title="{{ internship.title }}" data-internship-price="{{ internship.price }}"
+      data-internship-book-url="{% url 'internship_booking' internship.id %}">
+      Enroll Now →
+    </button>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     ROADMAP
+========================================================== -->
+
+<div class="ih-roadmap-wrap">
+
+
+  <div class="ih-roadmap-heading">
+
+    <span class="ih-eyebrow ih-eyebrow-left">
+      WEEK-BY-WEEK PLAN
+    </span>
+
+    <h2>
+      Program Roadmap
+    </h2>
+
+    <p>
+      Tap a week to view its daily curriculum.
+    </p>
+
+  </div>
+
+
+
+  <div class="ih-timeline" aria-label="Internship weekly curriculum">
+
+
+    {% for week_num, days in timeline_data.items %}
+
+
+    <div class="ih-week">
+
+
+      <div class="ih-node">
+        {{ week_num }}
+      </div>
+
+
+      <div class="ih-week-card">
+
+
+        <button class="ih-week-header" type="button" data-bs-toggle="collapse" data-bs-target="#week{{ week_num }}"
+          aria-expanded="false" aria-controls="week{{ week_num }}">
+
+          <span class="ih-week-title">
+
+            Week {{ week_num }}
+
+            <span class="ih-week-count">
+              {{ days|length }} days
+            </span>
+
+          </span>
+
+
+          <span class="ih-chevron" aria-hidden="true">
+
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 9l6 6 6-6"></path>
+            </svg>
+
+          </span>
+
+        </button>
+
+
+
+        <div id="week{{ week_num }}" class="collapse">
+
+
+          <div class="ih-week-body">
+
+
+            {% for day in days %}
+
+
+            <div class="ih-day-chip">
+
+              <span class="ih-day-num">
+                Day {{ day.day }}
+              </span>
+
+              <span class="ih-day-topic">
+                {{ day.topic }}
+              </span>
+
+            </div>
+
+
+            {% endfor %}
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    {% empty %}
+
+
+    <p class="ih-empty">
+      Curriculum will be published soon.
+      Check back shortly!
+    </p>
+
+
+    {% endfor %}
+
+
+  </div>
+
+
+
+  <!-- =====================================================
+         BOTTOM REGISTER CTA
+    ====================================================== -->
+
+  {% if timeline_data %}
+
+  <div class="ih-bottom-cta">
+
+
+    <span class="ih-bottom-cta-kicker">
+      READY TO START?
+    </span>
+
+
+    <h3 class="ih-bottom-cta-title">
+      Turn This Roadmap Into Real Experience
+    </h3>
+
+
+    <p class="ih-bottom-cta-description">
+      Register for {{ internship.title }} and start
+      building practical industry skills with guided
+      training.
+    </p>
+
+
+    <button type="button" class="ih-cta ih-register-now-btn" data-bs-toggle="modal"
+      data-bs-target="#internshipRegistrationModal" data-internship-title="{{ internship.title }}"
+      data-internship-price="{{ internship.price }}"
+      data-internship-book-url="{% url 'internship_booking' internship.id %}">
+      Register Now
+      <span aria-hidden="true">→</span>
+    </button>
+
+
+    <p class="ih-seat-note">
+      Limited seats per batch · MSME Registered Institute
+    </p>
+
+
+  </div>
+
+  {% endif %}
+
+
+</div>
+
+
+
+<!-- =========================================================
+     INTERNSHIP REGISTRATION MODAL
+========================================================== -->
+
+{% include "components/internship_registration_modal.html" %}
+
+
+
+<style>
+  /* =====================================================
+       MODERN BACK BUTTON
+    ====================================================== */
+
+  .ih-back-modern {
+    width: fit-content;
+
+    margin: 0 0 26px;
+
+    padding: 8px 14px 8px 8px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #263640;
+
+    background:
+      rgba(255, 255, 255, 0.94);
+
+    border:
+      1px solid rgba(46, 125, 50, 0.18);
+
+    border-radius: 50px;
+
+    box-shadow:
+      0 6px 18px rgba(18, 43, 56, 0.06);
+
+    text-decoration: none;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+
+  .ih-back-modern:hover {
+    color: #1f6728;
+
+    background: #ffffff;
+
+    border-color:
+      rgba(46, 125, 50, 0.38);
+
+    box-shadow:
+      0 10px 24px rgba(18, 43, 56, 0.10);
+
+    transform:
+      translateX(-3px);
+  }
+
+
+  .ih-back-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    color: #ffffff;
+
+    background:
+      linear-gradient(135deg,
+        #236f2c,
+        #399747);
+
+    border-radius: 50%;
+  }
+
+
+  .ih-back-copy {
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.05;
+  }
+
+
+  .ih-back-copy small {
+    margin-bottom: 3px;
+
+    color: #8b959b;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+  }
+
+
+  .ih-back-copy strong {
+    color: inherit;
+
+    font-size: 12.5px;
+
+    font-weight: 750;
+  }
+
+
+
+  /* =====================================================
+       BOTTOM CTA
+    ====================================================== */
+
+  .ih-bottom-cta-kicker {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #2e7d32;
+
+    font-size: 9px;
+
+    font-weight: 850;
+
+    letter-spacing: 1.4px;
+  }
+
+
+  .ih-bottom-cta-title {
+    margin: 0 0 8px;
+
+    color: #172033;
+
+    font-size:
+      clamp(22px,
+        3vw,
+        29px);
+
+    font-weight: 800;
+  }
+
+
+  .ih-bottom-cta-description {
+    max-width: 620px;
+
+    margin: 0 auto 17px;
+
+    color: #6d787f;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+
+  .ih-register-now-btn {
+    gap: 8px;
+  }
+
+
+  .ih-register-now-btn span {
+    transition:
+      transform 0.2s ease;
+  }
+
+
+  .ih-register-now-btn:hover span {
+    transform:
+      translateX(4px);
+  }
+
+
+  .ih-seat-note {
+    margin-top: 11px !important;
+  }
+
+
+
+  @media (max-width: 575px) {
+
+    .ih-back-modern {
+      margin-bottom: 19px;
+
+      padding-right: 12px;
+    }
+
+
+    .ih-back-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+
+    .ih-bottom-cta-description {
+      font-size: 12px;
+    }
+
+  }
+</style>
+
+
+{% endblock %}

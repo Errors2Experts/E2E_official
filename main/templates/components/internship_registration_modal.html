@@ -1,0 +1,1331 @@
+<!-- =========================================================
+     COMMON INTERNSHIP REGISTRATION MODAL
+
+     Can be used in:
+     - index.html
+     - all_internship.html
+     - internship_detail.html
+========================================================== -->
+
+<div class="modal fade" id="internshipRegistrationModal" tabindex="-1"
+    aria-labelledby="internshipRegistrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+
+        <div class="modal-content internship-register-modal">
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div class="modal-header border-0">
+
+                <div>
+
+                    <span class="internship-modal-eyebrow">
+                        Internship Registration
+                    </span>
+
+                    <h3 class="modal-title" id="internshipRegistrationModalLabel">
+                        <span id="internshipModalTitle">
+                            Internship Program
+                        </span>
+                    </h3>
+
+                </div>
+
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+
+            <!-- =================================================
+                 BODY
+            ================================================== -->
+
+            <div class="modal-body">
+
+
+                <!-- Internship summary -->
+
+                <div class="internship-modal-summary">
+
+                    <div>
+
+                        <span class="internship-summary-label">
+                            Selected Program
+                        </span>
+
+                        <h4 id="internshipSummaryTitle">
+                            Internship Program
+                        </h4>
+
+                    </div>
+
+
+                    <div class="internship-summary-price">
+
+                        <span>
+                            Program Fee
+                        </span>
+
+                        <strong id="internshipTotalFee">
+                            ₹0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FORM
+                ================================================== -->
+
+                <form id="internshipRegistrationForm" method="POST" action="">
+
+                    {% csrf_token %}
+
+
+                    <!-- =================================================
+                         STUDENT INFORMATION
+                    ================================================== -->
+
+                    <div class="internship-form-section">
+
+                        <div class="internship-section-heading">
+
+                            <span class="internship-section-number">
+                                01
+                            </span>
+
+                            <div>
+                                <h5>
+                                    Student Information
+                                </h5>
+
+                                <p>
+                                    Enter your basic details.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row g-3">
+
+
+                            <!-- Full Name -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+
+                                    Full Name
+
+                                    <span class="text-danger">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input type="text" name="full_name" class="form-control"
+                                    placeholder="Enter your full name" maxlength="150" autocomplete="name" required>
+
+                            </div>
+
+
+                            <!-- Email -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+
+                                    Email Address
+
+                                    <span class="text-danger">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input type="email" name="email" class="form-control"
+                                    placeholder="Enter your email address" autocomplete="email" required>
+
+                            </div>
+
+
+                            <!-- Mobile -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+
+                                    Mobile Number
+
+                                    <span class="text-danger">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input id="internshipMobile" type="tel" name="mobile" class="form-control"
+                                    placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}"
+                                    inputmode="numeric" autocomplete="tel" required>
+
+                            </div>
+
+
+                            <!-- College -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    College / Organization
+                                </label>
+
+                                <input type="text" name="college_name" class="form-control"
+                                    placeholder="College or organization name">
+
+                            </div>
+
+
+                            <!-- Education -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Education
+                                </label>
+
+                                <input type="text" name="education" class="form-control" placeholder="Example: B.E CSE">
+
+                            </div>
+
+
+                            <!-- Passed Out -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Passed Out Year
+                                </label>
+
+                                <input type="text" name="year_passed" class="form-control" maxlength="10"
+                                    placeholder="Example: 2026">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PAYMENT
+                    ================================================== -->
+
+                    <div class="internship-form-section">
+
+                        <div class="internship-section-heading">
+
+                            <span class="internship-section-number">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h5>
+                                    Payment Option
+                                </h5>
+
+                                <p>
+                                    Choose how much you want to pay now.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="internship-payment-grid">
+
+
+                            <!-- FULL PAYMENT -->
+
+                            <label class="internship-payment-option">
+
+                                <input type="radio" name="payment_type" value="full" checked required>
+
+                                <span class="internship-payment-card">
+
+                                    <span class="internship-payment-check">
+                                        ✓
+                                    </span>
+
+                                    <strong>
+                                        Full Payment
+                                    </strong>
+
+                                    <small>
+                                        Pay complete internship fee
+                                    </small>
+
+                                    <b id="internshipFullAmount">
+                                        ₹0.00
+                                    </b>
+
+                                </span>
+
+                            </label>
+
+
+                            <!-- HALF PAYMENT -->
+
+                            <label class="internship-payment-option">
+
+                                <input type="radio" name="payment_type" value="half" required>
+
+                                <span class="internship-payment-card">
+
+                                    <span class="internship-payment-check">
+                                        ✓
+                                    </span>
+
+                                    <strong>
+                                        Half Payment
+                                    </strong>
+
+                                    <small>
+                                        Pay 50% now and remaining later
+                                    </small>
+
+                                    <b id="internshipHalfAmount">
+                                        ₹0.00
+                                    </b>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             PAYMENT PREVIEW
+                        ================================================== -->
+
+                        <div class="internship-payment-preview">
+
+                            <div>
+
+                                <span>
+                                    Amount to Pay Now
+                                </span>
+
+                                <strong id="internshipPayNow">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Remaining Balance
+                                </span>
+
+                                <strong id="internshipBalance">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         MESSAGE
+                    ================================================== -->
+
+                    <div class="internship-form-section">
+
+                        <div class="internship-section-heading">
+
+                            <span class="internship-section-number">
+                                03
+                            </span>
+
+                            <div>
+
+                                <h5>
+                                    Additional Information
+                                </h5>
+
+                                <p>
+                                    Optional message or questions.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <label class="form-label">
+                            Message
+                        </label>
+
+                        <textarea name="message" class="form-control" rows="3"
+                            placeholder="Any questions about the internship?"></textarea>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NOTICE
+                    ================================================== -->
+
+                    <div class="internship-payment-notice">
+
+                        <span class="internship-notice-icon">
+                            ₹
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Payment Verification
+                            </strong>
+
+                            <p>
+                                After registration, the payment QR code
+                                will be displayed.
+                            </p>
+
+                            <p>
+                                Your internship registration will be
+                                confirmed after payment verification.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BUTTONS
+                    ================================================== -->
+
+                    <div class="modal-footer border-0 px-0 pb-0">
+
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+
+
+                        <button type="submit" class="btn btn-success internship-submit-btn">
+                            Register & Continue to Payment
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     STYLE
+========================================================== -->
+
+<style>
+    .internship-register-modal {
+        border: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:
+            0 25px 70px rgba(0, 0, 0, 0.16);
+    }
+
+
+    .internship-register-modal .modal-header {
+        padding: 24px 28px 18px;
+
+        background:
+            linear-gradient(135deg,
+                #fffaf0,
+                #ffffff);
+
+        border-bottom:
+            1px solid #eee8dc !important;
+    }
+
+
+    .internship-modal-eyebrow {
+        display: block;
+
+        margin-bottom: 5px;
+
+        color: #9a6812;
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        letter-spacing: 1.4px;
+
+        text-transform: uppercase;
+    }
+
+
+    .internship-register-modal .modal-title {
+        color: #172033;
+
+        font-size: 22px;
+
+        font-weight: 750;
+    }
+
+
+    .internship-register-modal .modal-body {
+        padding: 26px 28px 30px;
+    }
+
+
+
+    /* ===============================================
+   SUMMARY
+================================================ */
+
+    .internship-modal-summary {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 20px;
+
+        padding: 18px 20px;
+
+        margin-bottom: 28px;
+
+        background: #faf9f6;
+
+        border:
+            1px solid #ebe5d8;
+
+        border-radius: 13px;
+    }
+
+
+    .internship-summary-label {
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: #80867f;
+
+        font-size: 11px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 1px;
+    }
+
+
+    .internship-modal-summary h4 {
+        margin: 0;
+
+        color: #172033;
+
+        font-size: 16px;
+
+        font-weight: 700;
+    }
+
+
+    .internship-summary-price {
+        flex-shrink: 0;
+
+        text-align: right;
+    }
+
+
+    .internship-summary-price span {
+        display: block;
+
+        color: #81877f;
+
+        font-size: 11px;
+    }
+
+
+    .internship-summary-price strong {
+        display: block;
+
+        margin-top: 3px;
+
+        color: #2e7d32;
+
+        font-size: 21px;
+    }
+
+
+
+    /* ===============================================
+   FORM SECTIONS
+================================================ */
+
+    .internship-form-section {
+        margin-bottom: 29px;
+
+        padding-bottom: 27px;
+
+        border-bottom:
+            1px solid #ecefec;
+    }
+
+
+    .internship-section-heading {
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 12px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .internship-section-number {
+        width: 32px;
+
+        height: 32px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #ffffff;
+
+        background: #9a6812;
+
+        border-radius: 50%;
+
+        font-size: 11px;
+
+        font-weight: 800;
+    }
+
+
+    .internship-section-heading h5 {
+        margin: 0 0 3px;
+
+        color: #172033;
+
+        font-size: 15px;
+
+        font-weight: 750;
+    }
+
+
+    .internship-section-heading p {
+        margin: 0;
+
+        color: #80867f;
+
+        font-size: 12px;
+    }
+
+
+    .internship-register-modal .form-label {
+        margin-bottom: 6px;
+
+        color: #414b45;
+
+        font-size: 13px;
+
+        font-weight: 650;
+    }
+
+
+    .internship-register-modal .form-control {
+        min-height: 45px;
+
+        border:
+            1px solid #dce3de;
+
+        border-radius: 9px;
+
+        font-size: 13.5px;
+
+        box-shadow: none;
+    }
+
+
+    .internship-register-modal textarea.form-control {
+        min-height: auto;
+    }
+
+
+    .internship-register-modal .form-control:focus {
+        border-color: #9a6812;
+
+        box-shadow:
+            0 0 0 3px rgba(154, 104, 18, 0.09);
+    }
+
+
+
+    /* ===============================================
+   PAYMENT OPTIONS
+================================================ */
+
+    .internship-payment-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 13px;
+    }
+
+
+    .internship-payment-option {
+        position: relative;
+
+        cursor: pointer;
+    }
+
+
+    .internship-payment-option input {
+        position: absolute;
+
+        opacity: 0;
+
+        pointer-events: none;
+    }
+
+
+    .internship-payment-card {
+        position: relative;
+
+        min-height: 135px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        padding: 20px;
+
+        background: #fafafa;
+
+        border:
+            1.5px solid #dde3df;
+
+        border-radius: 13px;
+
+        transition:
+            0.22s ease;
+    }
+
+
+    .internship-payment-card strong {
+        color: #242d28;
+
+        font-size: 14px;
+    }
+
+
+    .internship-payment-card small {
+        margin-top: 5px;
+
+        color: #7a827d;
+
+        font-size: 11.5px;
+    }
+
+
+    .internship-payment-card b {
+        margin-top: 12px;
+
+        color: #2e7d32;
+
+        font-size: 19px;
+    }
+
+
+    .internship-payment-check {
+        position: absolute;
+
+        top: 13px;
+
+        right: 13px;
+
+        width: 23px;
+
+        height: 23px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: transparent;
+
+        background: #ffffff;
+
+        border:
+            1.5px solid #d4dbd6;
+
+        border-radius: 50%;
+
+        font-size: 11px;
+
+        transition:
+            0.2s ease;
+    }
+
+    .internship-payment-option  input:checked+.internship-payment-card .internship-payment-check {
+        color: #ffffff;
+        background: #2e7d32;
+        border-color: #2e7d32;
+    }
+
+
+    .internship-payment-option input:checked+.internship-payment-card .internship-payment-card .internship-payment-check {
+        color: #ffffff;
+
+        background: #2e7d32;
+
+        border-color: #2e7d32;
+    }
+
+
+
+    /* ===============================================
+   PAYMENT PREVIEW
+================================================ */
+
+    .internship-payment-preview {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+
+        margin-top: 14px;
+    }
+
+
+    .internship-payment-preview>div {
+        padding: 14px 15px;
+
+        background: #f8faf8;
+
+        border:
+            1px solid #e1e7e3;
+
+        border-radius: 9px;
+    }
+
+
+    .internship-payment-preview span {
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: #828984;
+
+        font-size: 10.5px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 0.6px;
+    }
+
+
+    .internship-payment-preview strong {
+        color: #28352d;
+
+        font-size: 17px;
+    }
+
+
+
+    /* ===============================================
+   PAYMENT NOTICE
+================================================ */
+
+    .internship-payment-notice {
+        display: flex;
+
+        gap: 13px;
+
+        padding: 16px;
+
+        background: #fff8e8;
+
+        border:
+            1px solid #efdba9;
+
+        border-radius: 10px;
+
+        color: #644c17;
+    }
+
+
+    .internship-notice-icon {
+        width: 34px;
+
+        height: 34px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #ffffff;
+
+        background: #b37a17;
+
+        border-radius: 50%;
+
+        font-weight: 800;
+    }
+
+
+    .internship-payment-notice strong {
+        display: block;
+
+        margin-bottom: 4px;
+
+        font-size: 13px;
+    }
+
+
+    .internship-payment-notice p {
+        margin: 0 0 3px;
+
+        font-size: 12px;
+
+        line-height: 1.55;
+    }
+
+
+
+    /* ===============================================
+   BUTTON
+================================================ */
+
+    .internship-submit-btn {
+        padding-left: 21px;
+
+        padding-right: 21px;
+
+        font-weight: 650;
+    }
+
+
+
+    /* ===============================================
+   MOBILE
+================================================ */
+
+    @media (max-width: 767px) {
+
+        .internship-register-modal .modal-header {
+            padding:
+                19px 17px 15px;
+        }
+
+
+        .internship-register-modal .modal-body {
+            padding:
+                19px 16px 24px;
+        }
+
+
+        .internship-register-modal .modal-title {
+            font-size: 18px;
+        }
+
+
+        .internship-modal-summary {
+            align-items: flex-start;
+
+            flex-direction: column;
+        }
+
+
+        .internship-summary-price {
+            text-align: left;
+        }
+
+
+        .internship-payment-grid {
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 8px;
+        }
+
+
+        .internship-payment-card {
+            min-height: 126px;
+
+            padding:
+                17px 10px;
+        }
+
+
+        .internship-payment-card strong {
+            font-size: 12px;
+        }
+
+
+        .internship-payment-card small {
+            font-size: 10px;
+        }
+
+
+        .internship-payment-card b {
+            font-size: 16px;
+        }
+
+
+        .internship-payment-preview {
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+        }
+
+    }
+
+
+    @media (max-width: 390px) {
+
+        .internship-payment-card {
+            padding:
+                16px 8px;
+        }
+
+    }
+</style>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const modal =
+                document.getElementById(
+                    "internshipRegistrationModal"
+                );
+
+
+            const form =
+                document.getElementById(
+                    "internshipRegistrationForm"
+                );
+
+
+            const title =
+                document.getElementById(
+                    "internshipModalTitle"
+                );
+
+
+            const summaryTitle =
+                document.getElementById(
+                    "internshipSummaryTitle"
+                );
+
+
+            const totalFeeElement =
+                document.getElementById(
+                    "internshipTotalFee"
+                );
+
+
+            const fullAmountElement =
+                document.getElementById(
+                    "internshipFullAmount"
+                );
+
+
+            const halfAmountElement =
+                document.getElementById(
+                    "internshipHalfAmount"
+                );
+
+
+            const payNowElement =
+                document.getElementById(
+                    "internshipPayNow"
+                );
+
+
+            const balanceElement =
+                document.getElementById(
+                    "internshipBalance"
+                );
+
+
+            let internshipFee = 0;
+
+
+            /*
+             * Format amount in Indian currency style.
+             */
+            function formatAmount(amount) {
+
+                return (
+                    "₹" +
+                    Number(amount).toLocaleString(
+                        "en-IN",
+                        {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        }
+                    )
+                );
+
+            }
+
+
+            /*
+             * Update payment preview.
+             */
+            function updatePaymentPreview() {
+
+                const paymentInput =
+                    form.querySelector(
+                        'input[name="payment_type"]:checked'
+                    );
+
+
+                const paymentType =
+                    paymentInput
+                        ? paymentInput.value
+                        : "full";
+
+
+                let payNow = internshipFee;
+
+                let balance = 0;
+
+
+                if (paymentType === "half") {
+
+                    payNow =
+                        internshipFee / 2;
+
+                    balance =
+                        internshipFee - payNow;
+
+                }
+
+
+                payNowElement.textContent =
+                    formatAmount(payNow);
+
+
+                balanceElement.textContent =
+                    formatAmount(balance);
+
+            }
+
+
+            /*
+             * When any internship button opens
+             * this common modal, load that internship.
+             */
+            if (modal) {
+
+                modal.addEventListener(
+                    "show.bs.modal",
+                    function (event) {
+
+                        const button =
+                            event.relatedTarget;
+
+
+                        if (!button) {
+                            return;
+                        }
+
+
+                        const internshipTitle =
+                            button.getAttribute(
+                                "data-internship-title"
+                            ) || "Internship Program";
+
+
+                        const internshipPrice =
+                            parseFloat(
+                                button.getAttribute(
+                                    "data-internship-price"
+                                )
+                            ) || 0;
+
+
+                        const bookingUrl =
+                            button.getAttribute(
+                                "data-internship-book-url"
+                            ) || "";
+
+
+                        internshipFee =
+                            internshipPrice;
+
+
+                        /*
+                         * Form URL
+                         */
+                        form.action =
+                            bookingUrl;
+
+
+                        /*
+                         * Titles
+                         */
+                        title.textContent =
+                            internshipTitle;
+
+
+                        summaryTitle.textContent =
+                            internshipTitle;
+
+
+                        /*
+                         * Price values
+                         */
+                        totalFeeElement.textContent =
+                            formatAmount(
+                                internshipFee
+                            );
+
+
+                        fullAmountElement.textContent =
+                            formatAmount(
+                                internshipFee
+                            );
+
+
+                        halfAmountElement.textContent =
+                            formatAmount(
+                                internshipFee / 2
+                            );
+
+
+                        /*
+                         * Default to Full Payment.
+                         */
+                        const fullPayment =
+                            form.querySelector(
+                                'input[name="payment_type"][value="full"]'
+                            );
+
+
+                        if (fullPayment) {
+                            fullPayment.checked =
+                                true;
+                        }
+
+
+                        updatePaymentPreview();
+
+                    }
+                );
+
+            }
+
+
+            /*
+             * Payment selection change.
+             */
+            form
+                .querySelectorAll(
+                    'input[name="payment_type"]'
+                )
+                .forEach(
+                    function (input) {
+
+                        input.addEventListener(
+                            "change",
+                            updatePaymentPreview
+                        );
+
+                    }
+                );
+
+
+            /*
+             * Mobile number:
+             * numbers only + maximum 10 digits.
+             */
+            const mobile =
+                document.getElementById(
+                    "internshipMobile"
+                );
+
+
+            if (mobile) {
+
+                mobile.addEventListener(
+                    "input",
+                    function () {
+
+                        this.value =
+                            this.value
+                                .replace(/\D/g, "")
+                                .slice(0, 10);
+
+                    }
+                );
+
+            }
+
+
+            /*
+             * Reset user input after modal closes.
+             */
+            modal.addEventListener(
+                "hidden.bs.modal",
+                function () {
+
+                    form.reset();
+
+                }
+            );
+
+        }
+    );
+
+</script>

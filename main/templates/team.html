@@ -1,0 +1,576 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Our Team — Errors2Experts
+{% endblock %}
+
+{% block meta_description %}
+Meet the people behind Errors2Experts — our developers, designers, marketers, trainers and management team.
+{% endblock %}
+{% block meta_title %}
+Our Team | Developers, Trainers & Experts | Errors2Experts
+{% endblock %}
+
+{% block meta_keywords %}
+Errors2Experts Team in Dindigul, IT Professionals in Dindigul, IT Trainers in Dindigul, Developers in Dindigul, IT Experts in Dindigul, Software Professionals in Dindigul
+{% endblock %}
+
+{% block canonical_url %}
+https://errors2experts.com/team/
+{% endblock %}
+
+{% block og_title %}
+Our Team | Developers, Trainers & Experts | Errors2Experts
+{% endblock %}
+
+{% block og_description %}
+Meet the Errors2Experts team of developers, designers, marketers, trainers and management professionals.
+{% endblock %}
+
+{% block og_url %}
+https://errors2experts.com/team/
+{% endblock %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/team.css' %}">
+
+
+<section class="e2e-team-page">
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="team-hero">
+
+
+        <div class="team-hero-glow team-hero-glow-one"></div>
+        <div class="team-hero-glow team-hero-glow-two"></div>
+
+
+        <div class="container">
+
+
+            <div class="team-hero-grid">
+
+
+                <!-- =================================================
+                     LEFT CONTENT
+                ================================================== -->
+
+                <div class="team-hero-content">
+
+
+                    <span class="team-section-kicker">
+
+                        <i class="bi bi-people-fill"></i>
+
+                        OUR TEAM
+
+                    </span>
+
+
+                    <h1>
+
+                        <span class="team-title-first-line">
+                            Meet the Team
+                        </span>
+
+                        <span class="team-title-second-line">
+                            Behind
+                            <span class="team-brand-lock">
+                                <strong class="brand-errors">Errors</strong><strong class="brand-two">2</strong><strong
+                                    class="brand-experts">Experts</strong>
+                            </span>
+                        </span>
+
+                    </h1>
+
+
+                    <p class="team-hero-description">
+                        We are a passionate team of developers,
+                        designers, marketers, trainers and leaders
+                        working together to build practical learning
+                        experiences and meaningful technology solutions.
+                    </p>
+
+
+
+                    <!-- =============================================
+                         REAL DATABASE COUNTS
+                    ============================================== -->
+
+                    <div class="team-stats">
+
+
+                        <article class="team-stat-card">
+
+                            <span class="team-stat-icon team-stat-green">
+                                <i class="bi bi-people-fill"></i>
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    {{ team_member_count }}
+                                </strong>
+
+                                <span>
+                                    Team Members
+                                </span>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <article class="team-stat-card">
+
+                            <span class="team-stat-icon team-stat-gold">
+                                <i class="bi bi-person-badge"></i>
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    {{ role_count }}
+                                </strong>
+
+                                <span>
+                                    Roles
+                                </span>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <article class="team-stat-card">
+
+                            <span class="team-stat-icon team-stat-red">
+                                <i class="bi bi-diagram-3"></i>
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    {{ category_count }}
+                                </strong>
+
+                                <span>
+                                    Teams
+                                </span>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     DYNAMIC EMPLOYEE COLLAGE
+                     Uses real employee photos from admin.
+                ================================================== -->
+
+                <div class="team-hero-visual">
+
+
+                    <span class="hero-orbit orbit-one"></span>
+                    <span class="hero-orbit orbit-two"></span>
+
+
+                    <span class="hero-orbit-dot dot-red"></span>
+                    <span class="hero-orbit-dot dot-gold"></span>
+                    <span class="hero-orbit-dot dot-green"></span>
+
+
+
+                    <div class="team-collage">
+
+
+                        {% for employee in employees|slice:":5" %}
+
+                        <div class="team-collage-photo collage-photo-{{ forloop.counter }}">
+
+                            <img src="{{ employee.photo.url }}" alt="{{ employee.name }} - Errors2Experts team member"
+    loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+
+                        </div>
+
+                        {% empty %}
+
+                        <div class="team-collage-empty">
+
+                            <span class="team-collage-empty-icon">
+                                <i class="bi bi-people"></i>
+                            </span>
+
+                            <strong>
+                                Our Team
+                            </strong>
+
+                            <span>
+                                Add team members from Django Admin
+                            </span>
+
+                        </div>
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================================
+         TEAM GRID
+    ========================================================== -->
+
+    <section class="team-directory">
+
+
+        <div class="container">
+
+
+            <header class="team-directory-header">
+
+
+                <span class="team-directory-kicker">
+                    THE PEOPLE WHO MAKE IT HAPPEN
+                </span>
+
+
+                <span class="team-directory-line">
+                    <i></i>
+                </span>
+
+
+                <h2>
+                    Our Awesome Team
+                </h2>
+
+
+                <p>
+                    Choose a team to see each person's role
+                    in that specific area.
+                </p>
+
+
+            </header>
+
+
+
+            <!-- =================================================
+                 FILTERS
+            ================================================== -->
+
+            <div class="team-filters" role="group" aria-label="Filter team members">
+
+
+                <button type="button" class="team-filter-btn is-active" data-team-filter="all" aria-pressed="true">
+
+                    <i class="bi bi-people"></i>
+
+                    <span>
+                        All Members
+                    </span>
+
+                </button>
+
+
+
+                {% for category in team_categories %}
+
+                <button type="button" class="team-filter-btn" data-team-filter="{{ category.slug }}"
+                    aria-pressed="false">
+
+                    <i class="bi {{ category.icon_class|default:'bi-people' }}"></i>
+
+                    <span>
+                        {{ category.name }}
+                    </span>
+
+                </button>
+
+                {% endfor %}
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EMPLOYEE CARDS
+            ================================================== -->
+
+            <div class="team-grid" id="teamGrid">
+
+
+                {% for employee in employees %}
+
+
+                <article class="team-member-card" data-team-member>
+
+
+                    <!-- Role data used by team.js -->
+
+                    <div class="team-member-role-data" hidden aria-hidden="true">
+
+                        {% for role in employee.public_role_assignments %}
+
+                        <span data-role-category="{{ role.category.slug }}" data-role-category-name="{{ role.category.name }}"
+                            data-role-title="{{ role.role_title }}" data-role-description="{{ role.role_description|escape }}"></span>
+
+                        {% endfor %}
+
+                    </div>
+
+
+
+                    <!-- Photo -->
+
+                    <div class="team-member-photo-wrap">
+
+
+                        <div class="team-member-photo">
+
+                            <img src="{{ employee.photo.url }}" alt="{{ employee.name }} - Errors2Experts team member" loading="lazy">
+
+                        </div>
+
+
+                        <span class="team-member-role-mark" aria-hidden="true">
+                            <i class="bi bi-person-check-fill"></i>
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- Name -->
+
+                    <h3>
+                        {{ employee.name }}
+                    </h3>
+
+
+
+                    <!-- This changes dynamically on filter -->
+
+                    <p class="team-member-current-role" data-current-role>
+                        {% with first_role=employee.public_role_assignments.0 %}
+                        {% if first_role %}
+                        {{ first_role.role_title }}
+                        {% else %}
+                        Team Member
+                        {% endif %}
+                        {% endwith %}
+                    </p>
+
+                    <p class="team-member-description" data-current-description>
+                        {% with first_role=employee.public_role_assignments.0 %}
+                    
+                        {% if first_role and first_role.role_description %}
+                    
+                        {{ first_role.role_description }}
+                    
+                        {% else %}
+                    
+                        Contributing to the growth and success of
+                        Errors2Experts.
+                    
+                        {% endif %}
+                    
+                        {% endwith %}
+                    </p>
+
+                    <span class="team-member-divider"></span>
+
+
+
+                    <!-- Multiple-role chips appear only on All Members -->
+
+                    <div class="team-member-role-chips" data-role-chips>
+
+                        {% for role in employee.public_role_assignments %}
+
+                        <span>
+                            {{ role.role_title }}
+                        </span>
+
+                        {% endfor %}
+
+                    </div>
+
+
+
+                    <!-- Portfolio -->
+
+                    <div class="team-member-action">
+
+
+                        {% if employee.portfolio_url %}
+
+                        <a href="{{ employee.portfolio_url }}" target="_blank" rel="noopener noreferrer">
+
+                            View Portfolio
+
+                            <i class="bi bi-box-arrow-up-right"></i>
+
+                        </a>
+
+                        {% else %}
+
+                        <span class="team-portfolio-unavailable">
+                            Portfolio Coming Soon
+                        </span>
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                </article>
+
+
+                {% empty %}
+
+
+                <div class="team-empty-state">
+
+                    <span>
+                        <i class="bi bi-people"></i>
+                    </span>
+
+                    <h3>
+                        Our team profiles are coming soon.
+                    </h3>
+
+                    <p>
+                        Add active team members and their roles
+                        from Django Admin.
+                    </p>
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+
+            <!-- No filter result -->
+
+            <div class="team-filter-empty" id="teamFilterEmpty" hidden>
+
+                <i class="bi bi-person-x"></i>
+
+                <h3>
+                    No team members in this group yet.
+                </h3>
+
+                <p>
+                    Please choose another team.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CAREER CTA
+    ========================================================== -->
+
+    <section class="team-career-section">
+
+
+        <div class="container">
+
+
+            <div class="team-career-card">
+
+
+                <span class="career-decoration career-decoration-red"></span>
+                <span class="career-decoration career-decoration-gold"></span>
+                <span class="career-decoration career-decoration-green"></span>
+
+
+                <div class="team-career-icon">
+
+                    <i class="bi bi-people-fill"></i>
+
+                </div>
+
+
+                <div class="team-career-copy">
+
+                    <h2>
+                        Join Our Journey
+                    </h2>
+
+                    <p>
+                        We're always looking for passionate
+                        people who want to make a difference.
+                    </p>
+
+                </div>
+
+
+                <a href="{% url 'careers' %}" class="team-career-btn">
+
+                    Explore Careers
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</section>
+
+
+<script src="{% static 'js/team.js' %}" defer></script>
+
+{% endblock %}

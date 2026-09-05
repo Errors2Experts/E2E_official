@@ -1,0 +1,210 @@
+<!-- =========================================================
+     E2E PAYMENT FLOW
+     Reusable for Course / Internship / Workshop payment pages.
+========================================================== -->
+
+<section class="e2e-payment-flow-banner" id="e2ePaymentFlow" aria-labelledby="e2ePaymentFlowTitle">
+
+    <!-- Animated E2E brand lines -->
+    <div class="e2e-payment-flow-lines" aria-hidden="true">
+        <span class="line-red"></span>
+        <span class="line-gold"></span>
+        <span class="line-green"></span>
+    </div>
+
+
+    <div class="e2e-payment-flow-main">
+
+
+        <!-- Animated success icon -->
+        <div class="e2e-payment-flow-check" aria-hidden="true">
+
+            <svg viewBox="0 0 120 120" class="e2e-payment-flow-check-svg">
+
+                <circle class="e2e-payment-flow-circle" cx="60" cy="60" r="50"></circle>
+
+                <path class="e2e-payment-flow-tick" d="M34 61 L51 78 L87 41"></path>
+
+            </svg>
+
+            <span class="e2e-payment-flow-check-glow"></span>
+
+        </div>
+
+
+
+        <!-- Message -->
+        <div class="e2e-payment-flow-copy">
+
+            <span class="e2e-payment-flow-eyebrow">
+                {{ payment_flow_eyebrow|default:"BOOKING RECEIVED" }}
+            </span>
+
+
+            <h2 id="e2ePaymentFlowTitle">
+
+                <span class="flow-word word-1">
+                    Your
+                </span>
+
+                <span class="flow-word word-2">
+                    {{ payment_flow_subject|default:"booking" }}
+                </span>
+
+                <span class="flow-word word-3">
+                    is
+                </span>
+
+                <span class="flow-word word-4">
+                    saved!
+                </span>
+
+            </h2>
+
+
+            <p>
+                {{ payment_flow_description }}
+            </p>
+
+        </div>
+
+
+
+        <!-- Pay now -->
+        <div class="e2e-payment-flow-amount">
+
+            <small>
+                PAY NOW
+            </small>
+
+            <strong>
+                ₹{{ amount|floatformat:2 }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         THREE STEP FLOW
+    ====================================================== -->
+
+    <div class="e2e-payment-progress" aria-label="Payment progress">
+
+
+        <!-- STEP 1 -->
+
+        <div class="
+                e2e-payment-progress-step
+                is-complete
+                step-one
+            ">
+
+            <span class="step-icon">
+                <i class="bi bi-check-lg"></i>
+            </span>
+
+            <div>
+
+                <strong>
+                    {{ payment_flow_step_one|default:"Booking Received" }}
+                </strong>
+
+                <small>
+                    {{ payment_flow_step_one_note|default:"Booking saved" }}
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <span class="
+                e2e-payment-progress-line
+                line-one
+            " aria-hidden="true"></span>
+
+
+
+        <!-- STEP 2 -->
+
+        <div class="
+                e2e-payment-progress-step
+                is-current
+                step-two
+            ">
+
+            <span class="step-icon">
+                <i class="bi bi-qr-code-scan"></i>
+            </span>
+
+            <div>
+
+                <strong>
+                    Complete Payment
+                </strong>
+
+                <small>
+                    Scan QR and pay
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <span class="
+                e2e-payment-progress-line
+                line-two
+            " aria-hidden="true"></span>
+
+
+
+        <!-- STEP 3 -->
+
+        <div class="
+                e2e-payment-progress-step
+                is-pending
+                step-three
+            ">
+
+            <span class="step-icon">
+                <i class="bi bi-shield-check"></i>
+            </span>
+
+            <div>
+
+                <strong>
+                    Verification
+                </strong>
+
+                <small>
+                    Team confirms payment
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Direction -->
+    <div class="e2e-payment-flow-next">
+
+        <span>
+            <i class="bi bi-arrow-down"></i>
+        </span>
+
+        <p>
+            {{ payment_flow_next|default:"Your booking is safe. Complete the payment using the QR code below." }}
+        </p>
+
+    </div>
+
+</section>

@@ -1,0 +1,1503 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Complete Course Payment — Errors2Experts
+{% endblock %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/payment-booking-flow.css' %}">
+
+
+<section class="e2e-payment-page">
+
+    <div class="container">
+
+
+        <!-- =====================================================
+             BOOKING RECEIVED → PAYMENT → VERIFICATION
+        ====================================================== -->
+
+        {% include "components/payment_booking_flow.html" with payment_flow_eyebrow="COURSE BOOKING RECEIVED" payment_flow_subject="course booking" payment_flow_description="Great! Your course booking has been saved. Complete the payment below to move your booking to verification." payment_flow_step_one="Booking Received" payment_flow_step_one_note="Course booking saved" payment_flow_next="Your course booking is safe. Complete the payment using the QR code below." amount=amount %}
+
+        <div class="e2e-payment-layout">
+
+
+            <!-- =================================================
+                 MAIN PAYMENT CARD
+            ================================================== -->
+
+            <main class="e2e-payment-card">
+
+
+                <div class="e2e-payment-status-icon">
+                    <i class="bi bi-mortarboard"></i>
+                </div>
+
+
+                <span class="e2e-payment-eyebrow">
+                    PAYMENT REQUIRED
+                </span>
+
+
+                <h1>
+                    Complete Your Course Payment
+                </h1>
+
+
+                <p class="e2e-payment-intro">
+
+                    Your booking for
+
+                    <strong>
+                        {{ course_title }}
+                    </strong>
+
+                    has been received. Scan the QR code below
+                    and complete the payment for verification.
+
+                </p>
+
+
+
+                <!-- =============================================
+                     PAYMENT SUMMARY
+                ============================================== -->
+
+                <div class="e2e-payment-summary">
+
+
+                    <div class="e2e-summary-row">
+
+                        <span>
+                            Course
+                        </span>
+
+                        <strong>
+                            {{ course_title }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="e2e-summary-row">
+
+                        <span>
+                            Payment Method
+                        </span>
+
+                        <strong>
+                            {{ payment_method }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="e2e-summary-row">
+
+                        <span>
+                            Total Course Fee
+                        </span>
+
+                        <strong>
+                            ₹{{ total_amount|floatformat:2 }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="
+                            e2e-summary-row
+                            e2e-summary-pay
+                        ">
+
+                        <span>
+                            Amount to Pay Now
+                        </span>
+
+                        <strong>
+                            ₹{{ amount|floatformat:2 }}
+                        </strong>
+
+                    </div>
+
+
+                    {% if balance > 0 %}
+
+                    <div class="e2e-summary-row">
+
+                        <span>
+                            Remaining Balance
+                        </span>
+
+                        <strong class="e2e-balance-amount">
+                            ₹{{ balance|floatformat:2 }}
+                        </strong>
+
+                    </div>
+
+                    {% endif %}
+
+
+                </div>
+
+
+
+                <!-- =============================================
+                     DYNAMIC QR
+                ============================================== -->
+
+                <section class="
+                        e2e-qr-section
+                        e2e-payment-qr-highlight-target
+                    ">
+
+
+                    <span class="e2e-qr-label">
+                        SCAN & PAY
+                    </span>
+
+
+                    <h2>
+                        Pay ₹{{ amount|floatformat:2 }}
+                    </h2>
+
+
+                    <p class="e2e-qr-description">
+                        Scan using Google Pay, PhonePe,
+                        Paytm, BHIM or any supported UPI
+                        application.
+                    </p>
+
+
+
+                    <div class="e2e-qr-frame">
+
+
+                        {% if upi_qr %}
+
+                        <img src="{{ upi_qr }}" class="e2e-payment-qr"
+                            alt="UPI QR code to pay ₹{{ amount|floatformat:2 }}">
+
+                        {% else %}
+
+                        <img src="{% static 'images/payment/upi_account_qr.png' %}" class="e2e-payment-qr"
+                            alt="Errors2Experts backup UPI payment QR">
+
+                        {% endif %}
+
+
+                    </div>
+
+
+
+                    {% if upi_qr %}
+
+                    <div class="e2e-dynamic-amount-badge">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <span>
+
+                            Amount already included:
+
+                            <strong>
+                                ₹{{ amount|floatformat:2 }}
+                            </strong>
+
+                        </span>
+
+                    </div>
+
+
+                    {% else %}
+
+                    <div class="e2e-fallback-warning">
+
+                        <i class="bi bi-exclamation-triangle"></i>
+
+                        <div>
+
+                            <strong>
+                                Enter the amount manually
+                            </strong>
+
+                            <p>
+
+                                Pay exactly
+
+                                <strong>
+                                    ₹{{ amount|floatformat:2 }}
+                                </strong>
+
+                                when using this backup QR.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <p class="e2e-payee-info">
+                        Payment will be made to the registered
+                        UPI account associated with
+                        Errors2Experts payments.
+                    </p>
+
+
+                </section>
+
+
+
+                <!-- =============================================
+                     AFTER PAYMENT
+                ============================================== -->
+
+                <section class="e2e-payment-instructions">
+
+                    <div class="e2e-instruction-icon">
+
+                        <i class="bi bi-receipt"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            After Completing Payment
+                        </h3>
+
+
+                        <p>
+                            Keep a screenshot of the successful
+                            UPI payment and send it to our team
+                            for manual verification.
+                        </p>
+
+
+                        <div class="e2e-contact-payment">
+
+
+                            <a href="https://wa.me/919363342646" target="_blank" rel="noopener noreferrer">
+
+                                <i class="bi bi-whatsapp"></i>
+
+                                <div>
+
+                                    <span>
+                                        WhatsApp
+                                    </span>
+
+                                    <strong>
+                                        +91 93633 42646
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a href="mailto:errors2experts.official@gmail.com">
+
+                                <i class="bi bi-envelope"></i>
+
+                                <div>
+
+                                    <span>
+                                        Email
+                                    </span>
+
+                                    <strong>
+                                        errors2experts.official@gmail.com
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =============================================
+                     VERIFICATION
+                ============================================== -->
+
+                <div class="e2e-verification-note">
+
+                    <i class="bi bi-info-circle"></i>
+
+                    <p>
+
+                        Your course booking is currently
+
+                        <strong>
+                            pending verification
+                        </strong>.
+
+                        It will be confirmed after our team
+                        verifies your payment.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="e2e-payment-actions">
+
+                    <a href="{% url 'home' %}" class="e2e-payment-home-btn">
+
+                        <i class="bi bi-house"></i>
+
+                        Back to Home
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="e2e-payment-quote">
+                    “Learn from errors, grow with knowledge,
+                    and become an expert.”
+                </div>
+
+
+            </main>
+
+
+
+            <!-- =================================================
+                 TERMS
+            ================================================== -->
+
+            <aside class="e2e-terms-card">
+
+
+                <div class="e2e-terms-heading">
+
+                    <div class="e2e-terms-icon">
+
+                        <i class="bi bi-file-earmark-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            IMPORTANT
+                        </span>
+
+                        <h2>
+                            Terms & Conditions
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <ol>
+
+                    <li>
+                        Errors2Experts is an
+                        MSME-registered training institute.
+                    </li>
+
+                    <li>
+                        Once payment is completed, the
+                        amount is non-refundable.
+                    </li>
+
+                    <li>
+                        Students are expected to maintain
+                        discipline and professional behaviour
+                        during training sessions.
+                    </li>
+
+                    <li>
+                        Planned leave should be communicated
+                        through the respective course
+                        WhatsApp group.
+                    </li>
+
+                    <li>
+                        Extended leave may require valid
+                        supporting proof and an email
+                        notification.
+                    </li>
+
+                    <li>
+                        Placement assistance may be provided,
+                        but placement is not guaranteed.
+                    </li>
+
+                </ol>
+
+
+
+                <div class="e2e-terms-footer">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    <span>
+                        Please verify the recipient and
+                        payable amount in your UPI app
+                        before authorising payment.
+                    </span>
+
+                </div>
+
+
+            </aside>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<style>
+    /* =========================================================
+       PAGE
+    ========================================================= */
+
+    .e2e-payment-page {
+        min-height: 100vh;
+
+        padding:
+            70px 0 90px;
+
+        background:
+            radial-gradient(circle at top left,
+                rgba(201, 38, 47, 0.04),
+                transparent 28%),
+            radial-gradient(circle at top right,
+                rgba(47, 135, 46, 0.05),
+                transparent 30%),
+            #f5f7f8;
+    }
+
+
+    .e2e-payment-layout {
+        max-width:
+            1080px;
+
+        margin:
+            0 auto;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            minmax(0, 1.55fr) minmax(280px, 0.75fr);
+
+        gap:
+            24px;
+
+        align-items:
+            start;
+    }
+
+
+    /* =========================================================
+       MAIN CARD
+    ========================================================= */
+
+    .e2e-payment-card {
+        padding:
+            38px;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #e4e9ec;
+
+        border-radius:
+            22px;
+
+        box-shadow:
+            0 18px 55px rgba(18, 43, 56, 0.08);
+    }
+
+
+    .e2e-payment-status-icon {
+        width:
+            60px;
+
+        height:
+            60px;
+
+        margin-bottom:
+            18px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        color:
+            #ffffff;
+
+        background:
+            linear-gradient(135deg,
+                #238445,
+                #38a85d);
+
+        border-radius:
+            50%;
+
+        font-size:
+            27px;
+
+        box-shadow:
+            0 10px 24px rgba(46, 125, 50, 0.22);
+    }
+
+
+    .e2e-payment-eyebrow {
+        display:
+            block;
+
+        margin-bottom:
+            7px;
+
+        color:
+            #2f872e;
+
+        font-size:
+            10px;
+
+        font-weight:
+            800;
+
+        letter-spacing:
+            1.4px;
+    }
+
+
+    .e2e-payment-card>h1 {
+        margin:
+            0 0 9px;
+
+        color:
+            #172033;
+
+        font-size:
+            clamp(27px,
+                4vw,
+                36px);
+
+        font-weight:
+            800;
+
+        line-height:
+            1.2;
+    }
+
+
+    .e2e-payment-intro {
+        margin:
+            0 0 27px;
+
+        color:
+            #66717a;
+
+        font-size:
+            14px;
+
+        line-height:
+            1.7;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+    ========================================================= */
+
+    .e2e-payment-summary {
+        overflow:
+            hidden;
+
+        margin-bottom:
+            28px;
+
+        background:
+            #fafbfb;
+
+        border:
+            1px solid #e2e8eb;
+
+        border-radius:
+            14px;
+    }
+
+
+    .e2e-summary-row {
+        min-height:
+            57px;
+
+        padding:
+            14px 17px;
+
+        display:
+            flex;
+
+        justify-content:
+            space-between;
+
+        align-items:
+            center;
+
+        gap:
+            20px;
+
+        border-bottom:
+            1px solid #e9edef;
+    }
+
+
+    .e2e-summary-row:last-child {
+        border-bottom: 0;
+    }
+
+
+    .e2e-summary-row span {
+        color:
+            #6c767d;
+
+        font-size:
+            12px;
+    }
+
+
+    .e2e-summary-row strong {
+        color:
+            #263039;
+
+        font-size:
+            14px;
+
+        text-align:
+            right;
+    }
+
+
+    .e2e-summary-pay {
+        background:
+            linear-gradient(90deg,
+                rgba(201, 149, 9, 0.07),
+                rgba(47, 135, 46, 0.08));
+    }
+
+
+    .e2e-summary-pay strong {
+        color:
+            #247340;
+
+        font-size:
+            21px;
+    }
+
+
+    .e2e-balance-amount {
+        color:
+            #986713 !important;
+    }
+
+
+    /* =========================================================
+       QR
+    ========================================================= */
+
+    .e2e-qr-section {
+        padding:
+            30px 20px;
+
+        text-align:
+            center;
+
+        background:
+            linear-gradient(180deg,
+                #f8fbfc,
+                #ffffff);
+
+        border:
+            1px solid #dde7eb;
+
+        border-radius:
+            17px;
+    }
+
+
+    .e2e-qr-label {
+        color:
+            #9b7408;
+
+        font-size:
+            10px;
+
+        font-weight:
+            800;
+
+        letter-spacing:
+            1.7px;
+    }
+
+
+    .e2e-qr-section h2 {
+        margin:
+            6px 0;
+
+        color:
+            #172033;
+
+        font-size:
+            28px;
+
+        font-weight:
+            800;
+    }
+
+
+    .e2e-qr-description {
+        max-width:
+            430px;
+
+        margin:
+            0 auto 22px;
+
+        color:
+            #758087;
+
+        font-size:
+            12.5px;
+
+        line-height:
+            1.6;
+    }
+
+
+    .e2e-qr-frame {
+        width:
+            280px;
+
+        max-width:
+            100%;
+
+        margin:
+            0 auto 18px;
+
+        padding:
+            14px;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #dce5e8;
+
+        border-radius:
+            18px;
+
+        box-shadow:
+            0 12px 32px rgba(25, 55, 70, 0.09);
+    }
+
+
+    .e2e-payment-qr {
+        display:
+            block;
+
+        width:
+            100%;
+
+        height:
+            auto;
+    }
+
+
+    .e2e-dynamic-amount-badge {
+        width:
+            fit-content;
+
+        margin:
+            0 auto 13px;
+
+        padding:
+            8px 13px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            7px;
+
+        color:
+            #28643b;
+
+        background:
+            #edf8f0;
+
+        border:
+            1px solid #d2ebd9;
+
+        border-radius:
+            50px;
+
+        font-size:
+            11.5px;
+    }
+
+
+    .e2e-dynamic-amount-badge i {
+        color:
+            #2e7d32;
+    }
+
+
+    .e2e-fallback-warning {
+        max-width:
+            420px;
+
+        margin:
+            0 auto 14px;
+
+        padding:
+            13px;
+
+        display:
+            flex;
+
+        gap:
+            10px;
+
+        text-align:
+            left;
+
+        color:
+            #775512;
+
+        background:
+            #fff7e4;
+
+        border:
+            1px solid #eed69d;
+
+        border-radius:
+            9px;
+    }
+
+
+    .e2e-fallback-warning p {
+        margin:
+            4px 0 0;
+
+        font-size:
+            11px;
+    }
+
+
+    .e2e-payee-info {
+        margin:
+            0;
+
+        color:
+            #8a9298;
+
+        font-size:
+            10.5px;
+    }
+
+
+    /* =========================================================
+       INSTRUCTIONS
+    ========================================================= */
+
+    .e2e-payment-instructions {
+        margin-top:
+            24px;
+
+        padding:
+            19px;
+
+        display:
+            flex;
+
+        gap:
+            14px;
+
+        background:
+            #f5f8fa;
+
+        border:
+            1px solid #e1e7eb;
+
+        border-radius:
+            13px;
+    }
+
+
+    .e2e-instruction-icon {
+        width:
+            40px;
+
+        height:
+            40px;
+
+        flex-shrink:
+            0;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        color:
+            #ffffff;
+
+        background:
+            #2f872e;
+
+        border-radius:
+            10px;
+
+        font-size:
+            17px;
+    }
+
+
+    .e2e-payment-instructions h3 {
+        margin:
+            0 0 6px;
+
+        color:
+            #263038;
+
+        font-size:
+            14px;
+
+        font-weight:
+            750;
+    }
+
+
+    .e2e-payment-instructions p {
+        margin:
+            0;
+
+        color:
+            #69737a;
+
+        font-size:
+            12px;
+
+        line-height:
+            1.65;
+    }
+
+
+    .e2e-contact-payment {
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2,
+                minmax(0, 1fr));
+
+        gap:
+            8px;
+
+        margin-top:
+            14px;
+    }
+
+
+    .e2e-contact-payment a {
+        min-width:
+            0;
+
+        padding:
+            11px 12px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            9px;
+
+        color:
+            #3d474e;
+
+        text-decoration:
+            none;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #dce3e7;
+
+        border-radius:
+            9px;
+    }
+
+
+    .e2e-contact-payment a>i {
+        color:
+            #2f872e;
+
+        font-size:
+            17px;
+    }
+
+
+    .e2e-contact-payment span {
+        display:
+            block;
+
+        color:
+            #858e94;
+
+        font-size:
+            9px;
+    }
+
+
+    .e2e-contact-payment strong {
+        display:
+            block;
+
+        overflow-wrap:
+            anywhere;
+
+        font-size:
+            10.5px;
+    }
+
+
+    /* =========================================================
+       VERIFICATION
+    ========================================================= */
+
+    .e2e-verification-note {
+        margin-top:
+            16px;
+
+        padding:
+            13px 15px;
+
+        display:
+            flex;
+
+        gap:
+            10px;
+
+        align-items:
+            flex-start;
+
+        color:
+            #745613;
+
+        background:
+            #fff8e8;
+
+        border-left:
+            3px solid #c68a16;
+
+        border-radius:
+            7px;
+    }
+
+
+    .e2e-verification-note p {
+        margin: 0;
+
+        font-size:
+            11.5px;
+
+        line-height:
+            1.6;
+    }
+
+
+    /* =========================================================
+       ACTIONS
+    ========================================================= */
+
+    .e2e-payment-actions {
+        margin-top:
+            23px;
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+    }
+
+
+    .e2e-payment-home-btn {
+        min-height:
+            44px;
+
+        padding:
+            10px 20px;
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        gap:
+            8px;
+
+        color:
+            #ffffff !important;
+
+        text-decoration:
+            none;
+
+        background:
+            #2f872e;
+
+        border-radius:
+            9px;
+
+        font-size:
+            12px;
+
+        font-weight:
+            700;
+
+        transition:
+            0.2s ease;
+    }
+
+
+    .e2e-payment-home-btn:hover {
+        color:
+            #ffffff;
+
+        background:
+            #256f29;
+
+        transform:
+            translateY(-1px);
+    }
+
+
+    .e2e-payment-quote {
+        margin-top:
+            26px;
+
+        padding-top:
+            18px;
+
+        color:
+            #91999e;
+
+        border-top:
+            1px solid #edf0f2;
+
+        text-align:
+            center;
+
+        font-size:
+            11px;
+
+        font-style:
+            italic;
+    }
+
+
+    /* =========================================================
+       TERMS
+    ========================================================= */
+
+    .e2e-terms-card {
+        position:
+            sticky;
+
+        top:
+            95px;
+
+        padding:
+            25px;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #e4e9ec;
+
+        border-radius:
+            17px;
+
+        box-shadow:
+            0 15px 40px rgba(18, 43, 56, 0.06);
+    }
+
+
+    .e2e-terms-heading {
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            11px;
+
+        padding-bottom:
+            16px;
+
+        border-bottom:
+            1px solid #eceff1;
+    }
+
+
+    .e2e-terms-icon {
+        width:
+            39px;
+
+        height:
+            39px;
+
+        flex-shrink:
+            0;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        color:
+            #2f872e;
+
+        background:
+            #edf7ef;
+
+        border-radius:
+            10px;
+    }
+
+
+    .e2e-terms-heading span {
+        display:
+            block;
+
+        color:
+            #a06d18;
+
+        font-size:
+            8px;
+
+        font-weight:
+            800;
+
+        letter-spacing:
+            1.2px;
+    }
+
+
+    .e2e-terms-heading h2 {
+        margin:
+            3px 0 0;
+
+        color:
+            #273139;
+
+        font-size:
+            16px;
+
+        font-weight:
+            750;
+    }
+
+
+    .e2e-terms-card ol {
+        margin:
+            20px 0 0;
+
+        padding-left:
+            19px;
+    }
+
+
+    .e2e-terms-card li {
+        margin-bottom:
+            13px;
+
+        padding-left:
+            5px;
+
+        color:
+            #677179;
+
+        font-size:
+            11.5px;
+
+        line-height:
+            1.65;
+    }
+
+
+    .e2e-terms-footer {
+        margin-top:
+            20px;
+
+        padding:
+            12px;
+
+        display:
+            flex;
+
+        gap:
+            9px;
+
+        color:
+            #41614a;
+
+        background:
+            #f0f8f2;
+
+        border-radius:
+            8px;
+
+        font-size:
+            10.5px;
+
+        line-height:
+            1.5;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 991px) {
+
+        .e2e-payment-layout {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .e2e-terms-card {
+            position:
+                static;
+        }
+
+    }
+
+
+    @media (max-width: 575px) {
+
+        .e2e-payment-page {
+            padding:
+                35px 0 55px;
+        }
+
+
+        .e2e-payment-card {
+            padding:
+                26px 16px;
+        }
+
+
+        .e2e-summary-row {
+            align-items:
+                flex-start;
+
+            flex-direction:
+                column;
+
+            gap:
+                5px;
+        }
+
+
+        .e2e-summary-row strong {
+            text-align:
+                left;
+        }
+
+
+        .e2e-qr-section {
+            padding:
+                24px 12px;
+        }
+
+
+        .e2e-qr-frame {
+            width:
+                240px;
+        }
+
+
+        .e2e-payment-instructions {
+            flex-direction:
+                column;
+        }
+
+
+        .e2e-contact-payment {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .e2e-terms-card {
+            padding:
+                20px 17px;
+        }
+
+    }
+</style>
+
+
+<script src="{% static 'js/payment-booking-flow.js' %}" defer></script>
+
+{% endblock %}

@@ -1,0 +1,2857 @@
+/* ============================================================
+   ERRORS2EXPERTS — OUR TEAM PAGE
+============================================================ */
+
+.e2e-team-page {
+    --team-red: #c9282d;
+    --team-gold: #c99614;
+    --team-green: #2e8734;
+    --team-green-dark: #175523;
+    --team-navy: #111a2c;
+    --team-text: #4e5968;
+    --team-line: #e6ebee;
+    --team-soft: #f7f9f8;
+
+    overflow: hidden;
+
+    background:
+        #ffffff;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.team-hero {
+    position: relative;
+
+    padding:
+        44px 0 34px;
+
+    overflow:
+        hidden;
+
+    background:
+        radial-gradient(circle at 87% 30%,
+            rgba(46, 135, 52, 0.06),
+            transparent 24%),
+        linear-gradient(180deg,
+            #ffffff,
+            #fefefe);
+}
+
+
+.team-hero::after {
+    content: "";
+
+    position: absolute;
+
+    right: -70px;
+    bottom: -160px;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(46, 135, 52, 0.035),
+            transparent 68%);
+
+    pointer-events: none;
+}
+
+
+.team-hero-grid {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.98fr) minmax(430px, 1.02fr);
+
+    align-items: center;
+
+    gap: 34px;
+}
+
+
+/* ============================================================
+   HERO COPY
+============================================================ */
+
+.team-section-kicker {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 16px;
+
+    color: #195a29;
+
+    font-size: 11px;
+    font-weight: 850;
+
+    letter-spacing: 0.9px;
+}
+
+
+.team-section-kicker i {
+    font-size: 15px;
+}
+
+
+.team-hero-content h1 {
+    max-width: 720px;
+
+    margin: 0;
+
+    color: var(--team-navy);
+
+    font-size:
+        clamp(36px,
+            3.2vw,
+            48px);
+
+    font-weight: 820;
+
+    line-height: 1.08;
+
+    letter-spacing: -1.35px;
+}
+
+
+.team-hero-content h1>span {
+    display: block;
+
+    margin-top: 4px;
+}
+
+
+.team-title-first-line,
+.team-title-second-line {
+    display: block;
+}
+
+
+.team-title-second-line {
+    margin-top: 3px;
+}
+
+
+.team-brand-lock {
+    display: inline-block;
+
+    white-space: nowrap;
+}
+
+
+@media (min-width: 1000px) {
+
+    .team-title-second-line {
+        white-space: nowrap;
+    }
+
+}
+
+
+.team-hero-content h1 strong {
+    font-weight: 820;
+}
+
+
+.team-hero-content .brand-errors {
+    color: var(--team-red);
+}
+
+
+.team-hero-content .brand-two {
+    color: var(--team-gold);
+}
+
+
+.team-hero-content .brand-experts {
+    color: var(--team-green);
+}
+
+
+.team-hero-description {
+    max-width: 610px;
+
+    margin: 18px 0 0;
+
+    color: var(--team-text);
+
+    font-size: 14px;
+
+    line-height: 1.72;
+}
+
+
+/* ============================================================
+   STATS
+============================================================ */
+
+.team-stats {
+    max-width: 535px;
+
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,
+            minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+
+
+/* ============================================================
+   TEAM STATS - FIXED ALIGNMENT
+============================================================ */
+
+.team-stats {
+    width: 100%;
+    max-width: 540px;
+
+    margin-top: 25px;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.team-stat-card {
+    min-width: 0;
+    min-height: 82px;
+
+    padding: 14px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 13px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3e8eb;
+    border-radius: 11px;
+
+    box-shadow:
+        0 8px 24px rgba(17, 26, 44, 0.055);
+}
+
+
+/* ICON CIRCLE */
+
+.team-stat-icon {
+    width: 46px;
+    height: 46px;
+
+    min-width: 46px;
+
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+
+    line-height: 1;
+}
+
+
+.team-stat-icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    line-height: 1;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* TEXT AREA */
+
+.team-stat-card>div {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 3px;
+}
+
+
+.team-stat-card strong {
+    display: block;
+
+    margin: 0;
+
+    color: #111a2c;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+.team-stat-card div>span {
+    display: block;
+
+    margin: 0;
+
+    color: #7d8791;
+
+    font-size: 10px;
+
+    line-height: 1.25;
+
+    white-space: nowrap;
+}
+
+
+/* COLORS */
+
+.team-stat-green {
+    color: #1f662d;
+
+    background:
+        rgba(46, 135, 52, 0.10);
+}
+
+
+.team-stat-gold {
+    color: #b77e0c;
+
+    background:
+        rgba(201, 150, 20, 0.12);
+}
+
+
+.team-stat-red {
+    color: #bc2e32;
+
+    background:
+        rgba(201, 40, 45, 0.09);
+}
+
+.team-stat-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+}
+
+
+.team-stat-green {
+    color: #1f662d;
+
+    background:
+        rgba(46, 135, 52, 0.10);
+}
+
+
+.team-stat-gold {
+    color: #b77e0c;
+
+    background:
+        rgba(201, 150, 20, 0.12);
+}
+
+
+.team-stat-red {
+    color: #bc2e32;
+
+    background:
+        rgba(201, 40, 45, 0.09);
+}
+
+
+.team-stat-card strong,
+.team-stat-card span {
+    display: block;
+}
+
+
+.team-stat-card strong {
+    color: var(--team-navy);
+
+    font-size: 18px;
+
+    font-weight: 830;
+
+    line-height: 1;
+}
+
+
+.team-stat-card div>span {
+    margin-top: 5px;
+
+    color: #7d8791;
+
+    font-size: 9.5px;
+}
+
+
+/* ============================================================
+   HERO COLLAGE
+============================================================ */
+
+.team-hero-visual {
+    position: relative;
+
+    min-height: 340px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.team-collage {
+    position: relative;
+
+    width: min(100%,
+            520px);
+
+    height: 330px;
+}
+
+
+.team-collage::after {
+    content: "";
+
+    position: absolute;
+
+    left: 7%;
+    right: 2%;
+    bottom: 4px;
+
+    height: 65px;
+
+    background:
+        radial-gradient(ellipse,
+            rgba(22, 52, 29, 0.15),
+            transparent 68%);
+
+    filter: blur(10px);
+
+    z-index: -1;
+}
+
+
+.team-collage-photo {
+    position: absolute;
+
+    overflow: hidden;
+
+    background: #eef3ef;
+
+    border:
+        5px solid #ffffff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 16px 38px rgba(17, 26, 44, 0.14);
+
+    animation:
+        teamPhotoFloat 5.5s ease-in-out infinite;
+}
+
+
+.team-collage-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center top;
+}
+
+
+.collage-photo-1 {
+    width: 166px;
+    height: 166px;
+
+    left: 32%;
+    top: 20%;
+
+    z-index: 4;
+}
+
+
+.collage-photo-2 {
+    width: 130px;
+    height: 130px;
+
+    left: 7%;
+    top: 42%;
+
+    z-index: 3;
+
+    animation-delay: -1.2s;
+}
+
+
+.collage-photo-3 {
+    width: 126px;
+    height: 126px;
+
+    right: 4%;
+    top: 31%;
+
+    z-index: 3;
+
+    animation-delay: -2.4s;
+}
+
+
+.collage-photo-4 {
+    width: 108px;
+    height: 108px;
+
+    left: 21%;
+    top: 2%;
+
+    z-index: 2;
+
+    animation-delay: -3.1s;
+}
+
+
+.collage-photo-5 {
+    width: 108px;
+    height: 108px;
+
+    right: 14%;
+    top: 1%;
+
+    z-index: 2;
+
+    animation-delay: -4s;
+}
+
+
+.team-collage-empty {
+    width: min(370px, 84%);
+    min-height: 205px;
+
+    margin:
+        58px auto 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    color: #6f7b83;
+
+    background: #f7f9f8;
+
+    border:
+        1px dashed #cdd8d0;
+
+    border-radius: 20px;
+}
+
+
+.team-collage-empty strong {
+    color: var(--team-navy);
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+
+.team-collage-empty>span:last-child {
+    color: #7c8890;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+
+.team-collage-empty-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    color: var(--team-green);
+
+    background:
+        rgba(46, 135, 52, 0.08);
+
+    border-radius: 50%;
+}
+
+
+.team-collage-empty-icon i {
+    font-size: 24px;
+}
+
+
+.hero-orbit {
+    position: absolute;
+
+    border:
+        1px solid rgba(46, 135, 52, 0.30);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-one {
+    width: 370px;
+    height: 370px;
+
+    left: 45%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.orbit-two {
+    width: 290px;
+    height: 290px;
+
+    left: 45%;
+    top: 50%;
+
+    border-color:
+        rgba(201, 150, 20, 0.19);
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.hero-orbit-dot {
+    position: absolute;
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 5px rgba(255, 255, 255, 0.90);
+}
+
+
+.dot-red {
+    left: 12%;
+    top: 26%;
+
+    background: var(--team-red);
+}
+
+
+.dot-gold {
+    left: 7%;
+    top: 50%;
+
+    background: var(--team-gold);
+}
+
+
+.dot-green {
+    left: 20%;
+    top: 10%;
+
+    background: var(--team-green);
+}
+
+
+@keyframes teamPhotoFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-7px);
+    }
+
+}
+
+
+/* ============================================================
+   DIRECTORY
+============================================================ */
+
+.team-directory {
+    padding:
+        29px 0 66px;
+
+    background:
+        linear-gradient(180deg,
+            #ffffff,
+            #fcfdfc);
+}
+
+
+.team-directory-header {
+    max-width: 720px;
+
+    margin:
+        0 auto 23px;
+
+    text-align: center;
+}
+
+
+.team-directory-kicker {
+    color: var(--team-green);
+
+    font-size: 10px;
+    font-weight: 850;
+
+    letter-spacing: 0.8px;
+}
+
+
+.team-directory-line {
+    width: 47px;
+    height: 12px;
+
+    margin:
+        8px auto 7px;
+
+    display: block;
+
+    position: relative;
+}
+
+
+.team-directory-line::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 5px;
+
+    width: 40px;
+    height: 2px;
+
+    background: #215e2d;
+
+    border-radius: 99px;
+}
+
+
+.team-directory-line i {
+    position: absolute;
+
+    top: 3px;
+    right: 0;
+
+    width: 6px;
+    height: 6px;
+
+    background: #8aa72a;
+
+    border-radius: 50%;
+}
+
+
+.team-directory-header h2 {
+    margin: 0;
+
+    color: var(--team-navy);
+
+    font-size:
+        clamp(29px,
+            3vw,
+            38px);
+
+    font-weight: 820;
+
+    letter-spacing: -1px;
+}
+
+
+.team-directory-header p {
+    margin: 8px 0 0;
+
+    color: #849099;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   FILTERS
+============================================================ */
+
+.team-filters {
+    margin:
+        0 auto 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+}
+
+
+.team-filter-btn {
+    min-height: 45px;
+
+    padding:
+        10px 17px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    color: #3f4b57;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e0e6e9;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(17, 26, 44, 0.045);
+
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.team-filter-btn:hover {
+    color: #1d6729;
+
+    border-color:
+        rgba(46, 135, 52, 0.32);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.team-filter-btn.is-active {
+    color: #ffffff;
+
+    background:
+        linear-gradient(120deg,
+            #247b30,
+            #3b9b47);
+
+    border-color: transparent;
+
+    box-shadow:
+        0 9px 23px rgba(46, 135, 52, 0.18);
+}
+
+
+/* ============================================================
+   GRID
+============================================================ */
+
+.team-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,
+            minmax(0, 1fr));
+
+    gap:
+        21px;
+}
+
+
+.team-member-card {
+    min-width: 0;
+
+    padding:
+        23px 18px 17px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e3e8eb;
+
+    border-bottom:
+        2px solid #3a9b45;
+
+    border-radius:
+        10px;
+
+    box-shadow:
+        0 10px 28px rgba(17, 26, 44, 0.055);
+
+    opacity: 1;
+
+    transform:
+        translateY(0) scale(1);
+
+    transition:
+        opacity 240ms ease,
+        transform 240ms ease,
+        box-shadow 240ms ease,
+        border-color 240ms ease;
+}
+
+
+.team-member-card:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(46, 135, 52, 0.32);
+
+    box-shadow:
+        0 17px 38px rgba(17, 26, 44, 0.10);
+}
+
+
+.team-member-card.is-filtering-out {
+    opacity: 0;
+
+    transform:
+        translateY(9px) scale(0.97);
+
+    pointer-events: none;
+}
+
+
+.team-member-card[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   PHOTO
+============================================================ */
+
+.team-member-photo-wrap {
+    position: relative;
+
+    width:
+        fit-content;
+
+    margin-bottom:
+        14px;
+}
+
+
+.team-member-photo {
+    width: 112px;
+    height: 112px;
+
+    padding: 4px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(135deg,
+            rgba(201, 40, 45, 0.25),
+            rgba(201, 150, 20, 0.18),
+            rgba(46, 135, 52, 0.24));
+
+    border-radius: 50%;
+
+    transition:
+        transform 260ms ease;
+}
+
+
+.team-member-card:hover .team-member-photo {
+    transform:
+        scale(1.035);
+}
+
+
+.team-member-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center top;
+
+    background: #eef2ef;
+
+    border:
+        4px solid #ffffff;
+
+    border-radius: 50%;
+}
+
+
+.team-member-role-mark {
+    position: absolute;
+
+    right: 2px;
+    bottom: 5px;
+
+    width: 27px;
+    height: 27px;
+
+    display: grid;
+
+    place-items: center;
+
+    color: #ffffff;
+
+    background:
+        var(--team-green);
+
+    border:
+        3px solid #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   CARD TEXT
+============================================================ */
+
+.team-member-card h3 {
+    margin: 0;
+
+    color: #111820;
+
+    font-size: 17px;
+    font-weight: 820;
+
+    line-height: 1.3;
+}
+
+
+.team-member-current-role {
+    min-height: 34px;
+
+    margin:
+        6px 0 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--team-green);
+
+    font-size: 11.5px;
+    font-weight: 720;
+
+    line-height: 1.45;
+
+    transition:
+        opacity 150ms ease,
+        transform 150ms ease;
+}
+
+
+.team-member-current-role.is-changing {
+    opacity: 0;
+
+    transform:
+        translateY(4px);
+}
+
+/* ============================================================
+   TEAM MEMBER ROLE DESCRIPTION
+============================================================ */
+
+.team-member-description {
+    width: 100%;
+
+    min-height: 62px;
+
+    margin:
+        7px 0 5px;
+
+    padding:
+        0 5px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #66727c;
+
+    font-size: 10.5px;
+
+    line-height: 1.65;
+
+    text-align: center;
+
+    transition:
+        opacity 150ms ease,
+        transform 150ms ease;
+}
+
+
+.team-member-description.is-changing {
+    opacity: 0;
+
+    transform:
+        translateY(4px);
+}
+
+
+@media (max-width: 560px) {
+
+    .team-member-description {
+        min-height: auto;
+
+        max-width: 290px;
+
+        margin:
+            8px auto 6px;
+
+        font-size: 11px;
+
+        line-height: 1.65;
+    }
+
+}
+
+.team-member-divider {
+    width: 19px;
+    height: 1px;
+
+    margin:
+        9px 0 10px;
+
+    display: block;
+
+    background:
+        #aeb9bd;
+}
+
+
+/* ============================================================
+   ROLE CHIPS
+============================================================ */
+
+.team-member-role-chips {
+    min-height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+
+.team-member-role-chips span {
+    padding:
+        5px 8px;
+
+    color: #56626b;
+
+    background:
+        #f6f8f7;
+
+    border:
+        1px solid #e6ebE8;
+
+    border-radius: 99px;
+
+    font-size: 8.5px;
+
+    line-height: 1.2;
+}
+
+
+/* ============================================================
+   PORTFOLIO
+============================================================ */
+
+.team-member-action {
+    width: 100%;
+
+    margin-top:
+        auto;
+
+    padding-top:
+        18px;
+}
+
+
+.team-member-action a {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    color:
+        #267c31;
+
+    font-size: 10.5px;
+    font-weight: 750;
+
+    text-decoration: none;
+
+    transition:
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+
+.team-member-action a:hover {
+    color:
+        #165c21;
+
+    transform:
+        translateY(-1px);
+}
+
+
+.team-portfolio-unavailable {
+    color: #a1a9ae;
+
+    font-size: 9.5px;
+
+    font-weight: 650;
+}
+
+
+/* ============================================================
+   EMPTY STATES
+============================================================ */
+
+.team-empty-state,
+.team-filter-empty {
+    grid-column:
+        1 / -1;
+
+    padding:
+        50px 20px;
+
+    text-align: center;
+
+    color:
+        #758087;
+
+    background:
+        #fafcfa;
+
+    border:
+        1px dashed #cfdbd1;
+
+    border-radius:
+        13px;
+}
+
+
+.team-empty-state>span,
+.team-filter-empty>i {
+    width: 52px;
+    height: 52px;
+
+    margin:
+        0 auto 13px;
+
+    display: grid;
+
+    place-items: center;
+
+    color:
+        #2e8734;
+
+    background:
+        rgba(46, 135, 52, 0.08);
+
+    border-radius: 50%;
+
+    font-size: 21px;
+}
+
+
+.team-empty-state h3,
+.team-filter-empty h3 {
+    margin: 0;
+
+    color:
+        #273642;
+
+    font-size: 17px;
+}
+
+
+.team-empty-state p,
+.team-filter-empty p {
+    margin:
+        6px 0 0;
+
+    font-size:
+        11px;
+}
+
+
+/* ============================================================
+   CAREER CTA
+============================================================ */
+
+.team-career-section {
+    padding:
+        0 0 68px;
+
+    background:
+        #fcfdfc;
+}
+
+
+.team-career-card {
+    position: relative;
+
+    min-height: 130px;
+
+    padding:
+        25px 34px;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns:
+        62px minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    gap: 23px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(115deg,
+            #0d3a1f,
+            #0b4a22,
+            #09391c);
+
+    border-radius:
+        10px;
+
+    box-shadow:
+        0 14px 34px rgba(11, 57, 28, 0.15);
+}
+
+
+.team-career-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: 24px;
+    top: 14px;
+
+    width: 100px;
+    height: 100px;
+
+    opacity: 0.16;
+
+    background-image:
+        radial-gradient(#8cca6c 1.5px,
+            transparent 1.5px);
+
+    background-size:
+        11px 11px;
+
+    pointer-events: none;
+}
+
+
+.team-career-icon {
+    width: 58px;
+    height: 58px;
+
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    place-items: center;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(135deg,
+            #2e8734,
+            #4cae4e);
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+
+.team-career-copy {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.team-career-copy h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+
+.team-career-copy p {
+    max-width: 410px;
+
+    margin:
+        6px 0 0;
+
+    color:
+        rgba(255, 255, 255, 0.83);
+
+    font-size: 12.5px;
+
+    line-height: 1.65;
+}
+
+
+.team-career-btn {
+    min-width: 158px;
+    min-height: 45px;
+
+    position: relative;
+
+    z-index: 2;
+
+    padding:
+        10px 17px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    color:
+        #24782f;
+
+    background:
+        #ffffff;
+
+    border-radius:
+        8px;
+
+    font-size: 11px;
+    font-weight: 760;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.13);
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.team-career-btn:hover {
+    color:
+        #175d22;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+
+.career-decoration {
+    position: absolute;
+
+    left: -4%;
+    bottom: 4px;
+
+    width: 75%;
+    height: 1px;
+
+    transform-origin: left center;
+
+    pointer-events: none;
+}
+
+
+.career-decoration-red {
+    background: var(--team-red);
+
+    transform:
+        rotate(4deg);
+}
+
+
+.career-decoration-gold {
+    left: 33%;
+
+    width: 45%;
+
+    background: var(--team-gold);
+
+    transform:
+        rotate(-4deg);
+}
+
+
+.career-decoration-green {
+    left: 63%;
+
+    width: 35%;
+
+    background: #5cac40;
+
+    transform:
+        rotate(3deg);
+}
+
+
+/* ============================================================
+   APPROVED UI ALIGNMENT REFINEMENT
+============================================================ */
+
+@media (min-width: 1200px) {
+
+    .team-hero-content {
+        padding-top: 1px;
+    }
+
+
+    .team-hero-visual {
+        transform:
+            translateY(-2px);
+    }
+
+
+    .team-directory-header {
+        transform:
+            translateY(-1px);
+    }
+
+}
+
+
+@media (min-width: 900px) and (max-width: 1199px) {
+
+    .team-hero-grid {
+        grid-template-columns:
+            minmax(0, 1fr) minmax(380px, 0.92fr);
+
+        gap: 26px;
+    }
+
+
+    .team-hero-content h1 {
+        font-size:
+            clamp(35px,
+                4vw,
+                44px);
+    }
+
+
+    .team-hero-visual {
+        min-height: 320px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1100px) {
+
+    .team-hero-grid {
+        grid-template-columns:
+            minmax(0, 1fr) minmax(365px, 0.88fr);
+
+        gap: 24px;
+    }
+
+
+    .team-grid {
+        grid-template-columns:
+            repeat(3,
+                minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .team-hero {
+        padding:
+            42px 0 32px;
+    }
+
+
+    .team-hero-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .team-hero-content {
+        text-align:
+            center;
+    }
+
+
+    .team-hero-content h1,
+    .team-hero-description,
+    .team-stats {
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+
+    .team-section-kicker {
+        justify-content:
+            center;
+    }
+
+
+    .team-hero-visual {
+        min-height:
+            315px;
+    }
+
+
+    .team-grid {
+        grid-template-columns:
+            repeat(2,
+                minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .team-stats {
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            390px;
+    }
+
+
+    .team-stat-card {
+        min-height:
+            70px;
+    }
+
+
+    .team-hero-visual {
+        min-height:
+            285px;
+    }
+
+
+    .team-collage {
+        transform:
+            scale(0.87);
+    }
+
+
+    .team-career-card {
+        grid-template-columns:
+            54px minmax(0, 1fr);
+
+        padding:
+            24px;
+
+        gap:
+            15px;
+    }
+
+
+    .team-career-btn {
+        grid-column:
+            1 / -1;
+
+        width:
+            100%;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .team-hero {
+        padding:
+            42px 0 30px;
+    }
+
+
+    .team-hero-content h1 {
+        font-size:
+            38px;
+
+        letter-spacing:
+            -1.2px;
+    }
+
+
+    .team-hero-description {
+        font-size:
+            13px;
+
+        line-height:
+            1.72;
+    }
+
+
+    .team-hero-visual {
+        min-height:
+            285px;
+    }
+
+
+    .team-collage {
+        left:
+            50%;
+
+        width:
+            520px;
+
+        transform:
+            translateX(-50%) scale(0.72);
+
+        transform-origin:
+            center;
+    }
+
+
+    .orbit-one {
+        width:
+            340px;
+
+        height:
+            340px;
+    }
+
+
+    .orbit-two {
+        width:
+            260px;
+
+        height:
+            260px;
+    }
+
+
+    .team-directory {
+        padding:
+            27px 0 55px;
+    }
+
+
+    .team-filters {
+        justify-content:
+            flex-start;
+
+        flex-wrap:
+            nowrap;
+
+        overflow-x:
+            auto;
+
+        padding:
+            2px 2px 9px;
+
+        scrollbar-width:
+            none;
+    }
+
+
+    .team-filters::-webkit-scrollbar {
+        display:
+            none;
+    }
+
+
+    .team-filter-btn {
+        flex:
+            0 0 auto;
+    }
+
+
+    .team-grid {
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            390px;
+
+        margin:
+            0 auto;
+    }
+
+
+    .team-member-card {
+        min-height:
+            355px;
+    }
+
+
+    .team-career-card {
+        text-align:
+            left;
+    }
+
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .team-collage-photo,
+    .team-member-card,
+    .team-member-photo,
+    .team-member-current-role,
+    .team-filter-btn,
+    .team-career-btn {
+        animation:
+            none !important;
+
+        transition:
+            none !important;
+    }
+
+}
+
+/* ============================================================
+   FINAL NAVBAR CLEARANCE + STATS + MOBILE RESPONSIVE FIX
+   These rules intentionally sit at the end of team.css.
+============================================================ */
+
+
+/* ============================================================
+   1. KEEP HERO CLEAR OF THE STICKY / FIXED NAVBAR
+============================================================ */
+
+.e2e-team-page {
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: clip;
+}
+
+
+.team-hero {
+    /*
+     * The previous top spacing was visually sitting too close
+     * to the fixed navbar. This gives the OUR TEAM kicker,
+     * heading and right-side visual a clean breathing space.
+     */
+    padding-top: 60px;
+}
+
+
+.team-hero .container,
+.team-hero-grid,
+.team-hero-content,
+.team-hero-visual {
+    min-width: 0;
+}
+
+
+/* ============================================================
+   2. TITLE — DESKTOP STAYS TWO LINES
+============================================================ */
+
+.team-hero-content h1 {
+    width: 100%;
+
+    max-width: 720px;
+
+    overflow: visible;
+}
+
+
+.team-title-first-line {
+    display: block;
+}
+
+
+.team-title-second-line {
+    display: block;
+}
+
+
+.team-brand-lock {
+    display: inline-block;
+
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   3. CLEANER STAT CARDS
+============================================================ */
+
+.team-stats {
+    width: 100%;
+
+    max-width: 540px;
+
+    align-items: stretch;
+}
+
+
+.team-stat-card {
+    min-width: 0;
+
+    min-height: 76px;
+
+    padding: 12px 14px;
+
+    display: grid;
+
+    grid-template-columns:
+        42px minmax(0, 1fr);
+
+    align-items: center;
+
+    justify-content: start;
+
+    column-gap: 11px;
+}
+
+
+.team-stat-icon {
+    width: 42px;
+    height: 42px;
+
+    margin: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 17px;
+}
+
+
+.team-stat-card>div {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+}
+
+
+.team-stat-card strong {
+    margin: 0;
+
+    font-size: 19px;
+
+    line-height: 1;
+}
+
+
+.team-stat-card div>span {
+    margin-top: 5px;
+
+    white-space: nowrap;
+
+    font-size: 9.5px;
+
+    line-height: 1.2;
+}
+
+
+/* ============================================================
+   4. RIGHT-SIDE HERO VISUAL
+============================================================ */
+
+.team-hero-visual {
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow: hidden;
+}
+
+
+.team-collage {
+    max-width: 100%;
+}
+
+
+.team-collage-empty {
+    max-width: 88%;
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .team-hero {
+        padding:
+            48px 0 30px;
+    }
+
+
+    .team-hero-content {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .team-hero-content h1 {
+        max-width: 760px;
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .team-hero-description {
+        max-width: 680px;
+
+        padding:
+            0 12px;
+    }
+
+
+    .team-stats {
+        max-width: 560px;
+    }
+
+
+    .team-hero-visual {
+        width: 100%;
+
+        min-height: 285px;
+
+        margin-top: 6px;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE — MAIN FIX
+============================================================ */
+
+@media (max-width: 600px) {
+
+    .team-hero {
+        padding:
+            34px 0 22px;
+
+        overflow-x: hidden;
+    }
+
+
+    .team-hero .container {
+        width: 100%;
+
+        max-width: 100%;
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+
+        overflow: hidden;
+    }
+
+
+    .team-hero-grid {
+        width: 100%;
+
+        max-width: 100%;
+
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 22px;
+    }
+
+
+    .team-hero-content {
+        width: 100%;
+
+        max-width: 100%;
+
+        text-align: center;
+    }
+
+
+    .team-section-kicker {
+        margin-bottom: 13px;
+
+        justify-content: center;
+
+        font-size: 9.5px;
+    }
+
+
+    /*
+     * Do not force desktop title behavior on a small screen.
+     * It is intentionally allowed to become:
+     *
+     * Meet the Team
+     * Behind
+     * Errors2Experts
+     *
+     * so nothing is clipped.
+     */
+    .team-hero-content h1 {
+        width: 100%;
+
+        max-width: 100%;
+
+        margin:
+            0 auto;
+
+        padding: 0;
+
+        font-size:
+            clamp(31px,
+                9.2vw,
+                38px);
+
+        line-height: 1.08;
+
+        letter-spacing: -0.8px;
+
+        overflow: visible;
+
+        text-align: center;
+    }
+
+
+    .team-title-first-line {
+        display: block;
+
+        white-space: normal;
+    }
+
+
+    .team-title-second-line {
+        display: block;
+
+        margin-top: 4px;
+
+        white-space: normal;
+    }
+
+
+    .team-brand-lock {
+        display: block;
+
+        width: fit-content;
+
+        max-width: 100%;
+
+        margin:
+            2px auto 0;
+
+        white-space: nowrap;
+
+        font-size: 0.92em;
+    }
+
+
+    .team-hero-description {
+        width: 100%;
+
+        max-width: 390px;
+
+        margin:
+            18px auto 0;
+
+        padding: 0;
+
+        font-size: 12.5px;
+
+        line-height: 1.68;
+
+        text-align: center;
+    }
+
+
+    /* --------------------------------------------------------
+       MOBILE STATS — THREE SMALL CARDS IN ONE NEAT ROW
+    --------------------------------------------------------- */
+
+    .team-stats {
+        width: 100%;
+
+        max-width: 100%;
+
+        margin:
+            22px auto 0;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3,
+                minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+
+    .team-stat-card {
+        min-width: 0;
+
+        min-height: 104px;
+
+        padding:
+            10px 5px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 7px;
+
+        text-align: center;
+
+        border-radius: 10px;
+    }
+
+
+    .team-stat-icon {
+        width: 38px;
+        height: 38px;
+
+        flex: 0 0 38px;
+
+        font-size: 15px;
+    }
+
+
+    .team-stat-card>div {
+        width: 100%;
+
+        min-width: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    .team-stat-card strong {
+        font-size: 18px;
+
+        line-height: 1;
+    }
+
+
+    .team-stat-card div>span {
+        margin-top: 4px;
+
+        white-space: normal;
+
+        font-size: 8px;
+
+        line-height: 1.25;
+
+        text-align: center;
+    }
+
+
+    /* --------------------------------------------------------
+       MOBILE HERO VISUAL — NEVER EXCEEDS VIEWPORT
+    --------------------------------------------------------- */
+
+    .team-hero-visual {
+        width: 100%;
+
+        max-width: 100%;
+
+        min-height: 250px;
+
+        margin-top: 0;
+
+        overflow: hidden;
+
+        transform: none;
+    }
+
+
+    .team-collage {
+        left: auto;
+
+        width: 100%;
+
+        max-width: 360px;
+
+        height: 250px;
+
+        margin:
+            0 auto;
+
+        transform: none;
+
+        transform-origin: center;
+    }
+
+
+    .team-collage-empty {
+        width: calc(100% - 42px);
+
+        max-width: 315px;
+
+        min-height: 165px;
+
+        margin:
+            42px auto 0;
+
+        padding:
+            18px 14px;
+
+        gap: 8px;
+
+        border-radius: 16px;
+    }
+
+
+    .team-collage-empty-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+
+    .team-collage-empty-icon i {
+        font-size: 21px;
+    }
+
+
+    .team-collage-empty strong {
+        font-size: 15px;
+    }
+
+
+    .team-collage-empty>span:last-child {
+        font-size: 10px;
+    }
+
+
+    /*
+     * Scale the employee collage photos themselves on mobile,
+     * without making the parent wider than the viewport.
+     */
+
+    .collage-photo-1 {
+        width: 126px;
+        height: 126px;
+
+        left: 32%;
+        top: 23%;
+    }
+
+
+    .collage-photo-2 {
+        width: 96px;
+        height: 96px;
+
+        left: 5%;
+        top: 43%;
+    }
+
+
+    .collage-photo-3 {
+        width: 94px;
+        height: 94px;
+
+        right: 4%;
+        top: 37%;
+    }
+
+
+    .collage-photo-4 {
+        width: 82px;
+        height: 82px;
+
+        left: 20%;
+        top: 5%;
+    }
+
+
+    .collage-photo-5 {
+        width: 82px;
+        height: 82px;
+
+        right: 15%;
+        top: 5%;
+    }
+
+
+    .orbit-one {
+        width: 275px;
+        height: 275px;
+
+        left: 50%;
+    }
+
+
+    .orbit-two {
+        width: 215px;
+        height: 215px;
+
+        left: 50%;
+    }
+
+
+    .dot-red {
+        left: 10%;
+    }
+
+
+    .dot-gold {
+        left: 7%;
+    }
+
+
+    .dot-green {
+        left: 18%;
+    }
+
+
+    /* Team directory comes up neatly after the hero */
+
+    .team-directory {
+        padding:
+            28px 0 52px;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+============================================================ */
+
+@media (max-width: 390px) {
+
+    .team-hero .container {
+        padding-left: 14px;
+
+        padding-right: 14px;
+    }
+
+
+    .team-hero-content h1 {
+        font-size:
+            clamp(29px,
+                9.5vw,
+                34px);
+    }
+
+
+    .team-brand-lock {
+        font-size: 0.88em;
+    }
+
+
+    .team-stats {
+        gap: 6px;
+    }
+
+
+    .team-stat-card {
+        min-height: 100px;
+
+        padding:
+            9px 4px;
+    }
+
+
+    .team-stat-icon {
+        width: 35px;
+        height: 35px;
+
+        flex-basis: 35px;
+
+        font-size: 14px;
+    }
+
+
+    .team-stat-card strong {
+        font-size: 17px;
+    }
+
+
+    .team-stat-card div>span {
+        font-size: 7.5px;
+    }
+
+
+    .team-collage {
+        max-width: 330px;
+    }
+
+}
+
+/* ============================================================
+   FINAL TEAM STATS ICON ALIGNMENT FIX
+   Keep this section at the VERY END of team.css.
+============================================================ */
+
+/*
+ * The Bootstrap icon glyph itself can sit slightly off-center
+ * because of its internal line-height / pseudo-element metrics.
+ *
+ * The circle was already centered correctly; this block centers
+ * the actual icon glyph inside the circle on desktop, tablet,
+ * and mobile.
+ */
+
+.team-stat-icon {
+    position: relative;
+
+    display: grid !important;
+
+    place-items: center !important;
+
+    padding: 0 !important;
+
+    line-height: 1 !important;
+
+    text-align: center;
+}
+
+
+.team-stat-icon>i {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: block !important;
+
+    line-height: 1 !important;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.team-stat-icon>i::before {
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    line-height: 1 !important;
+
+    vertical-align: 0 !important;
+}
+
+
+/* ============================================================
+   DESKTOP / TABLET STAT CARD ALIGNMENT
+============================================================ */
+
+@media (min-width: 601px) {
+
+    .team-stat-card {
+        min-height: 82px;
+
+        padding:
+            13px 15px;
+
+        display: grid !important;
+
+        grid-template-columns:
+            46px minmax(0, 1fr);
+
+        align-items: center !important;
+
+        justify-content: start !important;
+
+        column-gap: 13px;
+    }
+
+
+    .team-stat-icon {
+        width: 46px !important;
+        height: 46px !important;
+
+        min-width: 46px !important;
+
+        margin: 0 !important;
+
+        justify-self: center;
+
+        align-self: center;
+
+        font-size: 18px !important;
+    }
+
+
+    .team-stat-card>div {
+        min-width: 0;
+
+        display: flex !important;
+
+        flex-direction: column;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        gap: 3px;
+    }
+
+
+    .team-stat-card strong {
+        margin: 0 !important;
+
+        font-size: 20px;
+
+        line-height: 1;
+    }
+
+
+    .team-stat-card div>span {
+        margin: 0 !important;
+
+        font-size: 10px;
+
+        line-height: 1.25;
+
+        white-space: nowrap;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE STAT ICON ALIGNMENT
+============================================================ */
+
+@media (max-width: 600px) {
+
+    .team-stat-card {
+        display: flex !important;
+
+        flex-direction: column;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+
+        text-align: center;
+
+        gap: 7px;
+    }
+
+
+    .team-stat-icon {
+        width: 38px !important;
+        height: 38px !important;
+
+        min-width: 38px !important;
+
+        flex:
+            0 0 38px !important;
+
+        margin:
+            0 auto !important;
+
+        font-size: 15px !important;
+    }
+
+
+    .team-stat-card>div {
+        width: 100%;
+
+        display: flex !important;
+
+        flex-direction: column;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+    }
+
+
+    .team-stat-card strong {
+        margin: 0 !important;
+
+        line-height: 1;
+    }
+
+
+    .team-stat-card div>span {
+        margin-top: 4px !important;
+
+        text-align: center;
+
+        line-height: 1.25;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+============================================================ */
+
+@media (max-width: 390px) {
+
+    .team-stat-icon {
+        width: 35px !important;
+        height: 35px !important;
+
+        min-width: 35px !important;
+
+        flex:
+            0 0 35px !important;
+
+        font-size: 14px !important;
+    }
+
+}
