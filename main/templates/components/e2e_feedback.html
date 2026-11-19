@@ -1,0 +1,116 @@
+{% load static %}
+
+<!-- =========================================================
+     GLOBAL ERRORS2EXPERTS FORM / REQUEST FEEDBACK
+     Reads Django messages and displays an animated E2E popup.
+========================================================== -->
+
+{% if messages %}
+<div id="e2eFeedbackQueue" hidden aria-hidden="true">
+
+    {% for message in messages %}
+
+    <div class="e2e-feedback-queued-message" data-message="{{ message|escape }}"
+        data-tags="{{ message.tags|default:'info'|escape }}"></div>
+
+    {% endfor %}
+
+</div>
+{% endif %}
+
+
+<div id="e2eFeedbackOverlay" class="e2e-feedback-overlay" aria-hidden="true">
+
+    <div class="e2e-feedback-card" id="e2eFeedbackCard" role="dialog" aria-modal="true"
+        aria-labelledby="e2eFeedbackTitle" aria-describedby="e2eFeedbackMessage" tabindex="-1">
+
+        <!-- Brand-color glow -->
+        <div class="e2e-feedback-glow e2e-feedback-glow-red" aria-hidden="true"></div>
+
+        <div class="e2e-feedback-glow e2e-feedback-glow-gold" aria-hidden="true"></div>
+
+        <div class="e2e-feedback-glow e2e-feedback-glow-green" aria-hidden="true"></div>
+
+
+        <!-- Animated particles -->
+        <div class="e2e-feedback-particles" aria-hidden="true">
+            <span class="e2e-feedback-particle particle-1"></span>
+            <span class="e2e-feedback-particle particle-2"></span>
+            <span class="e2e-feedback-particle particle-3"></span>
+            <span class="e2e-feedback-particle particle-4"></span>
+            <span class="e2e-feedback-particle particle-5"></span>
+            <span class="e2e-feedback-particle particle-6"></span>
+        </div>
+
+
+        <!-- Close -->
+        <button type="button" class="e2e-feedback-close" id="e2eFeedbackClose" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+
+        <!-- Success / status icon -->
+        <div class="e2e-feedback-icon-wrap" id="e2eFeedbackIconWrap" aria-hidden="true">
+
+            <svg class="e2e-feedback-success-svg" viewBox="0 0 120 120">
+
+                <circle class="e2e-feedback-circle" cx="60" cy="60" r="51"></circle>
+
+                <path class="e2e-feedback-check" d="M34 61 L51 78 L86 42"></path>
+
+            </svg>
+
+            <div class="e2e-feedback-error-icon">
+                <i class="bi bi-exclamation-lg"></i>
+            </div>
+
+        </div>
+
+
+        <!-- E2E brand -->
+        <div class="e2e-feedback-brand">
+            <span class="brand-errors">Errors</span><span class="brand-two">2</span><span
+                class="brand-experts">Experts</span>
+        </div>
+
+
+        <span class="e2e-feedback-eyebrow" id="e2eFeedbackEyebrow">
+            SUBMITTED SUCCESSFULLY
+        </span>
+
+
+        <!-- Animated title words are inserted by JS -->
+        <h2 class="e2e-feedback-title" id="e2eFeedbackTitle"></h2>
+
+
+        <p class="e2e-feedback-message" id="e2eFeedbackMessage"></p>
+
+
+        <!-- Context-specific next step -->
+        <div class="e2e-feedback-next-step">
+
+            <span class="e2e-feedback-next-icon">
+                <i class="bi bi-arrow-right-circle"></i>
+            </span>
+
+            <p id="e2eFeedbackNextText">
+                Our team will review your submission and contact you shortly.
+            </p>
+
+        </div>
+
+
+        <button type="button" class="e2e-feedback-done" id="e2eFeedbackDone">
+            Done
+            <i class="bi bi-check2"></i>
+        </button>
+
+
+        <!-- Automatic close progress -->
+        <div class="e2e-feedback-progress-track">
+            <span class="e2e-feedback-progress" id="e2eFeedbackProgress"></span>
+        </div>
+
+    </div>
+
+</div>

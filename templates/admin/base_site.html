@@ -1,0 +1,89 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block title %}
+{% if title %}{{ title }} | {% endif %}Errors2Experts Admin
+{% endblock %}
+
+
+{% block extrastyle %}
+
+{{ block.super }}
+
+<link rel="stylesheet" href="{% static 'admin_custom/css/admin.css' %}">
+
+{% endblock %}
+
+
+{% block extrahead %}
+
+{{ block.super }}
+
+<script src="{% static 'admin_custom/js/admin.js' %}" defer></script>
+
+{% endblock %}
+
+
+{% block branding %}
+
+<div class="e2e-topbar-left">
+
+    <button type="button" class="e2e-menu-toggle" id="e2eSidebarToggle" aria-label="Toggle navigation"
+        aria-expanded="true">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <div class="e2e-topbar-heading">
+
+        {% if request.resolver_match.url_name == "index" %}
+
+        <strong>
+            Dashboard
+        </strong>
+
+        <small>
+            Welcome back! Here’s what’s happening today.
+        </small>
+
+        {% else %}
+
+        <strong>
+            Administration
+        </strong>
+
+        <small>
+            Errors2Experts management workspace
+        </small>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block nav-global %}{% endblock %}
+
+
+{% block footer %}
+
+<div class="e2e-footer-inner">
+
+    <span>
+        © 2026 Errors2Experts
+    </span>
+
+    <span>
+        Administration Workspace
+    </span>
+
+</div>
+
+{% endblock %}

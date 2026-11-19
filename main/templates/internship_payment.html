@@ -1,0 +1,1499 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Complete Internship Payment — Errors2Experts
+{% endblock %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/payment-booking-flow.css' %}">
+
+
+<section class="e2e-internship-payment-page">
+
+    <div class="container">
+
+
+        <!-- =====================================================
+             BOOKING RECEIVED → PAYMENT → VERIFICATION
+        ====================================================== -->
+
+        {% include "components/payment_booking_flow.html" with payment_flow_eyebrow="INTERNSHIP REGISTRATION RECEIVED" payment_flow_subject="internship registration" payment_flow_description="Great! Your internship registration has been saved. Complete the payment below to move your registration to verification." payment_flow_step_one="Registration Received" payment_flow_step_one_note="Registration saved" payment_flow_next="Your internship registration is safe. Complete the payment using the QR code below." amount=amount %}
+
+
+        <div class="e2e-internship-payment-layout">
+
+
+            <!-- =================================================
+                 MAIN PAYMENT CARD
+            ================================================== -->
+
+            <main class="e2e-internship-payment-card">
+
+
+                <div class="e2e-internship-status-icon">
+                    <i class="bi bi-briefcase"></i>
+                </div>
+
+
+                <span class="e2e-internship-payment-eyebrow">
+                    PAYMENT REQUIRED
+                </span>
+
+
+                <h1>
+                    Complete Your Internship Payment
+                </h1>
+
+
+                <p class="e2e-internship-payment-intro">
+
+                    Your registration for
+
+                    <strong>
+                        {{ internship.title }}
+                    </strong>
+
+                    has been received. Complete the payment
+                    below for verification.
+
+                </p>
+
+
+
+                <!-- =============================================
+                     PAYMENT SUMMARY
+                ============================================== -->
+
+                <div class="e2e-internship-summary">
+
+
+                    <div class="e2e-internship-summary-row">
+
+                        <span>
+                            Internship
+                        </span>
+
+                        <strong>
+                            {{ internship.title }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="e2e-internship-summary-row">
+
+                        <span>
+                            Payment Method
+                        </span>
+
+                        <strong>
+                            {{ payment_method }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="e2e-internship-summary-row">
+
+                        <span>
+                            Total Internship Fee
+                        </span>
+
+                        <strong>
+                            ₹{{ total_amount|floatformat:2 }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="
+                            e2e-internship-summary-row
+                            e2e-internship-summary-pay
+                        ">
+
+                        <span>
+                            Amount to Pay Now
+                        </span>
+
+                        <strong>
+                            ₹{{ amount|floatformat:2 }}
+                        </strong>
+
+                    </div>
+
+
+                    {% if payment_type == "half" %}
+
+                    <div class="e2e-internship-summary-row">
+
+                        <span>
+                            Remaining Balance
+                        </span>
+
+                        <strong class="e2e-internship-balance">
+                            ₹{{ balance|floatformat:2 }}
+                        </strong>
+
+                    </div>
+
+                    {% endif %}
+
+
+                </div>
+
+
+
+                <!-- =============================================
+                     DYNAMIC UPI QR
+                ============================================== -->
+
+                <section class="
+                        e2e-internship-qr-section
+                        e2e-payment-qr-highlight-target
+                    ">
+
+
+                    <span class="e2e-internship-qr-label">
+                        SCAN & PAY
+                    </span>
+
+
+                    <h2>
+                        Pay ₹{{ amount|floatformat:2 }}
+                    </h2>
+
+
+                    <p>
+                        Scan using Google Pay, PhonePe,
+                        Paytm, BHIM or any supported UPI
+                        application.
+                    </p>
+
+
+
+                    <div class="e2e-internship-qr-frame">
+
+
+                        {% if upi_qr %}
+
+                        <img src="{{ upi_qr }}" class="e2e-internship-payment-qr"
+                            alt="UPI QR code to pay ₹{{ amount|floatformat:2 }}">
+
+                        {% else %}
+
+                        <!-- Emergency fallback -->
+
+                        <img src="{% static 'images/payment/upi_account_qr.png' %}" class="e2e-internship-payment-qr"
+                            alt="Errors2Experts backup payment QR">
+
+                        {% endif %}
+
+
+                    </div>
+
+
+
+                    {% if upi_qr %}
+
+                    <div class="e2e-internship-amount-locked">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <span>
+
+                            Amount already included:
+
+                            <strong>
+                                ₹{{ amount|floatformat:2 }}
+                            </strong>
+
+                        </span>
+
+                    </div>
+
+
+                    {% else %}
+
+                    <div class="e2e-internship-qr-warning">
+
+                        <i class="bi bi-exclamation-triangle"></i>
+
+                        <div>
+
+                            <strong>
+                                Dynamic QR temporarily unavailable
+                            </strong>
+
+                            <p>
+
+                                The backup QR is shown.
+                                Enter exactly
+
+                                <strong>
+                                    ₹{{ amount|floatformat:2 }}
+                                </strong>
+
+                                manually before paying.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+
+                </section>
+
+
+
+                <!-- =============================================
+                     PAYMENT INSTRUCTIONS
+                ============================================== -->
+
+                <section class="e2e-internship-instructions">
+
+                    <div class="e2e-internship-instruction-icon">
+                        <i class="bi bi-receipt"></i>
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            After Completing Payment
+                        </h3>
+
+
+                        <p>
+                            Keep a screenshot of your successful
+                            UPI payment and send it to the
+                            Errors2Experts team for verification.
+                        </p>
+
+
+                        <div class="e2e-internship-contact-grid">
+
+
+                            <a href="https://wa.me/919363342646" target="_blank" rel="noopener noreferrer">
+
+                                <i class="bi bi-whatsapp"></i>
+
+                                <span>
+
+                                    <small>
+                                        WhatsApp
+                                    </small>
+
+                                    <strong>
+                                        +91 93633 42646
+                                    </strong>
+
+                                </span>
+
+                            </a>
+
+
+                            <a href="mailto:errors2experts.official@gmail.com">
+
+                                <i class="bi bi-envelope"></i>
+
+                                <span>
+
+                                    <small>
+                                        Email
+                                    </small>
+
+                                    <strong>
+                                        errors2experts.official@gmail.com
+                                    </strong>
+
+                                </span>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =============================================
+                     VERIFICATION
+                ============================================== -->
+
+                <div class="e2e-internship-verification-note">
+
+                    <i class="bi bi-info-circle"></i>
+
+                    <p>
+
+                        Your internship registration is currently
+
+                        <strong>
+                            pending verification
+                        </strong>.
+
+                        It will be confirmed after our team
+                        verifies the payment.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="e2e-internship-actions">
+
+                    <a href="{% url 'home' %}" class="e2e-internship-home-btn">
+
+                        <i class="bi bi-house"></i>
+
+                        Back to Home
+
+                    </a>
+
+                </div>
+
+
+            </main>
+
+
+
+            <!-- =================================================
+                 PAYMENT SAFETY
+            ================================================== -->
+
+            <aside class="e2e-internship-safety-card">
+
+
+                <span class="e2e-internship-safety-eyebrow">
+                    PAYMENT SAFETY
+                </span>
+
+
+                <h2>
+                    Before you pay
+                </h2>
+
+
+                <div class="e2e-internship-safety-item">
+
+                    <span>
+                        01
+                    </span>
+
+                    <p>
+                        Confirm the Errors2Experts recipient
+                        shown in your UPI application.
+                    </p>
+
+                </div>
+
+
+                <div class="e2e-internship-safety-item">
+
+                    <span>
+                        02
+                    </span>
+
+                    <p>
+
+                        Pay only
+
+                        <strong>
+                            ₹{{ amount|floatformat:2 }}
+                        </strong>
+
+                        for this registration.
+
+                    </p>
+
+                </div>
+
+
+                <div class="e2e-internship-safety-item">
+
+                    <span>
+                        03
+                    </span>
+
+                    <p>
+                        Keep your successful payment
+                        screenshot until verification is
+                        completed.
+                    </p>
+
+                </div>
+
+
+                {% if payment_type == "half" %}
+
+                <div class="e2e-internship-balance-card">
+
+                    <small>
+                        AFTER THIS PAYMENT
+                    </small>
+
+                    <span>
+                        Remaining Balance
+                    </span>
+
+                    <strong>
+                        ₹{{ balance|floatformat:2 }}
+                    </strong>
+
+                </div>
+
+                {% endif %}
+
+
+                <div class="e2e-internship-brand">
+
+                    <span class="red">
+                        Errors
+                    </span><span class="gold">2</span><span class="green">Experts</span>
+
+                    <small>
+                        Internship Program
+                    </small>
+
+                </div>
+
+
+            </aside>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<style>
+    /* =========================================================
+       PAGE
+    ========================================================= */
+
+    .e2e-internship-payment-page {
+        min-height: 100vh;
+
+        padding:
+            70px 0 90px;
+
+        background:
+            radial-gradient(circle at top left,
+                rgba(201, 149, 9, 0.06),
+                transparent 30%),
+            radial-gradient(circle at top right,
+                rgba(47, 135, 46, 0.05),
+                transparent 32%),
+            #f5f7f8;
+    }
+
+
+    .e2e-internship-payment-layout {
+        max-width: 1080px;
+
+        margin:
+            0 auto;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1.5fr) minmax(280px, 0.7fr);
+
+        gap: 24px;
+
+        align-items:
+            start;
+    }
+
+
+    /* =========================================================
+       MAIN CARD
+    ========================================================= */
+
+    .e2e-internship-payment-card {
+        padding: 38px;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #e3e8eb;
+
+        border-radius:
+            22px;
+
+        box-shadow:
+            0 18px 55px rgba(18, 43, 56, 0.08);
+    }
+
+
+    .e2e-internship-status-icon {
+        width: 60px;
+        height: 60px;
+
+        margin-bottom:
+            18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color:
+            #ffffff;
+
+        background:
+            linear-gradient(135deg,
+                #b8890d,
+                #d0aa30);
+
+        border-radius:
+            50%;
+
+        font-size:
+            24px;
+
+        box-shadow:
+            0 10px 24px rgba(184, 137, 13, 0.18);
+    }
+
+
+    .e2e-internship-payment-eyebrow,
+    .e2e-internship-safety-eyebrow {
+        display: block;
+
+        margin-bottom:
+            7px;
+
+        color:
+            #9a7011;
+
+        font-size:
+            10px;
+        font-weight:
+            800;
+
+        letter-spacing:
+            1.4px;
+    }
+
+
+    .e2e-internship-payment-card>h1 {
+        margin:
+            0 0 10px;
+
+        color:
+            #172033;
+
+        font-size:
+            clamp(27px,
+                4vw,
+                36px);
+
+        font-weight:
+            800;
+
+        line-height:
+            1.2;
+    }
+
+
+    .e2e-internship-payment-intro {
+        margin:
+            0 0 27px;
+
+        color:
+            #66717a;
+
+        font-size:
+            14px;
+
+        line-height:
+            1.75;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+    ========================================================= */
+
+    .e2e-internship-summary {
+        overflow: hidden;
+
+        margin-bottom:
+            29px;
+
+        background:
+            #fafbfb;
+
+        border:
+            1px solid #e2e8eb;
+
+        border-radius:
+            14px;
+    }
+
+
+    .e2e-internship-summary-row {
+        min-height:
+            57px;
+
+        padding:
+            14px 17px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+
+        border-bottom:
+            1px solid #e9edef;
+    }
+
+
+    .e2e-internship-summary-row:last-child {
+        border-bottom: 0;
+    }
+
+
+    .e2e-internship-summary-row span {
+        color:
+            #72808a;
+
+        font-size:
+            12px;
+    }
+
+
+    .e2e-internship-summary-row strong {
+        color:
+            #273743;
+
+        font-size:
+            13px;
+
+        text-align:
+            right;
+    }
+
+
+    .e2e-internship-summary-pay {
+        background:
+            linear-gradient(90deg,
+                rgba(201, 149, 9, 0.08),
+                rgba(47, 135, 46, 0.07));
+    }
+
+
+    .e2e-internship-summary-pay strong {
+        color:
+            #2f872e;
+
+        font-size:
+            21px;
+    }
+
+
+    .e2e-internship-balance {
+        color:
+            #966d0c !important;
+    }
+
+
+    /* =========================================================
+       QR
+    ========================================================= */
+
+    .e2e-internship-qr-section {
+        padding:
+            28px;
+
+        text-align:
+            center;
+
+        background:
+            linear-gradient(145deg,
+                #fffdf8,
+                #fbfff9);
+
+        border:
+            1px solid #ebe6d9;
+
+        border-radius:
+            18px;
+    }
+
+
+    .e2e-internship-qr-label {
+        display:
+            inline-block;
+
+        margin-bottom:
+            7px;
+
+        color:
+            #9b7408;
+
+        font-size:
+            10px;
+
+        font-weight:
+            850;
+
+        letter-spacing:
+            1.4px;
+    }
+
+
+    .e2e-internship-qr-section h2 {
+        margin:
+            0 0 8px;
+
+        color:
+            #172033;
+
+        font-size:
+            25px;
+
+        font-weight:
+            800;
+    }
+
+
+    .e2e-internship-qr-section>p {
+        max-width:
+            470px;
+
+        margin:
+            0 auto 21px;
+
+        color:
+            #6d787f;
+
+        font-size:
+            12.5px;
+
+        line-height:
+            1.7;
+    }
+
+
+    .e2e-internship-qr-frame {
+        width:
+            fit-content;
+
+        margin:
+            0 auto;
+
+        padding:
+            13px;
+
+        background:
+            #ffffff;
+
+        border:
+            2px solid #dfe6e9;
+
+        border-radius:
+            16px;
+
+        box-shadow:
+            0 10px 30px rgba(18, 43, 56, 0.07);
+    }
+
+
+    .e2e-internship-payment-qr {
+        width:
+            270px;
+
+        max-width:
+            100%;
+
+        height:
+            auto;
+
+        display:
+            block;
+    }
+
+
+    .e2e-internship-amount-locked {
+        max-width:
+            410px;
+
+        margin:
+            17px auto 0;
+
+        padding:
+            11px 14px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        gap:
+            8px;
+
+        color:
+            #246e31;
+
+        background:
+            #edf8ef;
+
+        border:
+            1px solid #cfe7d2;
+
+        border-radius:
+            9px;
+
+        font-size:
+            12px;
+    }
+
+
+    .e2e-internship-qr-warning {
+        max-width:
+            460px;
+
+        margin:
+            17px auto 0;
+
+        padding:
+            13px 15px;
+
+        display:
+            flex;
+
+        gap:
+            10px;
+
+        color:
+            #75580a;
+
+        background:
+            #fff7df;
+
+        border:
+            1px solid #ecd895;
+
+        border-radius:
+            9px;
+
+        text-align:
+            left;
+    }
+
+
+    .e2e-internship-qr-warning p {
+        margin:
+            4px 0 0;
+
+        font-size:
+            12px;
+
+        line-height:
+            1.6;
+    }
+
+
+    /* =========================================================
+       INSTRUCTIONS
+    ========================================================= */
+
+    .e2e-internship-instructions {
+        margin-top:
+            25px;
+
+        padding:
+            20px;
+
+        display: grid;
+
+        grid-template-columns:
+            43px minmax(0, 1fr);
+
+        gap: 14px;
+
+        background:
+            #f7f9fa;
+
+        border:
+            1px solid #e3e8eb;
+
+        border-radius:
+            14px;
+    }
+
+
+    .e2e-internship-instruction-icon {
+        width:
+            42px;
+
+        height:
+            42px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        color:
+            #ffffff;
+
+        background:
+            #2f872e;
+
+        border-radius:
+            10px;
+
+        font-size:
+            18px;
+    }
+
+
+    .e2e-internship-instructions h3 {
+        margin:
+            1px 0 6px;
+
+        color:
+            #273743;
+
+        font-size:
+            16px;
+
+        font-weight:
+            750;
+    }
+
+
+    .e2e-internship-instructions p {
+        margin: 0;
+
+        color:
+            #69767f;
+
+        font-size:
+            12.5px;
+
+        line-height:
+            1.65;
+    }
+
+
+    .e2e-internship-contact-grid {
+        margin-top:
+            15px;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 9px;
+    }
+
+
+    .e2e-internship-contact-grid a {
+        padding:
+            12px;
+
+        display: flex;
+
+        align-items:
+            center;
+
+        gap:
+            9px;
+
+        color:
+            inherit;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #e0e6e9;
+
+        border-radius:
+            9px;
+
+        text-decoration:
+            none;
+    }
+
+
+    .e2e-internship-contact-grid a>i {
+        color:
+            #2f872e;
+
+        font-size:
+            18px;
+    }
+
+
+    .e2e-internship-contact-grid small,
+    .e2e-internship-contact-grid strong {
+        display:
+            block;
+    }
+
+
+    .e2e-internship-contact-grid small {
+        color:
+            #89949b;
+
+        font-size:
+            10px;
+    }
+
+
+    .e2e-internship-contact-grid strong {
+        margin-top:
+            2px;
+
+        color:
+            #32434d;
+
+        font-size:
+            11px;
+
+        overflow-wrap:
+            anywhere;
+    }
+
+
+    /* =========================================================
+       VERIFICATION
+    ========================================================= */
+
+    .e2e-internship-verification-note {
+        margin-top:
+            18px;
+
+        padding:
+            13px 15px;
+
+        display:
+            flex;
+
+        gap:
+            10px;
+
+        color:
+            #775b11;
+
+        background:
+            #fff8e7;
+
+        border-left:
+            4px solid #c99509;
+
+        border-radius:
+            8px;
+    }
+
+
+    .e2e-internship-verification-note p {
+        margin: 0;
+
+        font-size:
+            12px;
+
+        line-height:
+            1.65;
+    }
+
+
+    /* =========================================================
+       ACTIONS
+    ========================================================= */
+
+    .e2e-internship-actions {
+        margin-top:
+            22px;
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+    }
+
+
+    .e2e-internship-home-btn {
+        min-height:
+            43px;
+
+        padding:
+            10px 17px;
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        gap:
+            7px;
+
+        color:
+            #ffffff !important;
+
+        background:
+            #2f872e;
+
+        border-radius:
+            9px;
+
+        font-size:
+            12px;
+
+        font-weight:
+            700;
+
+        text-decoration:
+            none;
+    }
+
+
+    /* =========================================================
+       SAFETY CARD
+    ========================================================= */
+
+    .e2e-internship-safety-card {
+        padding:
+            25px;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #e3e8eb;
+
+        border-radius:
+            18px;
+
+        box-shadow:
+            0 14px 40px rgba(18, 43, 56, 0.065);
+    }
+
+
+    .e2e-internship-safety-card h2 {
+        margin:
+            0 0 19px;
+
+        color:
+            #233541;
+
+        font-size:
+            20px;
+
+        font-weight:
+            780;
+    }
+
+
+    .e2e-internship-safety-item {
+        padding:
+            14px 0;
+
+        display: grid;
+
+        grid-template-columns:
+            32px minmax(0, 1fr);
+
+        gap:
+            10px;
+
+        border-bottom:
+            1px solid #edf1f3;
+    }
+
+
+    .e2e-internship-safety-item:last-of-type {
+        border-bottom: 0;
+    }
+
+
+    .e2e-internship-safety-item>span {
+        width:
+            29px;
+
+        height:
+            29px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        color:
+            #ffffff;
+
+        background:
+            #102236;
+
+        border-radius:
+            8px;
+
+        font-size:
+            9px;
+
+        font-weight:
+            800;
+    }
+
+
+    .e2e-internship-safety-item p {
+        margin: 0;
+
+        color:
+            #66737c;
+
+        font-size:
+            12px;
+
+        line-height:
+            1.65;
+    }
+
+
+    .e2e-internship-balance-card {
+        margin-top:
+            18px;
+
+        padding:
+            14px;
+
+        background:
+            #fff7df;
+
+        border:
+            1px solid #ecd895;
+
+        border-radius:
+            10px;
+    }
+
+
+    .e2e-internship-balance-card small,
+    .e2e-internship-balance-card span,
+    .e2e-internship-balance-card strong {
+        display:
+            block;
+    }
+
+
+    .e2e-internship-balance-card small {
+        color:
+            #9a750e;
+
+        font-size:
+            8px;
+
+        font-weight:
+            800;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    .e2e-internship-balance-card span {
+        margin-top:
+            4px;
+
+        color:
+            #695922;
+
+        font-size:
+            10px;
+    }
+
+
+    .e2e-internship-balance-card strong {
+        margin-top:
+            2px;
+
+        color:
+            #805d05;
+
+        font-size:
+            21px;
+    }
+
+
+    .e2e-internship-brand {
+        margin-top:
+            22px;
+
+        padding-top:
+            17px;
+
+        border-top:
+            1px solid #e9edef;
+
+        font-size:
+            17px;
+
+        font-weight:
+            800;
+    }
+
+
+    .e2e-internship-brand .red {
+        color:
+            #c9262f;
+    }
+
+
+    .e2e-internship-brand .gold {
+        color:
+            #c99509;
+    }
+
+
+    .e2e-internship-brand .green {
+        color:
+            #2f872e;
+    }
+
+
+    .e2e-internship-brand small {
+        display:
+            block;
+
+        margin-top:
+            4px;
+
+        color:
+            #9aa3a9;
+
+        font-size:
+            9px;
+
+        font-weight:
+            600;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+        .e2e-internship-payment-layout {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .e2e-internship-safety-card {
+            order:
+                -1;
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .e2e-internship-payment-page {
+            padding:
+                42px 0 65px;
+        }
+
+
+        .e2e-internship-payment-card {
+            padding:
+                25px 17px;
+
+            border-radius:
+                16px;
+        }
+
+
+        .e2e-internship-summary-row {
+            align-items:
+                flex-start;
+
+            flex-direction:
+                column;
+
+            gap:
+                5px;
+        }
+
+
+        .e2e-internship-summary-row strong {
+            text-align:
+                left;
+        }
+
+
+        .e2e-internship-qr-section {
+            padding:
+                22px 14px;
+        }
+
+
+        .e2e-internship-payment-qr {
+            width:
+                235px;
+        }
+
+
+        .e2e-internship-instructions {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .e2e-internship-contact-grid {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .e2e-internship-safety-card {
+            padding:
+                21px 17px;
+        }
+
+    }
+</style>
+
+
+<script src="{% static 'js/payment-booking-flow.js' %}" defer></script>
+
+{% endblock %}

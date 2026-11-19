@@ -1,0 +1,675 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ course.title|title }} — Course | Errors2Experts
+{% endblock %}
+
+{% block meta_title %}
+{{ course.title|title }} — Course | Errors2Experts
+{% endblock %}
+
+{% block meta_description %}
+Learn {{ course.title|title }} at Errors2Experts with practical training, real-time projects, industry-focused learning and career support in Dindigul.
+{% endblock %}
+
+{% block meta_keywords %}
+{{ course.title|title }} Course in Dindigul, {{ course.title|title }} Training in Dindigul, {{ course.title|title }} Classes in Dindigul, {{ course.title|title }} Course in Dindigul, Placement Oriented IT Training in Dindigul , Errors2Experts Dindigul
+{% endblock %}
+
+{% block canonical_url %}
+https://errors2experts.com/course/{{ course.id }}/
+{% endblock %}
+
+{% block og_title %}
+{{ course.title|title }} — Course | Errors2Experts
+{% endblock %}
+
+{% block og_description %}
+Learn {{ course.title|title }} at Errors2Experts with practical training, real-time projects and career-focused learning.
+{% endblock %}
+
+{% block og_url %}
+https://errors2experts.com/course/{{ course.id }}/
+{% endblock %}
+
+{% block content %}
+
+<div class="course-detail-wrapper py-5">
+
+    <div class="container py-5">
+
+
+        <!-- =====================================================
+             BACK NAVIGATION
+        ====================================================== -->
+
+        <div class="course-back-wrap animate-fade-in">
+
+            <a href="{% url 'allcourse' %}" class="course-back-btn" aria-label="Back to all courses">
+
+                <span class="course-back-icon">
+                    <i class="bi bi-arrow-left"></i>
+                </span>
+
+                <span class="course-back-content">
+
+                    <small>
+                        BACK TO
+                    </small>
+
+                    <strong>
+                        All Courses
+                    </strong>
+
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             COURSE HERO
+        ====================================================== -->
+
+        <div class="course-hero-banner mb-5 animate-fade-in">
+
+            <div class="row align-items-center g-4">
+
+
+                <!-- =================================================
+                     COURSE INFORMATION
+                ================================================== -->
+
+                <div class="col-lg-7">
+
+                    <span class="section-eyebrow">
+                        Advanced Learning Track
+                    </span>
+
+
+                    <h1 class="course-main-title">
+                        {{ course.title|title }}
+                    </h1>
+
+
+                    <p class="course-main-desc">
+                        {{ course.description }}
+                    </p>
+
+
+
+                    <!-- =============================================
+                         COURSE META
+                    ============================================== -->
+
+                    <div class="course-meta-pills
+                               d-flex
+                               flex-wrap
+                               gap-3
+                               my-4">
+
+                        {% if course.duration %}
+
+                        <span class="meta-pill">
+
+                            <i class="bi bi-clock"></i>
+
+                            {{ course.duration }}
+
+                        </span>
+
+                        {% endif %}
+
+
+                        <span class="meta-pill price-pill">
+
+                            <i class="bi bi-tag"></i>
+
+                            Course Fee ₹{{ course.price }}
+
+                        </span>
+
+
+                        {% if course.discount %}
+
+                        <span class="meta-pill discount-pill">
+
+                            <i class="bi bi-tags"></i>
+
+                            Original ₹{{ course.discount }}
+
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+
+                    <!-- =============================================
+                         COURSE REGISTRATION BUTTON
+                    ============================================== -->
+
+                    <button type="button" class="btn btn-success
+                               px-4
+                               py-2
+                               course-enroll-trigger" data-bs-toggle="modal" data-bs-target="#courseRegistrationModal"
+                        data-course-title="{{ course.title }}" data-course-price="{{ course.price }}"
+                        data-course-book-url="{% url 'book_course' course.id %}">
+
+                        Book Next Batch Slot
+
+                        <i class="bi bi-arrow-right-short"></i>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     COURSE IMAGE / BROWSER PREVIEW
+                ================================================== -->
+
+                <div class="col-lg-5">
+
+                    <div class="browser-mockup-container">
+
+
+                        <!-- Browser top -->
+
+                        <div class="browser-header-bar">
+
+                            <div class="browser-dots">
+
+                                <span class="dot-red"></span>
+
+                                <span class="dot-amber"></span>
+
+                                <span class="dot-green"></span>
+
+                            </div>
+
+
+                            <div class="browser-address-field">
+
+                                errors2experts.com/course/{{ course.id }}
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Browser content -->
+
+                        <div class="browser-screen-view">
+
+                            {% if course.image %}
+
+                            <img src="{{ course.image.url }}" class="img-fluid project-display-img"
+                                alt="{{ course.title }}">
+
+                            {% else %}
+
+                            <img src="{% static 'main/images/no-image.png' %}" class="img-fluid project-display-img"
+                                alt="Errors2Experts course">
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <hr class="my-5" style="border-color: var(--border-light);">
+
+
+
+        <!-- =====================================================
+             PROGRAM MODULES
+        ====================================================== -->
+
+        <div class="text-center mb-5">
+
+            <span class="section-eyebrow">
+                Curriculum Architecture
+            </span>
+
+
+            <h2 class="section-title">
+                Program Modules
+            </h2>
+
+
+            <p class="text-muted mt-2">
+
+                Carefully mapped structured milestones
+                guiding you from syntax errors to
+                architecture expert.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             MODULE GRID
+        ====================================================== -->
+
+        <div class="row g-4 justify-content-center">
+
+
+            {% if course.modules.all %}
+
+
+            {% for module in course.modules.all %}
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="module-mini-card">
+
+                    <div class="card-accent-strip"></div>
+
+
+                    <div class="module-card-body">
+
+
+                        <div class="module-header-row">
+
+                            <span class="module-step-badge">
+
+                                Module {{ forloop.counter }}
+
+                            </span>
+
+
+                            <div class="module-status-dot"></div>
+
+                        </div>
+
+
+                        <h4 class="module-card-title">
+
+                            {{ module.module_name }}
+
+                        </h4>
+
+
+                        <p class="module-card-desc">
+
+                            {{ module.description }}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+
+
+            {% elif modules %}
+
+
+            {% for module in modules %}
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="module-mini-card">
+
+                    <div class="card-accent-strip"></div>
+
+
+                    <div class="module-card-body">
+
+
+                        <div class="module-header-row">
+
+                            <span class="module-step-badge">
+
+                                Module {{ forloop.counter }}
+
+                            </span>
+
+
+                            <div class="module-status-dot"></div>
+
+                        </div>
+
+
+                        <h4 class="module-card-title">
+
+                            {{ module.module_name }}
+
+                        </h4>
+
+
+                        <p class="module-card-desc">
+
+                            {{ module.description }}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+
+
+            {% else %}
+
+
+            <div class="col-12 text-center py-5">
+
+                <div class="course-modules-empty">
+
+                    <i class="bi bi-inboxes
+                                   text-muted
+                                   fs-2
+                                   mb-2
+                                   d-block"></i>
+
+
+                    <p class="text-muted mb-0">
+
+                        No modules linked to this course yet.
+                        Check your database admin configurations.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     ONE COMMON COURSE REGISTRATION MODAL
+========================================================== -->
+
+{% include "components/course_registration_modal.html" %}
+
+
+
+<!-- =========================================================
+     COURSE DETAIL PAGE ADDITIONAL STYLES
+========================================================== -->
+
+<style>
+    /* =========================================================
+   BACK BUTTON
+========================================================= */
+
+    .course-back-wrap {
+        display: flex;
+        align-items: center;
+
+        margin-bottom: 28px;
+    }
+
+
+    .course-back-btn {
+        position: relative;
+
+        min-height: 48px;
+
+        display: inline-flex;
+        align-items: center;
+
+        gap: 11px;
+
+        padding:
+            7px 16px 7px 8px;
+
+        color: #24313a;
+
+        text-decoration: none;
+
+        background:
+            linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98),
+                rgba(247, 250, 249, 0.98));
+
+        border:
+            1px solid rgba(35, 78, 62, 0.12);
+
+        border-radius: 50px;
+
+        box-shadow:
+            0 7px 22px rgba(21, 45, 37, 0.07);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+
+    .course-back-icon {
+        width: 34px;
+        height: 34px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+
+        background:
+            linear-gradient(135deg,
+                #2e7d32,
+                #48a557);
+
+        border-radius: 50%;
+
+        font-size: 15px;
+
+        box-shadow:
+            0 5px 14px rgba(46, 125, 50, 0.22);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+
+    .course-back-content {
+        display: flex;
+        flex-direction: column;
+
+        line-height: 1.15;
+    }
+
+
+    .course-back-content small {
+        margin-bottom: 2px;
+
+        color: #8a938e;
+
+        font-size: 8px;
+        font-weight: 800;
+
+        letter-spacing: 1.1px;
+    }
+
+
+    .course-back-content strong {
+        color: #27332d;
+
+        font-size: 12.5px;
+        font-weight: 750;
+    }
+
+
+    .course-back-btn:hover {
+        color: #24313a;
+
+        transform: translateY(-2px);
+
+        border-color:
+            rgba(46, 125, 50, 0.25);
+
+        box-shadow:
+            0 11px 28px rgba(21, 45, 37, 0.11);
+    }
+
+
+    .course-back-btn:hover .course-back-icon {
+        transform: translateX(-3px);
+
+        box-shadow:
+            0 7px 17px rgba(46, 125, 50, 0.28);
+    }
+
+
+    .course-back-btn:active {
+        transform: translateY(0);
+    }
+
+
+    .course-back-btn:focus-visible {
+        outline:
+            3px solid rgba(46, 125, 50, 0.18);
+
+        outline-offset: 3px;
+    }
+
+
+
+    /* =========================================================
+   BOOK BUTTON
+========================================================= */
+
+    .course-enroll-trigger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 5px;
+
+        border-radius: 9px;
+
+        font-weight: 700;
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    .course-enroll-trigger i {
+        font-size: 20px;
+
+        transition:
+            transform 0.2s ease;
+    }
+
+
+    .course-enroll-trigger:hover {
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 9px 20px rgba(46, 125, 50, 0.18);
+    }
+
+
+    .course-enroll-trigger:hover i {
+        transform: translateX(3px);
+    }
+
+
+
+    /* =========================================================
+   EMPTY MODULES
+========================================================= */
+
+    .course-modules-empty {
+        padding: 40px;
+
+        background: var(--bg-soft);
+
+        border:
+            1px dashed var(--border-medium);
+
+        border-radius:
+            var(--radius-lg);
+    }
+
+
+
+    /* =========================================================
+   MOBILE
+========================================================= */
+
+    @media (max-width: 575px) {
+
+        .course-back-wrap {
+            margin-bottom: 20px;
+        }
+
+
+        .course-back-btn {
+            min-height: 44px;
+
+            padding:
+                6px 14px 6px 7px;
+        }
+
+
+        .course-back-icon {
+            width: 31px;
+            height: 31px;
+
+            font-size: 13px;
+        }
+
+
+        .course-back-content small {
+            font-size: 7px;
+        }
+
+
+        .course-back-content strong {
+            font-size: 11.5px;
+        }
+
+
+        .course-enroll-trigger {
+            width: 100%;
+        }
+
+    }
+</style>
+
+
+{% endblock %}

@@ -1,0 +1,532 @@
+{% extends "admin/base_site.html" %}
+{% load static i18n e2e_admin_dashboard %}
+
+{% block title %}
+Dashboard | Errors2Experts Admin
+{% endblock %}
+
+
+{% block nav-breadcrumbs %}
+{% endblock %}
+
+
+{% block content_title %}
+{% endblock %}
+
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block content %}
+
+{% e2e_dashboard_data as dashboard %}
+
+
+<div class="e2e-dashboard-page">
+
+
+    <!-- =====================================================
+         WELCOME BANNER
+    ====================================================== -->
+
+    <section class="e2e-welcome-card">
+
+
+        <!-- ANIMATED BRAND BACKGROUND -->
+
+        <div class="e2e-hero-animation" aria-hidden="true">
+
+            <svg class="e2e-wave e2e-wave-red" viewBox="0 0 1400 280" preserveAspectRatio="none">
+
+                <path d="M-100 178 C170 72, 380 234, 665 142 S1060 80, 1500 176" />
+
+                <path d="M-120 205 C160 110, 420 248, 720 170 S1100 118, 1510 205" />
+
+            </svg>
+
+
+            <svg class="e2e-wave e2e-wave-gold" viewBox="0 0 1400 280" preserveAspectRatio="none">
+
+                <path d="M-90 120 C190 222, 450 44, 755 142 S1110 212, 1510 116" />
+
+            </svg>
+
+
+            <svg class="e2e-wave e2e-wave-green" viewBox="0 0 1400 280" preserveAspectRatio="none">
+
+                <path d="M-100 165 C170 252, 430 88, 740 170 S1120 228, 1510 142" />
+
+                <path d="M-110 194 C190 270, 470 126, 800 192 S1150 250, 1520 170" />
+
+            </svg>
+
+
+            <span class="e2e-particle e2e-particle-red"></span>
+            <span class="e2e-particle e2e-particle-gold"></span>
+            <span class="e2e-particle e2e-particle-green"></span>
+
+        </div>
+
+
+
+        <div class="e2e-welcome-content">
+
+
+            <div class="e2e-welcome-copy">
+
+                <span class="e2e-welcome-kicker">
+                    Errors2Experts Administration
+                </span>
+
+
+                <h1>
+
+                    Welcome back,
+                    <span class="e2e-gradient-name">
+                        E2E Admin
+                    </span>
+
+                </h1>
+
+
+                <p>
+                    Manage registrations, demo requests and upcoming
+                    activities from one clean workspace.
+                </p>
+
+            </div>
+
+
+
+            <div class="e2e-welcome-brand">
+
+                <img src="{% static 'admin_custom/images/e2e-logo.jpeg' %}" alt="Errors2Experts">
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRIMARY METRICS
+    ====================================================== -->
+
+    <section class="e2e-summary-grid" aria-label="Errors2Experts dashboard summary">
+
+
+        <!-- COURSE BOOKINGS -->
+
+        <a href="{% url 'admin:main_coursebooking_changelist' %}" class="e2e-summary-card e2e-summary-red">
+
+            <div class="e2e-summary-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M4 6.5 12 4l8 2.5L12 9 4 6.5Zm2 3v6c0 1.8 2.7 3.5 6 3.5s6-1.7 6-3.5v-6" />
+
+                </svg>
+
+            </div>
+
+
+            <div class="e2e-summary-details">
+
+                <span>
+                    Course Bookings
+                </span>
+
+                <strong>
+                    {{ dashboard.course_bookings }}
+                </strong>
+
+                <small>
+                    View all
+                    <b>→</b>
+                </small>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- INTERNSHIP BOOKINGS -->
+
+        <a href="{% url 'admin:main_internshipbooking_changelist' %}" class="e2e-summary-card e2e-summary-gold">
+
+            <div class="e2e-summary-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M9 6V4h6v2M6 6h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm-2 5h16" />
+
+                </svg>
+
+            </div>
+
+
+            <div class="e2e-summary-details">
+
+                <span>
+                    Internship Bookings
+                </span>
+
+                <strong>
+                    {{ dashboard.internship_bookings }}
+                </strong>
+
+                <small>
+                    View all
+                    <b>→</b>
+                </small>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- WORKSHOP BOOKINGS -->
+
+        <a href="{% url 'admin:main_workshopregistration_changelist' %}" class="e2e-summary-card e2e-summary-green">
+
+            <div class="e2e-summary-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M5 4v3m14-3v3M4 9h16M5 6h14a1 1 0 0 1 1 1v13H4V7a1 1 0 0 1 1-1Z" />
+
+                </svg>
+
+            </div>
+
+
+            <div class="e2e-summary-details">
+
+                <span>
+                    Workshop Bookings
+                </span>
+
+                <strong>
+                    {{ dashboard.workshop_bookings }}
+                </strong>
+
+                <small>
+                    View all
+                    <b>→</b>
+                </small>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- DEMO REQUESTS -->
+
+        <a href="{% url 'admin:main_demorequest_changelist' %}" class="e2e-summary-card e2e-summary-blue">
+
+            <div class="e2e-summary-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M4 5h16v12H7l-3 3V5Zm4 4h8M8 13h5" />
+
+                </svg>
+
+            </div>
+
+
+            <div class="e2e-summary-details">
+
+                <span>
+                    Demo Requests
+                </span>
+
+                <strong>
+                    {{ dashboard.demo_requests }}
+                </strong>
+
+                <small>
+                    View all
+                    <b>→</b>
+                </small>
+
+            </div>
+
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LOWER PANELS
+    ====================================================== -->
+
+    <section class="e2e-dashboard-lower">
+
+
+        <!-- RECENT ACTIVITIES -->
+
+        <article class="e2e-dashboard-panel">
+
+
+            <header class="e2e-panel-header">
+
+
+                <div class="e2e-panel-heading">
+
+                    <span class="e2e-panel-heading-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <circle cx="12" cy="12" r="8" />
+
+                            <path d="M12 8v4l3 2" />
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <h2>
+                            Recent Activities
+                        </h2>
+
+                        <small>
+                            Latest website submissions
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <span class="e2e-panel-caption">
+                    Latest activity
+                </span>
+
+            </header>
+
+
+
+            <div class="e2e-activity-list">
+
+
+                {% if dashboard.recent_activities %}
+
+                {% for activity in dashboard.recent_activities %}
+
+
+                <a href="{{ activity.url }}" class="e2e-activity-row">
+
+
+                    <span class="
+                                    e2e-activity-code
+                                    e2e-code-{{ activity.color }}
+                                ">
+                        {{ activity.code }}
+                    </span>
+
+
+                    <span class="e2e-activity-copy">
+
+                        <strong>
+                            {{ activity.title }}
+                        </strong>
+
+                        <small>
+                            {{ activity.detail }}
+                        </small>
+
+                    </span>
+
+
+                    <time>
+                        {{ activity.when|timesince }} ago
+                    </time>
+
+
+                </a>
+
+
+                {% endfor %}
+
+                {% else %}
+
+                <div class="e2e-empty-state">
+                    No recent activity yet.
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <footer class="e2e-panel-footer">
+
+                <a href="{% url 'admin:main_coursebooking_changelist' %}">
+                    View registrations
+                    <span>→</span>
+                </a>
+
+            </footer>
+
+
+        </article>
+
+
+
+        <!-- UPCOMING SCHEDULES -->
+
+        <article class="e2e-dashboard-panel">
+
+
+            <header class="e2e-panel-header">
+
+
+                <div class="e2e-panel-heading">
+
+                    <span class="e2e-panel-heading-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M5 4v3m14-3v3M4 9h16M5 6h14a1 1 0 0 1 1 1v13H4V7a1 1 0 0 1 1-1Z" />
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <h2>
+                            Upcoming Schedules
+                        </h2>
+
+                        <small>
+                            Upcoming workshops
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <span class="e2e-panel-caption">
+                    Schedule
+                </span>
+
+            </header>
+
+
+
+            <div class="e2e-schedule-list">
+
+
+                {% if dashboard.upcoming_workshops %}
+
+
+                {% for item in dashboard.upcoming_workshops %}
+
+
+                <div class="e2e-schedule-row">
+
+
+                    <div class="e2e-schedule-date">
+
+                        <span>
+                            {{ item.event_date|date:"M" }}
+                        </span>
+
+                        <strong>
+                            {{ item.event_date|date:"d" }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="e2e-schedule-copy">
+
+                        <strong>
+                            {{ item.title }}
+                        </strong>
+
+                        <small>
+
+                            {% if item.event_time %}
+
+                            {{ item.event_time|time:"g:i A" }}
+
+                            {% else %}
+
+                            Time to be announced
+
+                            {% endif %}
+
+
+                            {% if item.location %}
+
+                            · {{ item.location }}
+
+                            {% endif %}
+
+                        </small>
+
+                    </div>
+
+
+                    <a href="{% url 'admin:main_upcomingworkshop_change' item.pk %}">
+                        View
+                    </a>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+                {% else %}
+
+                <div class="e2e-empty-state">
+                    No upcoming workshops.
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <footer class="e2e-panel-footer">
+
+                <a href="{% url 'admin:main_upcomingworkshop_changelist' %}">
+                    View all schedules
+                    <span>→</span>
+                </a>
+
+            </footer>
+
+
+        </article>
+
+
+    </section>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}
+{{ app_label|capfirst }} | Errors2Experts Admin
+{% endblock %}
+
+
+{% block content_title %}
+
+<div class="e2e-page-heading">
+
+    <span>
+        Administration
+    </span>
+
+    <h1>
+        {{ app_label|capfirst }}
+    </h1>
+
+    <p>
+        Manage all available {{ app_label|capfirst }} records.
+    </p>
+
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="e2e-app-index-grid">
+
+
+    {% for app in app_list %}
+
+    {% for model in app.models %}
+
+    <article class="e2e-app-model-card">
+
+        <div>
+
+            <strong>
+                {{ model.name }}
+            </strong>
+
+            <small>
+                Manage {{ model.name|lower }}
+            </small>
+
+        </div>
+
+
+        <div class="e2e-app-model-actions">
+
+            {% if model.admin_url %}
+
+            <a href="{{ model.admin_url }}">
+                View
+            </a>
+
+            {% endif %}
+
+
+            {% if model.add_url %}
+
+            <a class="e2e-add-link" href="{{ model.add_url }}">
+                +
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </article>
+
+    {% endfor %}
+
+    {% empty %}
+
+    <div class="e2e-empty-state">
+        You do not have permission to view any records here.
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

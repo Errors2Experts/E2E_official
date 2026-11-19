@@ -1,0 +1,2637 @@
+<!-- =========================================================
+     SERVICE DEMO REQUEST MODAL
+========================================================== -->
+
+<div class="modal fade" id="serviceDemoRequestModal" tabindex="-1" aria-labelledby="serviceDemoRequestModalLabel"
+    aria-hidden="true">
+
+    <div class="
+            modal-dialog
+            modal-dialog-centered
+            modal-lg
+            modal-dialog-scrollable
+        ">
+
+        <div class="modal-content e2e-service-demo-modal">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div class="modal-header border-0">
+
+                <div>
+
+                    <span class="service-demo-eyebrow">
+                        Live Demo Access
+                    </span>
+
+                    <h3 class="modal-title" id="serviceDemoRequestModalLabel">
+                        Request a {{ service.title }} Demo
+                    </h3>
+
+                    <p class="service-demo-header-copy">
+                        Select a demo and we'll send the
+                        access link directly to your email.
+                    </p>
+
+                </div>
+
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BODY
+            ================================================== -->
+
+            <div class="modal-body">
+
+
+                <form id="serviceDemoRequestForm" method="POST" action="{% url 'demo_request' %}" novalidate>
+
+                    {% csrf_token %}
+
+
+                    <!-- =================================================
+                         SERVICE ID
+                    ================================================== -->
+
+                    <input type="hidden" name="service_id" value="{{ service.id }}">
+
+
+
+                    <!-- =================================================
+                         SERVICE SUMMARY
+                    ================================================== -->
+
+                    <div class="service-demo-summary">
+
+                        <div class="service-demo-summary-icon">
+
+                            <i class="bi bi-grid"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Selected Service
+                            </span>
+
+                            <strong>
+                                {{ service.title }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SECTION 01
+                         CONTACT INFORMATION
+                    ================================================== -->
+
+                    <div class="service-demo-section">
+
+
+                        <div class="service-demo-section-heading">
+
+                            <span class="service-demo-step">
+                                01
+                            </span>
+
+                            <div>
+
+                                <h5>
+                                    Your Information
+                                </h5>
+
+                                <p>
+                                    Tell us where to send your
+                                    requested demo.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row g-3">
+
+
+                            <!-- =========================================
+                                 NAME
+                            ========================================== -->
+
+                            <div class="col-md-6">
+
+                                <div class="service-demo-field" id="serviceDemoNameField">
+
+                                    <label for="serviceDemoName" class="form-label">
+                                        Name / Organization
+
+                                        <span class="text-danger">
+                                            *
+                                        </span>
+                                    </label>
+
+
+                                    <input type="text" id="serviceDemoName" name="organization_name"
+                                        class="form-control" placeholder="Enter your name or organization"
+                                        maxlength="200" autocomplete="name" required>
+
+
+                                    <div class="service-demo-field-error" id="serviceDemoNameError" role="alert" hidden>
+
+                                        <i class="bi bi-exclamation-circle"></i>
+
+                                        <span>
+                                            Please enter your name or organization.
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =========================================
+                                 EMAIL
+                            ========================================== -->
+
+                            <div class="col-md-6">
+
+                                <div class="service-demo-field" id="serviceDemoEmailField">
+
+                                    <label for="serviceDemoEmail" class="form-label">
+                                        Email Address
+
+                                        <span class="text-danger">
+                                            *
+                                        </span>
+                                    </label>
+
+
+                                    <input type="email" id="serviceDemoEmail" name="email" class="form-control"
+                                        placeholder="you@example.com" autocomplete="email" required>
+
+
+                                    <div class="service-demo-field-error" id="serviceDemoEmailError" role="alert"
+                                        hidden>
+
+                                        <i class="bi bi-exclamation-circle"></i>
+
+                                        <span>
+                                            Please enter a valid email address.
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =========================================
+                                 MOBILE
+                            ========================================== -->
+
+                            <div class="col-md-6">
+
+                                <div class="service-demo-field" id="serviceDemoMobileField">
+
+                                    <label for="serviceDemoMobile" class="form-label">
+                                        Mobile Number
+
+                                        <span class="text-danger">
+                                            *
+                                        </span>
+                                    </label>
+
+
+                                    <input type="tel" id="serviceDemoMobile" name="mobile" class="form-control"
+                                        placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}"
+                                        inputmode="numeric" autocomplete="tel" required>
+
+
+                                    <div class="service-demo-field-error" id="serviceDemoMobileError" role="alert"
+                                        hidden>
+
+                                        <i class="bi bi-exclamation-circle"></i>
+
+                                        <span>
+                                            Please enter a valid 10-digit mobile number.
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SECTION 02
+                         DEMO SELECTION
+                    ================================================== -->
+
+                    <div class="service-demo-section">
+
+
+                        <div class="service-demo-section-heading">
+
+                            <span class="service-demo-step">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h5>
+                                    Choose a Demo
+                                </h5>
+
+                                <p>
+                                    Select the exact demo you
+                                    would like to explore.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        {% if available_demos %}
+
+
+                        <!-- =========================================
+                             DEMO OPTIONS
+                        ========================================== -->
+
+                        <div class="service-demo-options-wrapper" id="serviceDemoOptionsWrapper">
+
+
+                            <div class="service-demo-options">
+
+
+                                {% for demo in available_demos %}
+
+
+                                <label class="service-demo-option" for="serviceDemoOption{{ demo.id }}">
+
+
+                                    <input type="radio" id="serviceDemoOption{{ demo.id }}" name="selected_demo"
+                                        value="{{ demo.id }}" class="service-demo-radio">
+
+
+                                    <span class="service-demo-option-card">
+
+
+                                        <!-- Check -->
+
+                                        <span class="service-demo-check">
+
+                                            <i class="bi bi-check-lg"></i>
+
+                                        </span>
+
+
+
+                                        <!-- Icon -->
+
+                                        <span class="service-demo-option-icon">
+
+                                            <i class="bi bi-window"></i>
+
+                                        </span>
+
+
+
+                                        <!-- Title -->
+
+                                        <strong class="service-demo-option-title">
+
+                                            {{ demo.title }}
+
+                                        </strong>
+
+
+
+                                        {% if demo.category %}
+
+                                        <span class="service-demo-category">
+
+                                            {{ demo.category }}
+
+                                        </span>
+
+                                        {% endif %}
+
+
+
+                                        {% if demo.description %}
+
+                                        <p>
+                                            {{ demo.description }}
+                                        </p>
+
+                                        {% endif %}
+
+
+
+                                        {% if demo.tech_list %}
+
+                                        <div class="service-demo-tech-list">
+
+                                            {% for technology in demo.tech_list|slice:":4" %}
+
+                                            <span>
+                                                {{ technology }}
+                                            </span>
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                        {% endif %}
+
+
+
+                                        <span class="service-demo-access-text">
+
+                                            <i class="bi bi-envelope-check"></i>
+
+                                            Link sent by email
+
+                                        </span>
+
+
+                                    </span>
+
+                                </label>
+
+
+                                {% endfor %}
+
+
+
+                                <!-- =====================================
+                                     CUSTOM OPTION
+                                ====================================== -->
+
+                                <label class="service-demo-option" for="serviceDemoCustomOption">
+
+
+                                    <input type="radio" id="serviceDemoCustomOption" name="selected_demo" value=""
+                                        class="service-demo-radio">
+
+
+                                    <span class="
+                                            service-demo-option-card
+                                            service-demo-custom-card
+                                        ">
+
+
+                                        <span class="service-demo-check">
+
+                                            <i class="bi bi-check-lg"></i>
+
+                                        </span>
+
+
+                                        <span class="service-demo-option-icon">
+
+                                            <i class="bi bi-pencil-square"></i>
+
+                                        </span>
+
+
+                                        <strong class="service-demo-option-title">
+
+                                            Other Requirement
+
+                                        </strong>
+
+
+                                        <span class="service-demo-category">
+
+                                            Custom
+
+                                        </span>
+
+
+                                        <p>
+
+                                            Didn't find the demo you need?
+                                            Tell us exactly what you're
+                                            looking for.
+
+                                        </p>
+
+
+                                        <span class="service-demo-access-text">
+
+                                            <i class="bi bi-chat-dots"></i>
+
+                                            Manual review
+
+                                        </span>
+
+
+                                    </span>
+
+                                </label>
+
+
+                            </div>
+
+
+
+                            <!-- Demo selection error -->
+
+                            <div class="service-demo-selection-error" id="serviceDemoSelectionError" role="alert"
+                                hidden>
+
+                                <i class="bi bi-exclamation-circle-fill"></i>
+
+                                <span>
+                                    Please select a demo or choose
+                                    Other Requirement.
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        {% else %}
+
+
+                        <!-- =========================================
+                             NO DEMOS
+                        ========================================== -->
+
+                        <div class="service-demo-empty">
+
+                            <div class="service-demo-empty-icon">
+
+                                <i class="bi bi-window"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    No ready-made demos available yet
+                                </strong>
+
+                                <p>
+                                    Tell us what type of demo you need
+                                    and our team will review your request.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        {% endif %}
+
+
+
+                        <!-- =================================================
+                             CUSTOM REQUIREMENT
+                        ================================================== -->
+
+                        {% if available_demos %}
+
+                        <div id="serviceCustomRequirementWrap" class="
+                                service-custom-requirement
+                                d-none
+                            ">
+
+                            <label for="serviceCustomRequirement" class="form-label">
+                                Tell Us What You Need
+
+                                <span id="serviceCustomRequiredMark" class="text-danger" hidden>
+                                    *
+                                </span>
+                            </label>
+
+
+                            <textarea id="serviceCustomRequirement" name="custom_requirement" class="form-control"
+                                rows="4" maxlength="1500"
+                                placeholder="Example: I need an e-commerce website demo with product management, cart and admin dashboard..."></textarea>
+
+
+                            <div class="service-demo-field-error" id="serviceCustomRequirementError" role="alert"
+                                hidden>
+
+                                <i class="bi bi-exclamation-circle"></i>
+
+                                <span>
+                                    Please describe your demo requirement.
+                                </span>
+
+                            </div>
+
+
+                            <small>
+                                Give us a short description of the
+                                functionality or type of demo you're
+                                looking for.
+                            </small>
+
+                        </div>
+
+
+                        {% else %}
+
+
+                        <div id="serviceCustomRequirementWrap" class="service-custom-requirement">
+
+                            <label for="serviceCustomRequirement" class="form-label">
+                                Tell Us What You Need
+
+                                <span id="serviceCustomRequiredMark" class="text-danger">
+                                    *
+                                </span>
+                            </label>
+
+
+                            <textarea id="serviceCustomRequirement" name="custom_requirement" class="form-control"
+                                rows="4" maxlength="1500"
+                                placeholder="Example: I need an e-commerce website demo with product management, cart and admin dashboard..."
+                                required></textarea>
+
+
+                            <div class="service-demo-field-error" id="serviceCustomRequirementError" role="alert"
+                                hidden>
+
+                                <i class="bi bi-exclamation-circle"></i>
+
+                                <span>
+                                    Please describe your demo requirement.
+                                </span>
+
+                            </div>
+
+
+                            <small>
+                                Give us a short description of the
+                                functionality or type of demo you're
+                                looking for.
+                            </small>
+
+                        </div>
+
+
+                        {% endif %}
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SECTION 03
+                         NEXT STEP
+                    ================================================== -->
+
+                    <div class="
+                            service-demo-section
+                            service-demo-last-section
+                        ">
+
+
+                        <div class="service-demo-section-heading">
+
+                            <span class="service-demo-step">
+                                03
+                            </span>
+
+                            <div>
+
+                                <h5>
+                                    What Happens Next?
+                                </h5>
+
+                                <p>
+                                    Your selected demo is handled
+                                    automatically.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="service-demo-info-box">
+
+
+                            <span class="service-demo-info-icon">
+
+                                <i class="bi bi-send-check"></i>
+
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Instant Demo Delivery
+                                </strong>
+
+
+                                <p>
+                                    When you select an available demo,
+                                    the exact demo link stored in our
+                                    database will be sent directly to
+                                    your email.
+                                </p>
+
+
+                                <p>
+                                    For custom requirements, our team
+                                    will review your request and contact
+                                    you separately.
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         CONSENT
+                    ================================================== -->
+
+                    <div class="service-demo-consent-wrapper" id="serviceDemoConsentWrapper">
+
+
+                        <label class="service-demo-confirmation">
+
+
+                            <input type="checkbox" id="serviceDemoConsent" name="consent" value="yes"
+                                class="service-demo-consent-checkbox" required>
+
+
+                            <span class="service-demo-consent-custom">
+
+                                <i class="bi bi-check-lg"></i>
+
+                            </span>
+
+
+                            <span class="service-demo-consent-text">
+
+                                I confirm that the information provided
+                                above is correct and I agree to receive
+                                the requested demo through email.
+
+                            </span>
+
+
+                        </label>
+
+
+
+                        <div id="serviceDemoConsentError" class="service-demo-consent-error" role="alert"
+                            aria-live="polite" hidden>
+
+                            <i class="bi bi-exclamation-circle-fill"></i>
+
+                            <span>
+                                Please confirm before requesting the demo.
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         ACTIONS
+                    ================================================== -->
+
+                    <div class="service-demo-actions">
+
+
+                        <button type="button" class="service-demo-cancel-btn" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+
+
+                        <button type="submit" class="service-demo-submit-btn">
+
+                            <span>
+                                Send Demo to My Email
+                            </span>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     STYLES
+========================================================== -->
+
+<style>
+    /* =========================================================
+   MODAL
+========================================================= */
+
+    .e2e-service-demo-modal {
+        overflow: hidden;
+
+        border: 0;
+        border-radius: 22px;
+
+        box-shadow:
+            0 28px 80px rgba(18, 40, 50, 0.18);
+    }
+
+
+    .e2e-service-demo-modal .modal-header {
+        padding: 24px 28px 19px;
+
+        background:
+            linear-gradient(135deg,
+                #f1f8fa,
+                #ffffff);
+
+        border-bottom:
+            1px solid #e3eaed !important;
+    }
+
+
+    .service-demo-eyebrow {
+        display: block;
+
+        margin-bottom: 5px;
+
+        color: #1d668e;
+
+        font-size: 9px;
+        font-weight: 800;
+
+        letter-spacing: 1.6px;
+
+        text-transform: uppercase;
+    }
+
+
+    .e2e-service-demo-modal .modal-title {
+        color: #17232b;
+
+        font-size: 21px;
+        font-weight: 800;
+    }
+
+
+    .service-demo-header-copy {
+        margin: 5px 0 0;
+
+        color: #7b858b;
+
+        font-size: 11.5px;
+    }
+
+
+    .e2e-service-demo-modal .modal-body {
+        padding: 25px 28px 30px;
+    }
+
+
+
+    /* =========================================================
+   SUMMARY
+========================================================= */
+
+    .service-demo-summary {
+        margin-bottom: 27px;
+
+        padding: 15px 17px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 12px;
+
+        background: #f7fafb;
+
+        border:
+            1px solid #e1e8eb;
+
+        border-radius: 12px;
+    }
+
+
+    .service-demo-summary-icon {
+        width: 39px;
+        height: 39px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+
+        background:
+            linear-gradient(135deg,
+                #1d668e,
+                #3185ac);
+
+        border-radius: 10px;
+    }
+
+
+    .service-demo-summary span {
+        display: block;
+
+        color: #92999d;
+
+        font-size: 9px;
+        font-weight: 700;
+
+        text-transform: uppercase;
+
+        letter-spacing: .7px;
+    }
+
+
+    .service-demo-summary strong {
+        display: block;
+
+        margin-top: 2px;
+
+        color: #26333b;
+
+        font-size: 14px;
+    }
+
+
+
+    /* =========================================================
+   SECTIONS
+========================================================= */
+
+    .service-demo-section {
+        margin-bottom: 28px;
+
+        padding-bottom: 27px;
+
+        border-bottom:
+            1px solid #e9edef;
+    }
+
+
+    .service-demo-last-section {
+        margin-bottom: 19px;
+    }
+
+
+    .service-demo-section-heading {
+        margin-bottom: 18px;
+
+        display: flex;
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+
+    .service-demo-step {
+        width: 32px;
+        height: 32px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+
+        background: #1d668e;
+
+        border-radius: 50%;
+
+        font-size: 10px;
+        font-weight: 800;
+
+        box-shadow:
+            0 5px 13px rgba(29, 102, 142, .16);
+    }
+
+
+    .service-demo-section-heading h5 {
+        margin: 0 0 3px;
+
+        color: #26323a;
+
+        font-size: 14px;
+
+        font-weight: 750;
+    }
+
+
+    .service-demo-section-heading p {
+        margin: 0;
+
+        color: #878f94;
+
+        font-size: 11px;
+    }
+
+
+
+    /* =========================================================
+   INPUTS
+========================================================= */
+
+    .e2e-service-demo-modal .form-label {
+        margin-bottom: 6px;
+
+        color: #414c52;
+
+        font-size: 12px;
+
+        font-weight: 650;
+    }
+
+
+    .e2e-service-demo-modal .form-control {
+        min-height: 45px;
+
+        padding: 10px 12px;
+
+        color: #29333a;
+
+        background: #ffffff;
+
+        border:
+            1px solid #dce3e6;
+
+        border-radius: 9px;
+
+        font-size: 12.5px;
+
+        box-shadow: none;
+
+        transition:
+            border-color .2s ease,
+            box-shadow .2s ease,
+            background .2s ease;
+    }
+
+
+    .e2e-service-demo-modal textarea.form-control {
+        min-height: 100px;
+
+        resize: vertical;
+    }
+
+
+    .e2e-service-demo-modal .form-control:focus {
+        border-color: #1d668e;
+
+        box-shadow:
+            0 0 0 3px rgba(29, 102, 142, .08);
+    }
+
+
+
+    /* =========================================================
+   FIELD VALIDATION
+========================================================= */
+
+    .service-demo-field.is-invalid .form-control,
+
+    .service-custom-requirement.is-invalid .form-control {
+        border-color: #d9534f;
+
+        background: #fffafa;
+
+        box-shadow:
+            0 0 0 3px rgba(217, 83, 79, .07);
+    }
+
+
+    .service-demo-field.is-valid .form-control {
+        border-color: #4d9b5d;
+    }
+
+
+    .service-demo-field-error {
+        margin-top: 6px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 5px;
+
+        color: #c62828;
+
+        font-size: 10.5px;
+
+        font-weight: 650;
+    }
+
+
+    .service-demo-field-error[hidden] {
+        display: none !important;
+    }
+
+
+
+    /* =========================================================
+   DEMO OPTIONS
+========================================================= */
+
+    .service-demo-options {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2,
+                minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    .service-demo-option {
+        position: relative;
+
+        min-width: 0;
+
+        cursor: pointer;
+    }
+
+
+    .service-demo-option>input {
+        position: absolute;
+
+        opacity: 0;
+
+        pointer-events: none;
+    }
+
+
+    .service-demo-option-card {
+        position: relative;
+
+        height: 100%;
+        min-height: 190px;
+
+        padding: 17px;
+
+        display: flex;
+        flex-direction: column;
+
+        background: #fafbfb;
+
+        border:
+            1.5px solid #dfe5e8;
+
+        border-radius: 12px;
+
+        transition:
+            transform .2s ease,
+            border-color .2s ease,
+            background .2s ease,
+            box-shadow .2s ease;
+    }
+
+
+    .service-demo-option-card:hover {
+        transform:
+            translateY(-2px);
+
+        border-color:
+            rgba(29, 102, 142, .32);
+
+        box-shadow:
+            0 8px 20px rgba(30, 54, 65, .06);
+    }
+
+
+    .service-demo-check {
+        position: absolute;
+
+        top: 12px;
+        right: 12px;
+
+        width: 22px;
+        height: 22px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: transparent;
+
+        background: #ffffff;
+
+        border:
+            1px solid #d8dee1;
+
+        border-radius: 50%;
+
+        font-size: 10px;
+    }
+
+
+    .service-demo-option-icon {
+        width: 36px;
+        height: 36px;
+
+        margin-bottom: 11px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #1d668e;
+
+        background: #edf5f9;
+
+        border-radius: 9px;
+
+        font-size: 16px;
+    }
+
+
+    .service-demo-option-title {
+        padding-right: 20px;
+
+        color: #26333a;
+
+        font-size: 13px;
+    }
+
+
+    .service-demo-category {
+        width: fit-content;
+
+        margin-top: 6px;
+
+        padding: 3px 7px;
+
+        color: #78601c;
+
+        background: #fff8df;
+
+        border-radius: 30px;
+
+        font-size: 8.5px;
+
+        font-weight: 700;
+    }
+
+
+    .service-demo-option-card p {
+        margin: 8px 0;
+
+        color: #80898e;
+
+        font-size: 10.5px;
+
+        line-height: 1.5;
+    }
+
+
+    .service-demo-tech-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 4px;
+    }
+
+
+    .service-demo-tech-list span {
+        padding: 3px 6px;
+
+        color: #53656c;
+
+        background: #edf1f2;
+
+        border-radius: 4px;
+
+        font-size: 8px;
+    }
+
+
+    .service-demo-access-text {
+        margin-top: auto;
+
+        padding-top: 12px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 5px;
+
+        color: #2e7d32;
+
+        font-size: 9.5px;
+
+        font-weight: 700;
+    }
+
+
+
+    /* Selected */
+
+    .service-demo-option input:checked+.service-demo-option-card {
+        background: #f0f8fb;
+
+        border-color: #1d668e;
+
+        box-shadow:
+            0 0 0 3px rgba(29, 102, 142, .07);
+    }
+
+
+    .service-demo-option input:checked+.service-demo-option-card .service-demo-check {
+        color: #ffffff;
+
+        background: #1d668e;
+
+        border-color: #1d668e;
+    }
+
+
+
+    /* Demo selection error */
+
+    .service-demo-options-wrapper.is-invalid .service-demo-options {
+        padding: 4px;
+
+        border:
+            1px solid #d9534f;
+
+        border-radius: 14px;
+
+        background:
+            rgba(217, 83, 79, .025);
+    }
+
+
+    .service-demo-selection-error {
+        margin-top: 9px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 6px;
+
+        color: #c62828;
+
+        font-size: 10.5px;
+
+        font-weight: 650;
+    }
+
+
+    .service-demo-selection-error[hidden] {
+        display: none !important;
+    }
+
+
+
+    /* =========================================================
+   EMPTY
+========================================================= */
+
+    .service-demo-empty {
+        padding: 16px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 12px;
+
+        background: #fff9eb;
+
+        border:
+            1px solid #ebdba9;
+
+        border-radius: 10px;
+    }
+
+
+    .service-demo-empty-icon {
+        width: 38px;
+        height: 38px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #936e17;
+
+        background: #fff1c7;
+
+        border-radius: 9px;
+    }
+
+
+    .service-demo-empty strong {
+        display: block;
+
+        color: #66501a;
+
+        font-size: 11.5px;
+    }
+
+
+    .service-demo-empty p {
+        margin: 3px 0 0;
+
+        color: #8a7440;
+
+        font-size: 10.5px;
+    }
+
+
+
+    /* =========================================================
+   CUSTOM REQUIREMENT
+========================================================= */
+
+    .service-custom-requirement {
+        margin-top: 15px;
+
+        padding: 16px;
+
+        background: #f8fafb;
+
+        border:
+            1px solid #e0e6e9;
+
+        border-radius: 10px;
+    }
+
+
+    .service-custom-requirement small {
+        display: block;
+
+        margin-top: 6px;
+
+        color: #90989c;
+
+        font-size: 9.5px;
+    }
+
+
+
+    /* =========================================================
+   INFO
+========================================================= */
+
+    .service-demo-info-box {
+        padding: 15px;
+
+        display: flex;
+
+        gap: 12px;
+
+        background:
+            linear-gradient(135deg,
+                #edf7f9,
+                #f7fbfc);
+
+        border:
+            1px solid #d7e8ec;
+
+        border-radius: 10px;
+    }
+
+
+    .service-demo-info-icon {
+        width: 39px;
+        height: 39px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+
+        background: #1d668e;
+
+        border-radius: 10px;
+    }
+
+
+    .service-demo-info-box strong {
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: #294650;
+
+        font-size: 11.5px;
+    }
+
+
+    .service-demo-info-box p {
+        margin: 0 0 4px;
+
+        color: #667b83;
+
+        font-size: 10.5px;
+
+        line-height: 1.55;
+    }
+
+
+
+    /* =========================================================
+   CONSENT
+========================================================= */
+
+    .service-demo-consent-wrapper {
+        margin-bottom: 22px;
+    }
+
+
+    .service-demo-confirmation {
+        position: relative;
+
+        display: flex;
+        align-items: flex-start;
+
+        gap: 11px;
+
+        padding: 13px 14px;
+
+        color: #68747a;
+
+        background: #fafcfc;
+
+        border:
+            1px solid #e1e7e9;
+
+        border-radius: 10px;
+
+        font-size: 10.8px;
+
+        line-height: 1.6;
+
+        cursor: pointer;
+
+        transition:
+            border-color .2s ease,
+            background .2s ease,
+            box-shadow .2s ease;
+    }
+
+
+    .service-demo-confirmation:hover {
+        background: #f7faf8;
+
+        border-color:
+            rgba(46, 125, 50, .25);
+    }
+
+
+    .service-demo-consent-checkbox {
+        position: absolute;
+
+        width: 1px;
+        height: 1px;
+
+        opacity: 0;
+    }
+
+
+    .service-demo-consent-custom {
+        width: 20px;
+        height: 20px;
+
+        flex-shrink: 0;
+
+        margin-top: 1px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: transparent;
+
+        background: #ffffff;
+
+        border:
+            1.5px solid #c8d0d4;
+
+        border-radius: 5px;
+
+        font-size: 11px;
+
+        transition: .2s ease;
+    }
+
+
+    .service-demo-consent-checkbox:checked+.service-demo-consent-custom {
+        color: #ffffff;
+
+        background:
+            #2e7d32;
+
+        border-color:
+            #2e7d32;
+
+        box-shadow:
+            0 3px 8px rgba(46, 125, 50, .18);
+    }
+
+
+    .service-demo-consent-checkbox:focus-visible+.service-demo-consent-custom {
+        box-shadow:
+            0 0 0 3px rgba(46, 125, 50, .15);
+    }
+
+
+    .service-demo-consent-text {
+        flex: 1;
+    }
+
+
+    .service-demo-consent-wrapper.is-invalid .service-demo-confirmation {
+        background: #fff8f8;
+
+        border-color: #d9534f;
+
+        box-shadow:
+            0 0 0 3px rgba(217, 83, 79, .07);
+    }
+
+
+    .service-demo-consent-error {
+        margin-top: 7px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 6px;
+
+        color: #c62828;
+
+        font-size: 10.5px;
+
+        font-weight: 650;
+    }
+
+
+    .service-demo-consent-error[hidden] {
+        display: none !important;
+    }
+
+
+
+    /* =========================================================
+   ACTIONS
+========================================================= */
+
+    .service-demo-actions {
+        display: flex;
+        justify-content: flex-end;
+
+        gap: 9px;
+    }
+
+
+    .service-demo-cancel-btn,
+    .service-demo-submit-btn {
+        min-height: 43px;
+
+        padding: 9px 17px;
+
+        border-radius: 8px;
+
+        font-size: 11.5px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+    }
+
+
+    .service-demo-cancel-btn {
+        color: #657077;
+
+        background: #ffffff;
+
+        border:
+            1px solid #dce2e5;
+    }
+
+
+    .service-demo-submit-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        color: #ffffff;
+
+        background:
+            linear-gradient(135deg,
+                #27763a,
+                #34974d);
+
+        border: 0;
+
+        box-shadow:
+            0 7px 18px rgba(46, 125, 50, .16);
+
+        transition:
+            transform .2s ease,
+            box-shadow .2s ease,
+            opacity .2s ease;
+    }
+
+
+    .service-demo-submit-btn:hover:not(:disabled) {
+        transform:
+            translateY(-1px);
+
+        box-shadow:
+            0 10px 22px rgba(46, 125, 50, .22);
+    }
+
+
+    .service-demo-submit-btn:disabled {
+        cursor: not-allowed;
+
+        opacity: .75;
+    }
+
+
+
+    /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+    @media (max-width: 767px) {
+
+        .e2e-service-demo-modal .modal-header {
+            padding:
+                19px 17px 15px;
+        }
+
+
+        .e2e-service-demo-modal .modal-body {
+            padding:
+                19px 16px 23px;
+        }
+
+
+        .service-demo-options {
+            grid-template-columns: 1fr;
+        }
+
+
+        .service-demo-option-card {
+            min-height: auto;
+        }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+        .service-demo-actions {
+            display: grid;
+
+            grid-template-columns: 1fr;
+        }
+
+
+        .service-demo-submit-btn {
+            order: 1;
+
+            width: 100%;
+        }
+
+
+        .service-demo-cancel-btn {
+            order: 2;
+
+            width: 100%;
+        }
+
+    }
+</style>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+
+            const form =
+                document.getElementById(
+                    "serviceDemoRequestForm"
+                );
+
+
+            if (!form) {
+                return;
+            }
+
+
+
+            /* =================================================
+               ELEMENTS
+            ================================================== */
+
+            const nameInput =
+                document.getElementById(
+                    "serviceDemoName"
+                );
+
+
+            const emailInput =
+                document.getElementById(
+                    "serviceDemoEmail"
+                );
+
+
+            const mobileInput =
+                document.getElementById(
+                    "serviceDemoMobile"
+                );
+
+
+            const nameField =
+                document.getElementById(
+                    "serviceDemoNameField"
+                );
+
+
+            const emailField =
+                document.getElementById(
+                    "serviceDemoEmailField"
+                );
+
+
+            const mobileField =
+                document.getElementById(
+                    "serviceDemoMobileField"
+                );
+
+
+            const nameError =
+                document.getElementById(
+                    "serviceDemoNameError"
+                );
+
+
+            const emailError =
+                document.getElementById(
+                    "serviceDemoEmailError"
+                );
+
+
+            const mobileError =
+                document.getElementById(
+                    "serviceDemoMobileError"
+                );
+
+
+            const radios =
+                form.querySelectorAll(
+                    'input[name="selected_demo"]'
+                );
+
+
+            const demoOptionsWrapper =
+                document.getElementById(
+                    "serviceDemoOptionsWrapper"
+                );
+
+
+            const demoSelectionError =
+                document.getElementById(
+                    "serviceDemoSelectionError"
+                );
+
+
+            const customOption =
+                document.getElementById(
+                    "serviceDemoCustomOption"
+                );
+
+
+            const customWrap =
+                document.getElementById(
+                    "serviceCustomRequirementWrap"
+                );
+
+
+            const customInput =
+                document.getElementById(
+                    "serviceCustomRequirement"
+                );
+
+
+            const customError =
+                document.getElementById(
+                    "serviceCustomRequirementError"
+                );
+
+
+            const customRequiredMark =
+                document.getElementById(
+                    "serviceCustomRequiredMark"
+                );
+
+
+            const consentCheckbox =
+                document.getElementById(
+                    "serviceDemoConsent"
+                );
+
+
+            const consentWrapper =
+                document.getElementById(
+                    "serviceDemoConsentWrapper"
+                );
+
+
+            const consentError =
+                document.getElementById(
+                    "serviceDemoConsentError"
+                );
+
+
+
+            /* =================================================
+               FIELD STATE
+            ================================================== */
+
+            function setFieldState(
+                field,
+                errorElement,
+                valid
+            ) {
+
+                if (!field) {
+                    return;
+                }
+
+
+                field.classList.toggle(
+                    "is-invalid",
+                    !valid
+                );
+
+
+                field.classList.toggle(
+                    "is-valid",
+                    valid
+                );
+
+
+                if (errorElement) {
+
+                    errorElement.hidden =
+                        valid;
+
+                }
+
+            }
+
+
+
+            /* =================================================
+               NAME
+            ================================================== */
+
+            function validateName() {
+
+                if (!nameInput) {
+                    return true;
+                }
+
+
+                const value =
+                    nameInput.value.trim();
+
+
+                const valid =
+                    value.length >= 2;
+
+
+                setFieldState(
+                    nameField,
+                    nameError,
+                    valid
+                );
+
+
+                return valid;
+
+            }
+
+
+
+            /* =================================================
+               EMAIL
+            ================================================== */
+
+            function validateEmail() {
+
+                if (!emailInput) {
+                    return true;
+                }
+
+
+                const value =
+                    emailInput.value.trim();
+
+
+                const valid =
+                    value !== "" &&
+                    emailInput.validity.valid;
+
+
+                setFieldState(
+                    emailField,
+                    emailError,
+                    valid
+                );
+
+
+                return valid;
+
+            }
+
+
+
+            /* =================================================
+               MOBILE
+            ================================================== */
+
+            function validateMobile() {
+
+                if (!mobileInput) {
+                    return true;
+                }
+
+
+                const value =
+                    mobileInput.value.trim();
+
+
+                const valid =
+                    /^[0-9]{10}$/.test(
+                        value
+                    );
+
+
+                setFieldState(
+                    mobileField,
+                    mobileError,
+                    valid
+                );
+
+
+                return valid;
+
+            }
+
+
+
+            /* =================================================
+               DEMO SELECTION
+            ================================================== */
+
+            function validateDemoSelection() {
+
+                if (
+                    !demoOptionsWrapper ||
+                    radios.length === 0
+                ) {
+                    return true;
+                }
+
+
+                const selected =
+                    form.querySelector(
+                        'input[name="selected_demo"]:checked'
+                    );
+
+
+                const valid =
+                    selected !== null;
+
+
+                demoOptionsWrapper
+                    .classList
+                    .toggle(
+                        "is-invalid",
+                        !valid
+                    );
+
+
+                if (demoSelectionError) {
+
+                    demoSelectionError.hidden =
+                        valid;
+
+                }
+
+
+                return valid;
+
+            }
+
+
+
+            /* =================================================
+               CUSTOM REQUIREMENT
+            ================================================== */
+
+            function updateCustomRequirement() {
+
+                if (
+                    !customWrap ||
+                    !customInput
+                ) {
+                    return;
+                }
+
+
+                const hasDemoOptions =
+                    radios.length > 0;
+
+
+                const isCustom =
+                    customOption &&
+                    customOption.checked;
+
+
+                /*
+                 * If no demos exist,
+                 * custom requirement always stays visible.
+                 */
+
+                const shouldShow =
+                    !hasDemoOptions ||
+                    isCustom;
+
+
+                customWrap.classList.toggle(
+                    "d-none",
+                    !shouldShow
+                );
+
+
+                customInput.required =
+                    shouldShow;
+
+
+                if (customRequiredMark) {
+
+                    customRequiredMark.hidden =
+                        !shouldShow;
+
+                }
+
+
+                if (!shouldShow) {
+
+                    customInput.value =
+                        "";
+
+                    customWrap
+                        .classList
+                        .remove(
+                            "is-invalid"
+                        );
+
+
+                    if (customError) {
+
+                        customError.hidden =
+                            true;
+
+                    }
+
+                }
+
+            }
+
+
+
+            function validateCustomRequirement() {
+
+                if (
+                    !customInput ||
+                    !customWrap
+                ) {
+                    return true;
+                }
+
+
+                if (!customInput.required) {
+
+                    customWrap
+                        .classList
+                        .remove(
+                            "is-invalid"
+                        );
+
+
+                    if (customError) {
+
+                        customError.hidden =
+                            true;
+
+                    }
+
+
+                    return true;
+
+                }
+
+
+                const valid =
+                    customInput
+                        .value
+                        .trim()
+                        .length >= 5;
+
+
+                customWrap
+                    .classList
+                    .toggle(
+                        "is-invalid",
+                        !valid
+                    );
+
+
+                if (customError) {
+
+                    customError.hidden =
+                        valid;
+
+                }
+
+
+                return valid;
+
+            }
+
+
+
+            /* =================================================
+               CONSENT
+            ================================================== */
+
+            function validateConsent() {
+
+                if (
+                    !consentCheckbox ||
+                    !consentWrapper
+                ) {
+                    return true;
+                }
+
+
+                const valid =
+                    consentCheckbox.checked;
+
+
+                consentWrapper
+                    .classList
+                    .toggle(
+                        "is-invalid",
+                        !valid
+                    );
+
+
+                if (consentError) {
+
+                    consentError.hidden =
+                        valid;
+
+                }
+
+
+                return valid;
+
+            }
+
+
+
+            /* =================================================
+               MOBILE INPUT
+            ================================================== */
+
+            if (mobileInput) {
+
+                mobileInput.addEventListener(
+                    "input",
+                    function () {
+
+                        this.value =
+                            this.value
+                                .replace(
+                                    /\D/g,
+                                    ""
+                                )
+                                .slice(
+                                    0,
+                                    10
+                                );
+
+
+                        if (
+                            mobileField
+                                .classList
+                                .contains(
+                                    "is-invalid"
+                                )
+                        ) {
+
+                            validateMobile();
+
+                        }
+
+                    }
+                );
+
+
+                mobileInput.addEventListener(
+                    "blur",
+                    validateMobile
+                );
+
+            }
+
+
+
+            /* =================================================
+               NAME EVENTS
+            ================================================== */
+
+            if (nameInput) {
+
+                nameInput.addEventListener(
+                    "input",
+                    function () {
+
+                        if (
+                            nameField
+                                .classList
+                                .contains(
+                                    "is-invalid"
+                                )
+                        ) {
+
+                            validateName();
+
+                        }
+
+                    }
+                );
+
+
+                nameInput.addEventListener(
+                    "blur",
+                    validateName
+                );
+
+            }
+
+
+
+            /* =================================================
+               EMAIL EVENTS
+            ================================================== */
+
+            if (emailInput) {
+
+                emailInput.addEventListener(
+                    "input",
+                    function () {
+
+                        if (
+                            emailField
+                                .classList
+                                .contains(
+                                    "is-invalid"
+                                )
+                        ) {
+
+                            validateEmail();
+
+                        }
+
+                    }
+                );
+
+
+                emailInput.addEventListener(
+                    "blur",
+                    validateEmail
+                );
+
+            }
+
+
+
+            /* =================================================
+               RADIO EVENTS
+            ================================================== */
+
+            radios.forEach(
+                function (radio) {
+
+                    radio.addEventListener(
+                        "change",
+                        function () {
+
+                            updateCustomRequirement();
+
+                            validateDemoSelection();
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+            /* =================================================
+               CUSTOM EVENTS
+            ================================================== */
+
+            if (customInput) {
+
+                customInput.addEventListener(
+                    "input",
+                    function () {
+
+                        if (
+                            customWrap
+                                .classList
+                                .contains(
+                                    "is-invalid"
+                                )
+                        ) {
+
+                            validateCustomRequirement();
+
+                        }
+
+                    }
+                );
+
+
+                customInput.addEventListener(
+                    "blur",
+                    validateCustomRequirement
+                );
+
+            }
+
+
+
+            /* =================================================
+               CONSENT EVENT
+            ================================================== */
+
+            if (consentCheckbox) {
+
+                consentCheckbox.addEventListener(
+                    "change",
+                    validateConsent
+                );
+
+            }
+
+
+
+            /* =================================================
+               FORM SUBMISSION
+            ================================================== */
+
+            form.addEventListener(
+                "submit",
+                function (event) {
+
+
+                    const nameValid =
+                        validateName();
+
+
+                    const emailValid =
+                        validateEmail();
+
+
+                    const mobileValid =
+                        validateMobile();
+
+
+                    const demoValid =
+                        validateDemoSelection();
+
+
+                    const customValid =
+                        validateCustomRequirement();
+
+
+                    const consentValid =
+                        validateConsent();
+
+
+
+                    const formValid =
+                        nameValid &&
+                        emailValid &&
+                        mobileValid &&
+                        demoValid &&
+                        customValid &&
+                        consentValid;
+
+
+
+                    if (!formValid) {
+
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+
+                        /* =====================================
+                           FIND FIRST INVALID SECTION
+                        ====================================== */
+
+                        const firstInvalid =
+                            form.querySelector(
+                                ".is-invalid"
+                            );
+
+
+                        if (firstInvalid) {
+
+
+                            firstInvalid.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center"
+                            });
+
+
+                            const invalidInput =
+                                firstInvalid.querySelector(
+                                    "input, textarea, select"
+                                );
+
+
+                            if (invalidInput) {
+
+                                window.setTimeout(
+                                    function () {
+
+                                        invalidInput.focus({
+                                            preventScroll: true
+                                        });
+
+                                    },
+                                    350
+                                );
+
+                            }
+
+
+                        }
+
+
+                        return;
+
+                    }
+
+
+
+                    /* =========================================
+                       VALID SUBMISSION
+                    ========================================== */
+
+                    const submitButton =
+                        form.querySelector(
+                            ".service-demo-submit-btn"
+                        );
+
+
+                    if (submitButton) {
+
+
+                        submitButton.disabled =
+                            true;
+
+
+                        submitButton.innerHTML = `
+
+                        <span>
+                            Sending Demo...
+                        </span>
+
+                        <span
+                            class="
+                                spinner-border
+                                spinner-border-sm
+                            "
+                            role="status"
+                            aria-hidden="true"
+                        ></span>
+
+                    `;
+
+
+                    }
+
+
+                }
+            );
+
+
+
+            /* =================================================
+               INITIAL STATE
+            ================================================== */
+
+            updateCustomRequirement();
+
+
+        }
+    );
+
+</script>

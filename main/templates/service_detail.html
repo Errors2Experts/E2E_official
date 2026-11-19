@@ -1,0 +1,2104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{ service.title }} Services | Errors2Experts
+{% endblock %}
+
+
+{% block meta_description %}
+Explore {{ service.title }} services from Errors2Experts, including our technologies, development process, live demos and custom project solutions.
+{% endblock %}
+{% block meta_title %}
+{{ service.title }} Services | Errors2Experts
+{% endblock %}
+
+{% block meta_keywords %}
+{{ service.title }} Services in Dindigul, {{ service.title }} in Dindigul, IT Services in Dindigul, IT Solutions in Dindigul, Errors2Experts Dindigul
+{% endblock %}  
+
+{% block canonical_url %}
+https://errors2experts.com/services/{{ service.id }}/
+{% endblock %}
+
+{% block og_title %}
+{{ service.title }} Services | Errors2Experts
+{% endblock %}
+
+{% block og_description %}
+Explore {{ service.title }} services from Errors2Experts with modern technologies, practical development processes and live demo options.
+{% endblock %}
+
+{% block og_url %}
+https://errors2experts.com/services/{{ service.id }}/
+{% endblock %}
+
+{% block content %}
+
+
+<!-- =========================================================
+     SERVICE HERO
+========================================================== -->
+
+<div class="container mt-5">
+
+
+  <!-- Back -->
+
+  <div class="animate-fade-in">
+
+    <a href="{% url 'services' %}" class="btn-back mt-5">
+      ← Back to All Services
+    </a>
+
+  </div>
+
+
+
+  <div class="course-hero-banner mb-5 animate-fade-in">
+
+    <div class="row align-items-center g-4">
+
+
+      <!-- =============================================
+                 SERVICE CONTENT
+            ============================================== -->
+
+      <div class="col-lg-7">
+
+
+        <span class="section-eyebrow">
+          Our Services
+        </span>
+
+
+        <h1 class="course-main-title">
+          {{ service.title }}
+        </h1>
+
+
+        <p class="course-main-desc">
+          {{ service.description }}
+        </p>
+
+
+
+        <!-- Actions -->
+
+        <div class="d-flex flex-wrap gap-3 mt-3">
+
+
+          <!-- Service Registration -->
+
+          <button type="button" class="btn btn-primary px-4 py-2" data-bs-toggle="modal"
+            data-bs-target="#serviceDetailBookingModal">
+
+            Register For This Service →
+
+          </button>
+
+
+
+          <!-- Live Demo -->
+
+          <button type="button" class="btn btn-success px-4 py-2" data-bs-toggle="modal"
+            data-bs-target="#serviceDemoRequestModal">
+
+            <i class="bi bi-play-circle me-1"></i>
+
+            Request Live Demo →
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =============================================
+                 SERVICE IMAGE
+            ============================================== -->
+
+      <div class="col-lg-5">
+
+
+        <div class="browser-mockup-container">
+
+
+          <div class="browser-header-bar">
+
+
+            <div class="browser-dots">
+
+              <span class="dot-red"></span>
+
+              <span class="dot-amber"></span>
+
+              <span class="dot-green"></span>
+
+            </div>
+
+
+            <div class="browser-address-field">
+
+              errors2experts.com/service/{{ service.id }}
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="browser-screen-view">
+
+
+            {% if service.image %}
+
+            <img src="{{ service.image.url }}" class="img-fluid project-display-img" alt="{{ service.title }} service by Errors2Experts">
+
+            {% else %}
+
+            <img src="{% static 'images/service_1.jpeg' %}" class="img-fluid project-display-img"
+              alt="{{ service.title }} service by Errors2Experts"
+
+            {% endif %}
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FEATURES
+========================================================== -->
+
+{% if features %}
+
+<section class="service-feature-section" aria-labelledby="why-svc-heading">
+
+  <div class="container">
+
+
+    <div class="text-center mb-4 reveal">
+
+
+      <span class="section-eyebrow">
+        Built The Right Way
+      </span>
+
+
+      <h2 id="why-svc-heading" class="section-title">
+        Why Choose This Service
+      </h2>
+
+
+    </div>
+
+
+
+    <div class="svc-feature-grid stagger-children">
+
+
+      {% for f in features %}
+
+
+      <div class="svc-feature-tile reveal-scale" tabindex="0">
+
+
+        <div class="svc-feature-icon">
+
+          <i class="bi {{ f.icon }}"></i>
+
+        </div>
+
+
+
+        <div class="svc-feature-overlay">
+
+
+          <h4>
+            {{ f.title }}
+          </h4>
+
+
+          <p>
+            {{ f.description }}
+          </p>
+
+
+        </div>
+
+
+      </div>
+
+
+      {% endfor %}
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- =========================================================
+     TECHNOLOGIES
+========================================================== -->
+
+{% if service.tech_list %}
+
+<section class="sd-demos-section service-tech-section" aria-labelledby="tech-svc-heading">
+
+  <div class="sd-section-inner">
+
+
+    <div class="sd-section-heading">
+
+
+      <span class="sd-eyebrow-left">
+        Under The Hood
+      </span>
+
+
+      <h2 id="tech-svc-heading">
+        Technologies We Use
+      </h2>
+
+
+    </div>
+
+
+
+    <div class="sd-tech-grid reveal">
+
+
+      {% for tech in service.tech_list %}
+
+      <span class="sd-tech-pill">
+        {{ tech }}
+      </span>
+
+      {% endfor %}
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- =========================================================
+     LIVE DEMOS
+========================================================== -->
+
+<section class="sd-section sd-demos-section">
+
+
+  <div class="sd-section-inner">
+
+
+    <!-- Heading -->
+
+    <div class="sd-section-heading">
+
+
+      <span class="sd-eyebrow-left">
+        SEE IT IN ACTION
+      </span>
+
+
+      <h2>
+        Live Demo Websites
+      </h2>
+
+
+      <p>
+
+        Browse demo examples available for this
+        service and request access directly through
+        your email.
+
+      </p>
+
+
+    </div>
+
+
+
+    {% if featured_demos %}
+
+
+    <!-- =================================================
+             DEMO SLIDER
+        ================================================== -->
+
+    <div class="ld-scroll-wrap">
+
+
+      <!-- Previous -->
+
+      <button type="button" class="slider-arrow-btn ld-arrow" id="serviceDemoPrevious" aria-label="Previous demo">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2.5">
+
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+
+        </svg>
+
+      </button>
+
+
+
+      <!-- Track -->
+
+      <div class="ld-scroll-track" id="svcDemoScroll">
+
+
+        {% for demo in featured_demos %}
+
+
+        <article class="ld-mini-card">
+
+
+          <!-- Image -->
+
+          <div class="ld-mini-img">
+
+
+            {% if demo.image %}
+
+            <img src="{{ demo.image.url }}" alt="{{ demo.title }} demo by Errors2Experts" loading="lazy">
+
+            {% else %}
+
+           <img src="{% static 'images/service_1.jpeg' %}" alt="{{ demo.title }} demo by Errors2Experts" loading="lazy">
+            {% endif %}
+
+
+          </div>
+
+
+
+          <!-- Content -->
+
+          <div class="ld-mini-body">
+
+
+            {% if demo.category %}
+
+            <span class="service-demo-category">
+
+              {{ demo.category }}
+
+            </span>
+
+            {% endif %}
+
+
+
+            <h4>
+              {{ demo.title }}
+            </h4>
+
+
+
+            {% if demo.description %}
+
+            <p>
+              {{ demo.description }}
+            </p>
+
+            {% endif %}
+
+
+
+            {% if demo.tech_list %}
+
+            <div class="service-demo-technologies">
+
+
+              {% for tech in demo.tech_list|slice:":4" %}
+
+              <span>
+                {{ tech }}
+              </span>
+
+              {% endfor %}
+
+
+            </div>
+
+            {% endif %}
+
+
+
+            <!--
+                            IMPORTANT:
+                            We do NOT expose demo.url here.
+
+                            Browser submits only demo.id.
+                            Django gets the URL from the DB.
+                        -->
+
+            <button type="button" class="ld-mini-cta service-demo-card-button" data-bs-toggle="modal"
+              data-bs-target="#serviceDemoRequestModal" data-demo-id="{{ demo.id }}">
+
+              <i class="bi bi-envelope me-1"></i>
+
+              Request This Demo →
+
+            </button>
+
+
+          </div>
+
+
+        </article>
+
+
+        {% endfor %}
+
+
+      </div>
+
+
+
+      <!-- Next -->
+
+      <button type="button" class="slider-arrow-btn ld-arrow" id="serviceDemoNext" aria-label="Next demo">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2.5">
+
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+
+        </svg>
+
+      </button>
+
+
+    </div>
+
+
+
+    <!-- View all demos -->
+
+    <div class="text-center mt-4">
+
+
+      <button type="button" class="svc-btn-register service-all-demo-button" data-bs-toggle="modal"
+        data-bs-target="#serviceDemoRequestModal">
+
+        <i class="bi bi-grid me-2"></i>
+
+        View Available Demos →
+
+      </button>
+
+
+    </div>
+
+
+
+    {% else %}
+
+
+    <!-- =================================================
+             EMPTY STATE
+        ================================================== -->
+
+    <div class="sd-empty service-demo-empty">
+
+
+      <div class="service-demo-empty-icon">
+
+        <i class="bi bi-window"></i>
+
+      </div>
+
+
+      <h4>
+        Demo examples will be added soon
+      </h4>
+
+
+      <p>
+
+        You can still submit a custom demo
+        requirement for this service.
+
+      </p>
+
+
+      <button type="button" class="svc-btn-register" data-bs-toggle="modal" data-bs-target="#serviceDemoRequestModal">
+
+        Request Custom Demo →
+
+      </button>
+
+
+    </div>
+
+
+    {% endif %}
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DEVELOPMENT PROCESS
+========================================================== -->
+
+{% if process_steps %}
+
+<section class="service-process-section" aria-labelledby="process-heading">
+
+  <div class="container">
+
+
+    <div class="text-center mb-5 reveal">
+
+
+      <span class="section-eyebrow">
+        How We Work
+      </span>
+
+
+      <h2 id="process-heading" class="section-title">
+        Our Development Process
+      </h2>
+
+
+    </div>
+
+
+
+    <div class="sd-process-track stagger-children">
+
+
+      {% for step in process_steps %}
+
+
+      <div class="sd-process-step reveal-scale">
+
+
+        <div class="sd-process-icon">
+
+          <i class="bi {{ step.icon }}"></i>
+
+        </div>
+
+
+        <div class="sd-process-num">
+
+          {{ forloop.counter }}
+
+        </div>
+
+
+        <h4>
+          {{ step.title }}
+        </h4>
+
+
+        {% if step.description %}
+
+        <p>
+          {{ step.description }}
+        </p>
+
+        {% endif %}
+
+
+      </div>
+
+
+
+      {% if not forloop.last %}
+
+      <div class="sd-process-connector" aria-hidden="true"></div>
+
+      {% endif %}
+
+
+      {% endfor %}
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- =========================================================
+     FAQ
+========================================================== -->
+
+{% if faqs %}
+
+<section class="service-faq-section" aria-labelledby="faq-heading">
+
+  <div class="container" style="max-width:760px;">
+
+
+    <div class="text-center mb-5 reveal">
+
+
+      <span class="section-eyebrow">
+        Got Questions?
+      </span>
+
+
+      <h2 id="faq-heading" class="section-title">
+        Frequently Asked Questions
+      </h2>
+
+
+    </div>
+
+
+
+    <div class="accordion sd-faq-accordion reveal" id="serviceFaqAccordion">
+
+
+      {% for faq in faqs %}
+
+
+      <div class="accordion-item">
+
+
+        <h3 class="accordion-header" id="faqHead{{ faq.id }}">
+
+
+          <button class="
+                            accordion-button
+                            {% if not forloop.first %}
+                                collapsed
+                            {% endif %}
+                        " type="button" data-bs-toggle="collapse" data-bs-target="#faqBody{{ faq.id }}"
+            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="faqBody{{ faq.id }}">
+
+            {{ faq.question }}
+
+          </button>
+
+
+        </h3>
+
+
+
+        <div id="faqBody{{ faq.id }}" class="
+                        accordion-collapse
+                        collapse
+                        {% if forloop.first %}
+                            show
+                        {% endif %}
+                    " aria-labelledby="faqHead{{ faq.id }}" data-bs-parent="#serviceFaqAccordion">
+
+
+          <div class="accordion-body">
+
+            {{ faq.answer }}
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      {% endfor %}
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================== -->
+
+<section class="sd-bottom-cta">
+
+
+  <p class="sd-eyebrow" style="color:rgba(255,255,255,0.65);">
+    READY TO GET STARTED?
+  </p>
+
+
+  <h2>
+
+    Ready to Build Your
+    {{ service.title }} Project?
+
+  </h2>
+
+
+  <p>
+
+    Reach out and our team will get
+    back to you as soon as possible.
+
+  </p>
+
+
+
+  <div class="
+            d-flex
+            flex-wrap
+            justify-content-center
+            gap-3
+        ">
+
+
+    <button type="button" class="sd-cta sd-cta-light" data-bs-toggle="modal"
+      data-bs-target="#serviceDetailBookingModal">
+
+      Register Now →
+
+    </button>
+
+
+
+    <button type="button" class="sd-cta sd-cta-light" data-bs-toggle="modal" data-bs-target="#serviceDemoRequestModal">
+
+      Request Demo →
+
+    </button>
+
+
+
+    <a href="{% url 'home' %}#contact" class="
+                sd-cta
+                sd-cta-light
+                text-decoration-none
+            ">
+
+      Request Quote
+
+    </a>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICE BOOKING MODAL
+========================================================== -->
+
+<div class="modal fade" id="serviceDetailBookingModal" tabindex="-1" aria-labelledby="serviceDetailBookingModalLabel"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+
+    <div class="modal-content service-booking-modal">
+
+
+      <!-- Header -->
+
+      <div class="modal-header">
+
+
+        <div>
+
+
+          <span class="service-booking-eyebrow">
+
+            Service Registration
+
+          </span>
+
+
+          <h5 class="modal-title" id="serviceDetailBookingModalLabel">
+
+            {{ service.title }}
+
+          </h5>
+
+
+        </div>
+
+
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+      </div>
+
+
+
+      <!-- Form -->
+
+      <form method="POST" action="{% url 'service_booking' %}">
+
+        {% csrf_token %}
+
+
+        <input type="hidden" name="service_name" value="{{ service.title }}">
+
+
+
+        <div class="modal-body">
+
+
+          <!-- Name -->
+
+          <div class="mb-3">
+
+
+            <label for="serviceBookingName" class="form-label">
+              Name / Organization
+            </label>
+
+
+            <input type="text" id="serviceBookingName" name="full_name" class="form-control"
+              placeholder="Enter your name or organization" maxlength="150" required>
+
+
+          </div>
+
+
+
+          <!-- Email -->
+
+          <div class="mb-3">
+
+
+            <label for="serviceBookingEmail" class="form-label">
+              Email Address
+            </label>
+
+
+            <input type="email" id="serviceBookingEmail" name="email" class="form-control" placeholder="you@example.com"
+              required>
+
+
+          </div>
+
+
+
+          <!-- Mobile -->
+
+          <div class="mb-3">
+
+
+            <label for="serviceBookingMobile" class="form-label">
+              Mobile Number
+            </label>
+
+
+            <input type="tel" id="serviceBookingMobile" name="mobile" class="form-control"
+              placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required>
+
+
+          </div>
+
+
+
+          <!-- Preferred Date -->
+
+          <div class="mb-3">
+
+
+            <label for="servicePreferredDate" class="form-label">
+              Preferred Date
+            </label>
+
+
+            <input type="date" id="servicePreferredDate" name="preferred_date" class="form-control">
+
+
+          </div>
+
+
+
+          <!-- Requirement -->
+
+          <div class="mb-0">
+
+
+            <label for="serviceBookingMessage" class="form-label">
+              Your Requirement
+            </label>
+
+
+            <textarea id="serviceBookingMessage" name="message" class="form-control" rows="4" maxlength="1500"
+              placeholder="Briefly describe what you need..."></textarea>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="modal-footer">
+
+
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+
+            Cancel
+
+          </button>
+
+
+
+          <button type="submit" class="btn btn-success px-4">
+
+            Submit Request →
+
+          </button>
+
+
+        </div>
+
+
+      </form>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     ONE AND ONLY DEMO REQUEST MODAL
+
+     Do not create another:
+       demoRequestModal
+       serviceDemoBookingModal
+       #serviceDemoRequestModal
+========================================================== -->
+
+{% include "components/service_demo_request_modal.html" %}
+
+
+
+<!-- =========================================================
+     PAGE STYLES
+========================================================== -->
+
+<style>
+  /* =========================================================
+   FEATURE SECTION
+========================================================= */
+
+  .service-feature-section {
+    padding: 60px 0;
+  }
+
+
+  .svc-feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(auto-fit,
+        minmax(160px, 1fr));
+
+    gap: 18px;
+
+  }
+
+
+  .svc-feature-tile {
+
+    position: relative;
+
+    height: 170px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+      var(--bg-white);
+
+    border:
+      1px solid var(--border-light);
+
+    border-radius:
+      var(--radius-lg);
+
+    box-shadow:
+      var(--shadow-sm);
+
+    cursor: default;
+
+    transition:
+      transform .3s var(--ease),
+      box-shadow .3s var(--ease),
+      border-color .3s;
+
+  }
+
+
+  .svc-feature-tile:hover,
+  .svc-feature-tile:focus-visible {
+
+    transform:
+      translateY(-6px);
+
+    box-shadow:
+      var(--shadow-lg);
+
+    border-color:
+      rgba(46, 125, 50, .3);
+
+  }
+
+
+  .svc-feature-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+      var(--e2e-green);
+
+    background:
+      var(--e2e-green-tint);
+
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    transition:
+      transform .35s var(--ease),
+      opacity .3s ease;
+
+  }
+
+
+  .svc-feature-tile:hover .svc-feature-icon,
+  .svc-feature-tile:focus-visible .svc-feature-icon {
+
+    transform:
+      translateY(-14px) scale(.8);
+
+    opacity: .18;
+
+  }
+
+
+  .svc-feature-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    background:
+      linear-gradient(160deg,
+        var(--e2e-green) 0%,
+        var(--e2e-green-dark) 100%);
+
+    transform:
+      translateY(100%);
+
+    transition:
+      transform .4s var(--ease);
+
+  }
+
+
+  .svc-feature-tile:hover .svc-feature-overlay,
+  .svc-feature-tile:focus-visible .svc-feature-overlay {
+
+    transform:
+      translateY(0);
+
+  }
+
+
+  .svc-feature-overlay h4 {
+
+    margin-bottom: 6px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+  }
+
+
+  .svc-feature-overlay p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    opacity: .92;
+
+  }
+
+
+
+  /* =========================================================
+   TECHNOLOGIES
+========================================================= */
+
+  .service-tech-section {
+
+    padding: 50px 0;
+
+  }
+
+
+
+  /* =========================================================
+   DEMO CARDS
+========================================================= */
+
+  .service-demo-category {
+
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-bottom: 8px;
+
+    padding: 4px 8px;
+
+    color: #795d16;
+
+    background: #fff5d7;
+
+    border-radius: 30px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+  }
+
+
+  .service-demo-technologies {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 4px;
+
+    margin:
+      8px 0 12px;
+
+  }
+
+
+  .service-demo-technologies span {
+
+    padding:
+      3px 6px;
+
+    color: #54666e;
+
+    background: #edf1f2;
+
+    border-radius: 4px;
+
+    font-size: 8px;
+
+  }
+
+
+  .service-demo-card-button {
+
+    width: 100%;
+
+    margin-top: auto;
+
+    border: 0;
+
+    cursor: pointer;
+
+  }
+
+
+  .service-all-demo-button {
+
+    border: 0;
+
+    cursor: pointer;
+
+  }
+
+
+  .service-demo-empty {
+
+    padding:
+      45px 20px;
+
+    text-align: center;
+
+  }
+
+
+  .service-demo-empty-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    margin:
+      0 auto 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+      var(--e2e-green);
+
+    background:
+      var(--e2e-green-tint);
+
+    border-radius: 50%;
+
+    font-size: 21px;
+
+  }
+
+
+  .service-demo-empty h4 {
+
+    margin-bottom: 6px;
+
+    font-size: 16px;
+
+  }
+
+
+  .service-demo-empty p {
+
+    margin-bottom: 17px;
+
+    color:
+      var(--text-muted);
+
+    font-size: 13px;
+
+  }
+
+
+
+  /* =========================================================
+   DEVELOPMENT PROCESS
+========================================================= */
+
+  .service-process-section {
+
+    padding:
+      70px 20px;
+
+    background:
+      var(--bg-page);
+
+  }
+
+
+  .sd-process-track {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 0;
+
+  }
+
+
+  .sd-process-step {
+
+    position: relative;
+
+    width: 190px;
+
+    padding:
+      26px 20px;
+
+    text-align: center;
+
+    background:
+      var(--bg-white);
+
+    border:
+      1px solid var(--border-light);
+
+    border-radius:
+      var(--radius-lg);
+
+    box-shadow:
+      var(--shadow-sm);
+
+    transition:
+      transform var(--transition),
+
+      box-shadow var(--transition),
+
+      border-color var(--transition);
+
+  }
+
+
+  .sd-process-step:hover {
+
+    transform:
+      translateY(-6px);
+
+    box-shadow:
+      var(--shadow-md);
+
+    border-color:
+      rgba(46, 125, 50, .25);
+
+  }
+
+
+  .sd-process-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    margin:
+      0 auto 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+      var(--e2e-green);
+
+    background:
+      var(--e2e-green-tint);
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+  }
+
+
+  .sd-process-num {
+
+    position: absolute;
+
+    top: -10px;
+
+    right: -10px;
+
+    width: 26px;
+
+    height: 26px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #ffffff;
+
+    background:
+      var(--e2e-gold);
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow:
+      var(--shadow-sm);
+
+  }
+
+
+  .sd-process-step h4 {
+
+    margin-bottom: 6px;
+
+    color:
+      var(--text-primary);
+
+    font-size: 14.5px;
+
+    font-weight: 700;
+
+  }
+
+
+  .sd-process-step p {
+
+    margin: 0;
+
+    color:
+      var(--text-muted);
+
+    font-size: 12.5px;
+
+    line-height: 1.5;
+
+  }
+
+
+  .sd-process-connector {
+
+    width: 40px;
+
+    height: 2px;
+
+    align-self: center;
+
+    margin-top: 26px;
+
+    background:
+      var(--border-medium);
+
+  }
+
+
+
+  /* =========================================================
+   FAQ
+========================================================= */
+
+  .service-faq-section {
+
+    padding:
+      70px 20px;
+
+    background:
+      var(--bg-white);
+
+  }
+
+
+  .sd-faq-accordion .accordion-item {
+
+    overflow: hidden;
+
+    margin-bottom: 14px;
+
+    border:
+      1px solid var(--border-light);
+
+    border-radius:
+      var(--radius-md) !important;
+
+  }
+
+
+  .sd-faq-accordion .accordion-button {
+
+    padding:
+      18px 20px;
+
+    color:
+      var(--text-primary);
+
+    background:
+      var(--bg-white);
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+  }
+
+
+  .sd-faq-accordion .accordion-button:not(.collapsed) {
+
+    color:
+      var(--e2e-green-dark);
+
+    background:
+      var(--e2e-green-tint);
+
+    box-shadow: none;
+
+  }
+
+
+  .sd-faq-accordion .accordion-button:focus {
+
+    border-color:
+      var(--e2e-green);
+
+    box-shadow:
+      0 0 0 3px rgba(46, 125, 50, .15);
+
+  }
+
+
+  .sd-faq-accordion .accordion-body {
+
+    padding:
+      4px 20px 20px;
+
+    color:
+      var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+  }
+
+
+
+  /* =========================================================
+   SERVICE BOOKING MODAL
+========================================================= */
+
+  .service-booking-modal {
+
+    overflow: hidden;
+
+    border: 0;
+
+    border-radius: 18px;
+
+  }
+
+
+  .service-booking-eyebrow {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color:
+      var(--e2e-green);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+  @media (max-width: 768px) {
+
+
+    .sd-process-track {
+
+      flex-direction: column;
+
+      align-items: center;
+
+    }
+
+
+    .sd-process-connector {
+
+      width: 2px;
+
+      height: 24px;
+
+      margin: 0;
+
+    }
+
+
+    .sd-process-step {
+
+      width: 100%;
+
+      max-width: 280px;
+
+    }
+
+
+    .svc-feature-grid {
+
+      grid-template-columns:
+        repeat(2,
+          minmax(0, 1fr));
+
+    }
+
+
+  }
+
+
+  @media (max-width: 575px) {
+
+
+    .svc-feature-grid {
+
+      gap: 10px;
+
+    }
+
+
+    .svc-feature-tile {
+
+      height: 150px;
+
+    }
+
+
+  }
+</style>
+
+
+
+<!-- =========================================================
+     PAGE JAVASCRIPT
+========================================================== -->
+
+<script>
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+      /* =================================================
+         DEMO SLIDER
+      ================================================== */
+
+      const demoTrack =
+        document.getElementById(
+          "svcDemoScroll"
+        );
+
+
+      const previousButton =
+        document.getElementById(
+          "serviceDemoPrevious"
+        );
+
+
+      const nextButton =
+        document.getElementById(
+          "serviceDemoNext"
+        );
+
+
+      if (
+        demoTrack &&
+        previousButton
+      ) {
+
+        previousButton.addEventListener(
+          "click",
+          function () {
+
+            demoTrack.scrollBy({
+              left: -280,
+              behavior: "smooth"
+            });
+
+          }
+        );
+
+      }
+
+
+      if (
+        demoTrack &&
+        nextButton
+      ) {
+
+        nextButton.addEventListener(
+          "click",
+          function () {
+
+            demoTrack.scrollBy({
+              left: 280,
+              behavior: "smooth"
+            });
+
+          }
+        );
+
+      }
+
+
+
+      /* =================================================
+         DEMO AUTO-SELECTION
+      ================================================== */
+
+      const demoModal =
+        document.getElementById(
+          "serviceDemoRequestModal"
+        );
+
+
+      const demoForm =
+        document.getElementById(
+          "serviceDemoRequestForm"
+        );
+
+
+      if (
+        demoModal &&
+        demoForm
+      ) {
+
+
+        demoModal.addEventListener(
+          "show.bs.modal",
+          function (event) {
+
+
+            const trigger =
+              event.relatedTarget;
+
+
+            if (!trigger) {
+              return;
+            }
+
+
+            const demoId =
+              trigger.getAttribute(
+                "data-demo-id"
+              );
+
+
+            /* =====================================
+               Specific demo clicked
+            ====================================== */
+
+            if (demoId) {
+
+
+              const radio =
+                demoForm.querySelector(
+                  'input[name="selected_demo"]' +
+                  '[value="' +
+                  demoId +
+                  '"]'
+                );
+
+
+              if (radio) {
+
+
+                radio.checked =
+                  true;
+
+
+                radio.dispatchEvent(
+                  new Event(
+                    "change",
+                    {
+                      bubbles: true
+                    }
+                  )
+                );
+
+
+              }
+
+
+              return;
+
+            }
+
+
+            /* =====================================
+               Generic request button
+
+               Clear previous selection so another
+               service-demo choice isn't retained.
+            ====================================== */
+
+            const radios =
+              demoForm.querySelectorAll(
+                'input[name="selected_demo"]'
+              );
+
+
+            radios.forEach(
+              function (radio) {
+
+                radio.checked =
+                  false;
+
+              }
+            );
+
+
+            const customWrap =
+              document.getElementById(
+                "serviceCustomRequirementWrap"
+              );
+
+
+            const customInput =
+              document.getElementById(
+                "serviceCustomRequirement"
+              );
+
+
+            const requiredMark =
+              document.getElementById(
+                "serviceCustomRequiredMark"
+              );
+
+
+            if (
+              customWrap &&
+              customInput
+            ) {
+
+
+              /*
+               * If there are zero ready demos,
+               * the component may already have the
+               * custom box visible and required.
+               *
+               * Do not hide it in that case.
+               */
+
+              const demoChoices =
+                demoForm.querySelectorAll(
+                  'input[name="selected_demo"]' +
+                  ':not(#serviceDemoCustomOption)'
+                );
+
+
+              if (
+                demoChoices.length > 0
+              ) {
+
+
+                customWrap
+                  .classList
+                  .add(
+                    "d-none"
+                  );
+
+
+                customInput.required =
+                  false;
+
+
+                if (requiredMark) {
+
+                  requiredMark.hidden =
+                    true;
+
+                }
+
+
+              }
+
+
+            }
+
+
+          }
+        );
+
+
+      }
+
+
+
+      /* =================================================
+         SERVICE BOOKING MOBILE
+      ================================================== */
+
+      const bookingMobile =
+        document.getElementById(
+          "serviceBookingMobile"
+        );
+
+
+      if (bookingMobile) {
+
+
+        bookingMobile.addEventListener(
+          "input",
+          function () {
+
+
+            this.value =
+              this.value
+                .replace(
+                  /\D/g,
+                  ""
+                )
+                .slice(
+                  0,
+                  10
+                );
+
+
+          }
+        );
+
+
+      }
+
+
+
+      /* =================================================
+         PREFERRED DATE
+         Prevent old dates
+      ================================================== */
+
+      const preferredDate =
+        document.getElementById(
+          "servicePreferredDate"
+        );
+
+
+      if (preferredDate) {
+
+
+        const now =
+          new Date();
+
+
+        const year =
+          now.getFullYear();
+
+
+        const month =
+          String(
+            now.getMonth() + 1
+          ).padStart(
+            2,
+            "0"
+          );
+
+
+        const day =
+          String(
+            now.getDate()
+          ).padStart(
+            2,
+            "0"
+          );
+
+
+        preferredDate.min =
+          year +
+          "-" +
+          month +
+          "-" +
+          day;
+
+
+      }
+
+
+    }
+  );
+
+</script>
+
+
+{% endblock %}

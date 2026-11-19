@@ -1,0 +1,69 @@
+/* =========================================================
+   SHARED COURSE CARD COMPONENT
+   Used by the home preview and the full courses page.
+   Existing .course-card styles remain supported.
+   ========================================================= */
+
+.e2e-course-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.e2e-course-card__media {
+    overflow: hidden;
+}
+
+.e2e-course-card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.e2e-course-card__image--fallback {
+    object-fit: contain;
+    padding: 1.25rem;
+    background: #ffffff;
+}
+
+.e2e-course-card__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.e2e-course-card__title {
+    margin: 0 0 0.65rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.e2e-course-card__description {
+    margin-bottom: 1rem;
+}
+
+.e2e-course-card__price {
+    margin-top: auto;
+}
+
+.e2e-course-card__duration {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.e2e-course-card__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+}
+
+@media (max-width: 575.98px) {
+    .e2e-course-card__title {
+        font-size: 1rem;
+    }
+}

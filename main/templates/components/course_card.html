@@ -1,0 +1,39 @@
+{% load static %}
+
+<article class="course-card">
+    {% if course.image %}
+    <img src="{{ course.image.url }}" alt="{{ course.title }}" loading="lazy" decoding="async">
+    {% else %}
+    <img src="{% static 'main/images/no-image.png' %}" alt="No image available" loading="lazy" decoding="async">
+    {% endif %}
+
+    <div class="course-content">
+        <h4>
+            {{ course.title|title }}
+        </h4>
+
+        <p>
+            {{ course.description|truncatewords:15 }}
+        </p>
+
+        <div class="course-price">
+            ₹{{ course.price }}
+
+            {% if course.discount %}
+            <span class="old-price">
+                ₹{{ course.discount }}
+            </span>
+            {% endif %}
+        </div>
+
+        {% if course.duration %}
+        <p class="course-duration">
+            ⏱ {{ course.duration }}
+        </p>
+        {% endif %}
+
+        <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">
+            Explore Course →
+        </a>
+    </div>
+</article>

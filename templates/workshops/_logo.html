@@ -1,0 +1,10 @@
+{% load static %}{% if full %}
+<img src="{% static 'workshop/img/logo.png' %}" class="brand-logo-full" alt="{{ ORG.short }} - Errors to Experts">
+{% else %}
+<img src="{% static 'workshop/img/logo-mark.png' %}" class="brand-logo" alt="">
+<div class="logo-text-wrapper" style="display: flex; align-items: baseline; font-weight: bold;">
+    <span class="error-part" style="color: var(--e2e-red);">Errors</span>
+    <span class="two-part" style="color: var(--e2e-gold);">2</span>
+    <span class="expert-part" style="color: var(--e2e-green);">Experts</span>
+</div>
+{% endif %}
