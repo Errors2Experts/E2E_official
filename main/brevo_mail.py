@@ -22,9 +22,11 @@ def send_brevo_email(
 
     sender_name = os.getenv(
         "BREVO_SENDER_NAME",
+        "Errors2Experts",
     )
     sender_email = os.getenv(
         "BREVO_SENDER_EMAIL",
+        "errors2experts.official@gmail.com",
     )
 
     headers = {

@@ -75,6 +75,7 @@ Sitemap: https://errors2experts.com/sitemap.xml
 """
     return HttpResponse(content, content_type="text/plain")
 
+<<<<<<< HEAD
 
 
 def send_email_safely(to_email, subject, html_content, text_content=None, attachment_path=None):
@@ -93,6 +94,40 @@ def send_email_safely(to_email, subject, html_content, text_content=None, attach
         logger.exception("Email delivery failed for %s: %s", to_email, e)
         return False
 
+=======
+def send_email_safely(
+    *,
+    to_email,
+    subject,
+    html_content,
+    text_content=None,
+    attachment_path=None,
+):
+    """
+    Send email without breaking the submitted form when
+    Brevo is temporarily unavailable.
+    """
+
+    try:
+        send_brevo_email(
+            to_email=to_email,
+            subject=subject,
+            html_content=html_content,
+            text_content=text_content,
+            attachment_path=attachment_path,
+        )
+    except Exception:
+        logger.exception(
+            "Brevo email failed. Recipient=%s Subject=%s",
+            to_email,
+            subject,
+        )
+        return False
+
+    return True
+
+
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
 def get_admin_change_url(request, instance):
     """
     Build the Django admin change-page URL for a saved model object.
@@ -157,7 +192,10 @@ def home(request):
         "total_bookings": CourseBooking.objects.count(),
         "workshops": WorkshopPhoto.objects.all(),
         "certificates": Certificate.objects.all(),
+<<<<<<< HEAD
         "client_reviews": ClientReview.objects.all().order_by('-created_at'),
+=======
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
         "internships": Internship.objects.all(),
         "upcoming_workshop": (
             UpcomingWorkshop.objects.filter(
@@ -180,8 +218,12 @@ def home(request):
 
 def review_page(request):
     reviews = StudentReview.objects.all().order_by("-created_at")
+<<<<<<< HEAD
     client_reviews = ClientReview.objects.all()
     return render(request, "reviews.html", {"reviews": reviews,'client_reviews': client_reviews})
+=======
+    return render(request, "reviews.html", {"reviews": reviews})
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
 
 
 def course_detail(request, id):

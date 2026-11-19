@@ -484,6 +484,7 @@ https://errors2experts.com/
                     <span class="tech-pill">Verified Deployment</span>
                     {% endif %}
                   </div>
+<<<<<<< HEAD
                   <!-- Dynamic Website CTA Link -->
                   {% if project.live_link %}
                   <div class="project-link-wrap mt-4">
@@ -495,6 +496,8 @@ https://errors2experts.com/
                     </a>
                   </div>
                   {% endif %}
+=======
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
 
                   <!-- Custom Embedded Navigation Arrow Controls -->
                   <div class="slider-controls-group mt-5 d-none d-lg-flex">
@@ -674,7 +677,11 @@ https://errors2experts.com/
             Real hands-on training sessions, bootcamps and events — see how we learn by doing.
           </p>
         </div>
+<<<<<<< HEAD
         <a href="/workshop/" class="btn btn-success px-4 py-2 e2e-home-nowrap">
+=======
+        <a href="{% url 'workshops' %}" class="btn btn-success px-4 py-2 e2e-home-nowrap">
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
           View All Photos →
         </a>
       </div>
@@ -762,7 +769,11 @@ https://errors2experts.com/
       <!-- Preview grid — shows first 6 photos -->
       <div class="ws-preview-grid stagger-children">
         {% for photo in workshops|slice:":6" %}
+<<<<<<< HEAD
         <a href="/workshop/" class="ws-preview-item reveal-scale" aria-label="{{ photo.title }}">
+=======
+        <a href="{% url 'workshops' %}" class="ws-preview-item reveal-scale" aria-label="{{ photo.title }}">
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
           <div class="ws-preview-img">
             <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
             <div class="ws-preview-overlay">
@@ -795,7 +806,11 @@ https://errors2experts.com/
      UPCOMING WORKSHOP — FULL POSTER + LINE-BY-LINE CONTENT
      Scoped to the home page so other cards are unaffected.
   ========================================================= */
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
     .e2e-home-page .upcoming-workshop {
       display: grid !important;
       grid-template-columns:
@@ -876,6 +891,7 @@ https://errors2experts.com/
         text-align: left;
       }
     }
+<<<<<<< HEAD
 
 /*=========================================================
   Projects logo
@@ -922,6 +938,8 @@ https://errors2experts.com/
   object-fit: contain !important;
   display: block;
 }
+=======
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
   </style>
 
 
@@ -1243,6 +1261,7 @@ https://errors2experts.com/
       <div class="row g-5 justify-content-center">
 
         <!-- Contact info col -->
+<<<<<<< HEAD
 <div class="col-md-4 reveal-left">
   <div class="e2e-home-contact-info-card">
     <h3 class="e2e-home-contact-card-title">Contact Information</h3>
@@ -1306,6 +1325,56 @@ https://errors2experts.com/
 
   </div>
 </div>
+=======
+        <div class="col-md-4 reveal-left">
+          <div class="e2e-home-contact-info-card">
+            <h3 class="e2e-home-contact-card-title">Contact Information</h3>
+
+            <div class="e2e-home-contact-details">
+              <div class="e2e-home-contact-detail-item">
+                <span aria-hidden="true" class="e2e-home-contact-detail-icon">📍</span>
+                <div>
+                  <div class="e2e-home-contact-detail-label">Address</div>
+                  <div class="e2e-home-contact-detail-text">NGO colony,Dindigul,Tamil Nadu, India</div>
+                </div>
+              </div>
+              <div class="e2e-home-contact-detail-item">
+                <span aria-hidden="true" class="e2e-home-contact-detail-icon">✉️</span>
+                <div>
+                  <div class="e2e-home-contact-detail-label">Email</div>
+                  <a href="mailto:errors2experts.official@gmail.com" class="e2e-home-contact-detail-email">
+                    errors2experts.official@gmail.com
+                  </a>
+                </div>
+              </div>
+              <div class="e2e-home-contact-detail-item">
+                <span aria-hidden="true" class="e2e-home-contact-detail-icon">📞</span>
+                <div>
+                  <div class="e2e-home-contact-detail-label">Phone</div>
+                  <a href="tel:+919363342646" class="e2e-home-contact-detail-link">
+                    +91 9363342646
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="e2e-home-contact-divider"></div>
+
+            <div>
+              <div class="e2e-home-contact-hours-title">
+                Business Hours
+              </div>
+              <p class="e2e-home-contact-hours-copy">
+                Mon – Sat: 9:00 AM – 7:00 PM<br>
+                Sunday: By Appointment
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+>>>>>>> 2bc246be6b0d9684e1631d7b0dcebb78635289c4
         <!-- Form col -->
         <div class="col-md-6 reveal-right">
           <div class="e2e-home-contact-form-card">
